@@ -1,7 +1,7 @@
 <h1 align="center">Hi 👋, I'm @ravijaanthony</h1>
 <h3 align="center">A passionate Software Engineering Undergrad from Sri Lanka</h3>
 
-- 🔭 I’m currently working on [research based projects]()
+- 🔭 I’m currently working on a research based project
 
 - 🌱 I’m currently working with **Python**
 
