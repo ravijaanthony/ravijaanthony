@@ -5,8 +5,6 @@
 
 - 🌱 I’m currently working with **Python**
 
-- 📫 How to reach me **ravijaanthony@gmail.com**
-
 - ⚡ Fun fact **I love Espresso ❤️**
 
 <h3 align="left">Connect with me:</h3>
