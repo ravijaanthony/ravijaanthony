@@ -1,12 +1,44 @@
-<p align="center">
-  <a href="https://raw.githubusercontent.com/ravijaanthony/ravijaanthony_test/main/assets/sunburst.svg">
-    <img src="assets/sunburst.svg" width="420" alt="sunburst of my repos">
-  </a><br>
-  <sub>click the chart for the hover-interactive version</sub>
-</p>
+<table width="100%"><tr>
+<td width="50%" align="center" valign="top">
+<a href="https://raw.githubusercontent.com/ravijaanthony/ravijaanthony_test/main/assets/sunburst.svg">
+  <img src="assets/sunburst.svg" width="100%" alt="sunburst of my repos">
+</a><br>
+<sub>✨ click the disk for the hover-interactive version</sub>
+</td>
+<td width="50%" align="left" valign="top">
+<h3>📂 Top Projects</h3>
+<table>
+<tr><td><img src="assets/swatch-0.svg" width="12" height="12"></td>
+<td>&nbsp;<b>KaprukaAgentChallenge2026</b></td>
+<td align="right">&nbsp;46%</td></tr>
+<tr><td><img src="assets/swatch-1.svg" width="12" height="12"></td>
+<td>&nbsp;<b>LumiSign</b></td>
+<td align="right">&nbsp;17%</td></tr>
+<tr><td><img src="assets/swatch-2.svg" width="12" height="12"></td>
+<td>&nbsp;<b>STSBookingSystem</b></td>
+<td align="right">&nbsp;14%</td></tr>
+<tr><td><img src="assets/swatch-3.svg" width="12" height="12"></td>
+<td>&nbsp;<b>MedWikiAgentic</b></td>
+<td align="right">&nbsp;12%</td></tr>
+<tr><td><img src="assets/swatch-4.svg" width="12" height="12"></td>
+<td>&nbsp;<b>cv_pipeline</b></td>
+<td align="right">&nbsp;4.3%</td></tr>
+<tr><td><img src="assets/swatch-5.svg" width="12" height="12"></td>
+<td>&nbsp;<b>asciiartclock</b></td>
+<td align="right">&nbsp;2.9%</td></tr>
+<tr><td><img src="assets/swatch-6.svg" width="12" height="12"></td>
+<td>&nbsp;<b>ravijaanthony</b></td>
+<td align="right">&nbsp;1.9%</td></tr>
+<tr><td><img src="assets/swatch-7.svg" width="12" height="12"></td>
+<td>&nbsp;<b>Java_Concurrency</b></td>
+<td align="right">&nbsp;1.2%</td></tr>
+</table>
+</td>
+</tr></table>
 
+<h3>🔍 Deep Dive</h3>
 <details>
-<summary><img src="assets/swatch-0.svg" width="12" title="KaprukaAgentChallenge2026 — 829.3 KiB (46%)"> <b>KaprukaAgentChallenge2026</b> · 46%</summary>
+<summary><img src="assets/swatch-0.svg" width="12"> <b>KaprukaAgentChallenge2026</b> · 46%</summary>
 
 | language | size | share |
 |---|---|---|
@@ -18,7 +50,7 @@
 </details>
 
 <details>
-<summary><img src="assets/swatch-1.svg" width="12" title="LumiSign — 308.9 KiB (17%)"> <b>LumiSign</b> · 17%</summary>
+<summary><img src="assets/swatch-1.svg" width="12"> <b>LumiSign</b> · 17%</summary>
 
 | language | size | share |
 |---|---|---|
@@ -31,7 +63,7 @@
 </details>
 
 <details>
-<summary><img src="assets/swatch-2.svg" width="12" title="STSBookingSystem — 254.8 KiB (14%)"> <b>STSBookingSystem</b> · 14%</summary>
+<summary><img src="assets/swatch-2.svg" width="12"> <b>STSBookingSystem</b> · 14%</summary>
 
 | language | size | share |
 |---|---|---|
@@ -45,7 +77,7 @@
 </details>
 
 <details>
-<summary><img src="assets/swatch-3.svg" width="12" title="MedWikiAgentic — 222.6 KiB (12%)"> <b>MedWikiAgentic</b> · 12%</summary>
+<summary><img src="assets/swatch-3.svg" width="12"> <b>MedWikiAgentic</b> · 12%</summary>
 
 | language | size | share |
 |---|---|---|
@@ -59,7 +91,7 @@
 </details>
 
 <details>
-<summary><img src="assets/swatch-4.svg" width="12" title="cv_pipeline — 78.6 KiB (4.4%)"> <b>cv_pipeline</b> · 4.4%</summary>
+<summary><img src="assets/swatch-4.svg" width="12"> <b>cv_pipeline</b> · 4.3%</summary>
 
 | language | size | share |
 |---|---|---|
@@ -72,7 +104,7 @@
 </details>
 
 <details>
-<summary><img src="assets/swatch-5.svg" width="12" title="asciiartclock — 53.3 KiB (3.0%)"> <b>asciiartclock</b> · 3.0%</summary>
+<summary><img src="assets/swatch-5.svg" width="12"> <b>asciiartclock</b> · 2.9%</summary>
 
 | language | size | share |
 |---|---|---|
@@ -81,16 +113,16 @@
 </details>
 
 <details>
-<summary><img src="assets/swatch-6.svg" width="12" title="ravijaanthony — 22.0 KiB (1.2%)"> <b>ravijaanthony</b> · 1.2%</summary>
+<summary><img src="assets/swatch-6.svg" width="12"> <b>ravijaanthony</b> · 1.9%</summary>
 
 | language | size | share |
 |---|---|---|
-| other | 22.0 KiB | 100% |
+| other | 34.0 KiB | 100% |
 
 </details>
 
 <details>
-<summary><img src="assets/swatch-7.svg" width="12" title="Java_Concurrency — 21.1 KiB (1.2%)"> <b>Java_Concurrency</b> · 1.2%</summary>
+<summary><img src="assets/swatch-7.svg" width="12"> <b>Java_Concurrency</b> · 1.2%</summary>
 
 | language | size | share |
 |---|---|---|
@@ -99,7 +131,7 @@
 </details>
 
 <details>
-<summary><img src="assets/swatch-8.svg" width="12" title="Maze-Traversal — 14.5 KiB (0.8%)"> <b>Maze-Traversal</b> · 0.8%</summary>
+<summary><img src="assets/swatch-8.svg" width="12"> <b>Maze-Traversal</b> · 0.8%</summary>
 
 | language | size | share |
 |---|---|---|
