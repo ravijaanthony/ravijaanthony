@@ -1,0 +1,5 @@
+{"name": "me", "children": [
+  {"name": "dotfiles", "children": [{"name": "Lua", "value": 410000}, {"name": "Shell", "value": 120000}]},
+  {"name": "tracker",  "children": [{"name": "Rust", "value": 900000}, {"name": "SQL", "value": 60000}]},
+  {"name": "site",     "children": [{"name": "TypeScript", "value": 300000}, {"name": "CSS", "value": 80000}]}
+]}

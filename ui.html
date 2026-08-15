@@ -1,0 +1,561 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>sunburst playground</title>
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+      body {
+        margin: 0;
+        background: #191919;
+        color: #ddd;
+        font:
+          14px/1.5 system-ui,
+          monospace;
+        display: flex;
+        height: 100vh;
+        overflow: hidden;
+      }
+      #panel {
+        width: 340px;
+        padding: 16px;
+        overflow-y: auto;
+        border-right: 1px solid #333;
+        background: #202020;
+      }
+      #main {
+        flex: 1;
+        display: grid;
+        place-items: center;
+        position: relative;
+      }
+      #chart svg {
+        width: min(88vmin, 760px);
+        height: auto;
+      }
+      path {
+        cursor: pointer;
+        transition: filter 0.12s;
+      }
+      path:hover {
+        filter: brightness(0.65);
+      }
+      #tip {
+        position: fixed;
+        display: none;
+        background: #2b2b2b;
+        border: 1px solid #555;
+        padding: 8px 12px;
+        font: 13px/1.6 monospace;
+        border-radius: 4px;
+        pointer-events: none;
+        white-space: nowrap;
+        z-index: 9;
+      }
+      h1 {
+        font-size: 15px;
+        margin: 0 0 12px;
+      }
+      label {
+        display: block;
+        margin: 10px 0 2px;
+        color: #999;
+        font-size: 12px;
+      }
+      input[type="range"] {
+        width: 100%;
+      }
+      input[type="text"],
+      textarea,
+      button {
+        background: #191919;
+        color: #ddd;
+        border: 1px solid #444;
+        border-radius: 4px;
+        padding: 6px 8px;
+        font: inherit;
+      }
+      textarea {
+        width: 100%;
+        height: 170px;
+        font-family: monospace;
+        font-size: 12px;
+        resize: vertical;
+      }
+      button {
+        cursor: pointer;
+        margin-top: 8px;
+      }
+      button:hover {
+        border-color: #888;
+      }
+      .row {
+        display: flex;
+        gap: 8px;
+      }
+      .row input[type="text"] {
+        flex: 1;
+      }
+      #status {
+        color: #e8b4b4;
+        font-size: 12px;
+        min-height: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="panel">
+      <h1>💽 sunburst playground</h1>
+      <label>github username</label>
+      <div class="row">
+        <input type="text" id="user" placeholder="octocat" />
+        <button onclick="loadGitHub()">load</button>
+      </div>
+      <label
+        >token (stays in your browser):
+        <input type="password" id="token" style="width: 100%"
+      /></label>
+      <label><input type="checkbox" id="priv" /> include private repos</label>
+      <label>max repos: <span id="vmax"></span></label>
+      <input type="range" id="maxrepos" min="3" max="15" value="9" />
+      <label>or edit json</label>
+      <textarea id="json" spellcheck="false"></textarea>
+      <div id="status"></div>
+      <label>hole: <span id="vhole"></span></label>
+      <input type="range" id="hole" min="40" max="140" value="78" />
+      <label>ring width: <span id="vring"></span></label>
+      <input type="range" id="ring" min="20" max="90" value="56" />
+      <label>start angle: <span id="vang"></span></label>
+      <input type="range" id="angle" min="-180" max="180" value="-90" />
+      <label>saturation: <span id="vsat"></span></label>
+      <input type="range" id="sat" min="0" max="100" value="62" />
+      <label>center label (blank = auto)</label>
+      <input type="text" id="center" style="width: 100%" />
+      <div class="row">
+        <button onclick="downloadSVG()">⬇ svg</button>
+        <button onclick="downloadHTML()">⬇ standalone html</button>
+      </div>
+    </div>
+    <div id="main">
+      <div id="chart"></div>
+      <div id="tip"></div>
+    </div>
+    <script>
+      const $ = (id) => document.getElementById(id);
+      const esc = (s) =>
+        String(s)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+      function human(b) {
+        if (b < 1024) return Math.round(b) + " B";
+        for (const u of ["KiB", "MiB", "GiB", "TiB"]) {
+          b /= 1024;
+          if (b < 1024) return b.toFixed(1) + " " + u;
+        }
+        return b.toFixed(1) + " PiB";
+      }
+      const pctf = (p) => (p >= 10 ? p.toFixed(0) : p.toFixed(1));
+      function hsv(h, s, v) {
+        const f = h * 6,
+          i = Math.floor(f),
+          t = f - i,
+          p = v * (1 - s),
+          q = v * (1 - s * t),
+          w = v * (1 - s * (1 - t));
+        const m = [
+          [v, w, p],
+          [q, v, p],
+          [p, v, w],
+          [p, q, v],
+          [w, p, v],
+          [v, p, q],
+        ][i % 6];
+        return (
+          "#" +
+          m
+            .map((x) =>
+              Math.round(x * 255)
+                .toString(16)
+                .padStart(2, "0"),
+            )
+            .join("")
+        );
+      }
+      function compute(n) {
+        if (n.children)
+          n.value = n.children.reduce((s, c) => s + compute(c), 0);
+        return n.value || 0;
+      }
+      const opts = () => ({
+        size: 720,
+        hole: +$("hole").value,
+        ring: +$("ring").value,
+        start: +$("angle").value,
+        sat: +$("sat").value / 100,
+        center: $("center").value.trim(),
+      });
+      function color(hue, d, sib, sat) {
+        return hsv(
+          hue % 1,
+          sat,
+          Math.max(0.3, 0.93 - 0.11 * d - 0.05 * (sib % 4)),
+        );
+      }
+      function sector(CX, CY, r0, r1, a0, a1) {
+        const P = (r, a) => [CX + r * Math.cos(a), CY + r * Math.sin(a)],
+          f = (n) => n.toFixed(2);
+        a1 = Math.min(a1, a0 + 2 * Math.PI - 1e-4);
+        const L = a1 - a0 > Math.PI ? 1 : 0;
+        const [x0, y0] = P(r1, a0),
+          [x1, y1] = P(r1, a1),
+          [x2, y2] = P(r0, a1),
+          [x3, y3] = P(r0, a0);
+        return `M${f(x0)},${f(y0)} A${r1},${r1} 0 ${L} 1 ${f(x1)},${f(y1)} L${f(x2)},${f(y2)} A${r0},${r0} 0 ${L} 0 ${f(x3)},${f(y3)} Z`;
+      }
+      let tree = null;
+      function node(n, d, a0, a1, hue, sib, path, root, o, out) {
+        const p = path ? path + "/" + n.name : "/" + n.name,
+          pc = (100 * n.value) / root;
+        out.push(
+          `<path d="${sector(o.size / 2, o.size / 2, o.hole + d * o.ring, o.hole + (d + 1) * o.ring, a0, a1)}" fill="${color(hue, d, sib, o.sat)}" stroke="#fff" stroke-width="1" class="ring d${d}" data-path="${esc(p)}" data-size="${human(n.value)}" data-pct="${pctf(pc)}"><title>${esc(p)}\n${human(n.value)} (${pctf(pc)}%)</title></path>`,
+        );
+        if (n.children && d < 4) {
+          let a = a0;
+          const kids = [...n.children].sort((x, y) => y.value - x.value);
+          for (let i = 0; i < kids.length; i++) {
+            const w = ((a1 - a0) * kids[i].value) / n.value;
+            node(kids[i], d + 1, a, a + w, hue, i, p, root, o, out);
+            a += w;
+          }
+        }
+      }
+      function render(root, o) {
+        compute(root);
+        const S = o.size,
+          out = [
+            `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${S} ${S}" font-family="monospace">`,
+            `<rect width="${S}" height="${S}" fill="#191919"/>`,
+          ],
+          kids = [...root.children].sort((a, b) => b.value - a.value),
+          n = kids.length || 1;
+        out.splice(
+          2,
+          0,
+          `<style>.ring{transform-box:view-box;transform-origin:50% 50%;animation:pop .7s cubic-bezier(.2,.8,.3,1) both}@keyframes pop{from{opacity:0;transform:scale(.7) rotate(-60deg)}to{opacity:1;transform:scale(1) rotate(0)}}path:hover{filter:brightness(.65)}${[0, 1, 2, 3, 4, 5].map((i) => `.d${i}{animation-delay:${(i * 0.12).toFixed(2)}s}`).join("")}</style>`,
+        );
+        let a = (o.start * Math.PI) / 180;
+        kids.forEach((c, i) => {
+          const w = (2 * Math.PI * c.value) / root.value;
+          node(c, 0, a, a + w, i / n, 0, "", root.value, o, out);
+          a += w;
+        });
+        out.push(
+          `<circle cx="${S / 2}" cy="${S / 2}" r="${o.hole - 6}" fill="#202020"/>`,
+        );
+        out.push(
+          `<text x="${S / 2}" y="${S / 2}" fill="#eee" font-size="20" text-anchor="middle" dominant-baseline="middle">${esc(o.center || human(root.value))}</text></svg>`,
+        );
+        return out.join("\n");
+      }
+      function renderAll(fromJson) {
+        $("vmax").textContent = $("maxrepos").value;
+        $("vhole").textContent = $("hole").value;
+        $("vring").textContent = $("ring").value;
+        $("vang").textContent = $("angle").value + "°";
+        $("vsat").textContent = $("sat").value + "%";
+        if (fromJson !== false) {
+          try {
+            tree = JSON.parse($("json").value);
+            $("status").textContent = "";
+          } catch (e) {
+            $("status").textContent = "json error: " + e.message;
+            return;
+          }
+        }
+        if (tree) $("chart").innerHTML = render(tree, opts());
+      }
+      async function loadGitHub() {
+        const TECH = {
+          react: "React",
+          vue: "Vue",
+          svelte: "Svelte",
+          next: "Next.js",
+          express: "Express",
+          tailwindcss: "Tailwind",
+          vite: "Vite",
+          electron: "Electron",
+          three: "three.js",
+          d3: "d3",
+          django: "Django",
+          flask: "Flask",
+          fastapi: "FastAPI",
+          numpy: "NumPy",
+          pandas: "pandas",
+          torch: "PyTorch",
+          tensorflow: "TensorFlow",
+          "scikit-learn": "scikit-learn",
+          pytest: "pytest",
+          serde: "serde",
+          tokio: "tokio",
+          tauri: "Tauri",
+          bevy: "bevy",
+          egui: "egui",
+          gin: "Gin",
+          cobra: "Cobra",
+          rails: "Rails",
+          sinatra: "Sinatra",
+        };
+        const MANIFESTS = [
+          ["package.json", "js"],
+          ["requirements.txt", "python"],
+          ["cargo.toml", "rust"],
+          ["go.mod", "go"],
+          ["gemfile", "ruby"],
+        ];
+        const LANG_FOR = {
+          js: ["TypeScript", "JavaScript"],
+          python: ["Python"],
+          rust: ["Rust"],
+          go: ["Go"],
+          ruby: ["Ruby"],
+        };
+        function deps(kind, text) {
+          if (kind == "js") {
+            try {
+              const d = JSON.parse(text);
+              return [
+                ...Object.keys(d.dependencies || {}),
+                ...Object.keys(d.devDependencies || {}),
+              ];
+            } catch {
+              return [];
+            }
+          }
+          if (kind == "python")
+            return text
+              .split("\n")
+              .map((l) => l.split(/[=<>!~[]/)[0].trim())
+              .filter((l) => l && !l.startsWith("#") && !l.startsWith("["));
+          if (kind == "rust") {
+            const o = [];
+            let s = false;
+            for (const l of text.split("\n")) {
+              const t = l.trim();
+              if (t.startsWith("[")) s = t.startsWith("[dependencies");
+              else if (s) {
+                const m = t.match(/^([a-z0-9_-]+)\s*=/);
+                if (m) o.push(m[1]);
+              }
+            }
+            return o;
+          }
+          if (kind == "go")
+            return text
+              .split("\n")
+              .filter((l) => l.startsWith("\t") && l.includes("/"))
+              .map((l) => l.trim().split(" ")[0].split("/").pop());
+          if (kind == "ruby")
+            return [...text.matchAll(/gem\s+['"]([^'"]+)/g)].map((m) => m[1]);
+          return [];
+        }
+        async function scanRepo(r, token) {
+          const H = token
+            ? { headers: { Authorization: `token ${token}` } }
+            : {};
+          const langs = await (await fetch(r.languages_url, H)).json();
+          const have = new Set(Object.keys(langs));
+          const groups = {};
+          try {
+            const tree = await (
+              await fetch(
+                `${r.url}/git/trees/${r.default_branch}?recursive=1`,
+                H,
+              )
+            ).json();
+            const tools = new Set();
+            for (const p of tree.tree
+              .filter((t) => t.type == "blob")
+              .map((t) => t.path)) {
+              const b = p.split("/").pop().toLowerCase();
+              if (b == "dockerfile" || b.startsWith("docker-compose"))
+                tools.add("Docker");
+              else if (b == "makefile") tools.add("Make");
+              else if (p.startsWith(".github/workflows/"))
+                tools.add("GitHub Actions");
+              else if (p.endsWith(".tf")) tools.add("Terraform");
+              else if (b.includes("kustomization")) tools.add("Kubernetes");
+              if ((p.match(/\//g) || []).length <= 1)
+                for (const [f, k] of MANIFESTS)
+                  if (b == f) {
+                    const text = await (
+                      await fetch(
+                        `https://raw.githubusercontent.com/${r.full_name}/${r.default_branch}/${p}`,
+                        H,
+                      )
+                    ).text();
+                    const target =
+                      LANG_FOR[k].find((L) => have.has(L)) ||
+                      Object.keys(langs)[0];
+                    for (const d of deps(k, text))
+                      if (TECH[d]) (groups[k] ??= new Set()).add(TECH[d]);
+                  }
+            }
+            if (tools.size) groups.Tooling = tools;
+          } catch (e) {}
+          return { langs, groups };
+        }
+        async function loadGitHub() {
+          const user = $("user").value.trim(),
+            token = $("token").value.trim(),
+            priv = $("priv").checked;
+          if (priv && !token) {
+            $("status").textContent = "private needs a token";
+            return;
+          }
+          const H = token
+            ? { headers: { Authorization: `token ${token}` } }
+            : {};
+          $("status").textContent = "fetching repos…";
+          const url = priv
+            ? "https://api.github.com/user/repos?per_page=100&affiliation=owner"
+            : `https://api.github.com/users/${user}/repos?per_page=100`;
+          const repos = (await (await fetch(url, H)).json())
+            .filter((r) => !r.fork)
+            .sort((a, b) => b.size - a.size)
+            .slice(0, +$("maxrepos").value);
+          const children = [];
+          for (const r of repos) {
+            const { langs, groups } = token
+              ? await scanRepo(r, token)
+              : {
+                  langs: await (await fetch(r.languages_url, H)).json(),
+                  groups: {},
+                };
+            const kids = Object.entries(langs).map(([name, value]) => ({
+              name,
+              value,
+            }));
+            const by = Object.fromEntries(kids.map((k) => [k.name, k]));
+            const total =
+              kids.reduce((s, k) => s + k.value, 0) || r.size * 1024;
+            for (const [grp, techs] of Object.entries(groups)) {
+              if (grp === "Tooling")
+                kids.push({
+                  name: "Tooling",
+                  children: [...techs]
+                    .sort()
+                    .map((t) => ({ name: t, value: total * 0.05 })),
+                });
+              else {
+                const target =
+                  (LANG_FOR[grp] || []).find((L) => by[L]) ||
+                  Object.keys(langs)[0];
+                if (target && techs.size) {
+                  const v = by[target].value / techs.size;
+                  (by[target].children ??= []).push(
+                    ...[...techs].sort().map((t) => ({ name: t, value: v })),
+                  );
+                }
+              }
+            }
+            children.push({ name: r.name, children: kids });
+            $("status").textContent =
+              `fetching… ${children.length}/${repos.length}`;
+          }
+          $("json").value = JSON.stringify({ name: user, children }, null, 1);
+          renderAll();
+          $("status").textContent = "loaded ✔";
+        }
+      }
+      function dl(b, name) {
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(b);
+        a.download = name;
+        a.click();
+      }
+      function downloadSVG() {
+        dl(
+          new Blob([$("chart").innerHTML], { type: "image/svg+xml" }),
+          "sunburst.svg",
+        );
+      }
+      function downloadHTML() {
+        const page = `<!doctype html><html><head><meta charset="utf-8"><style>
+body{background:#191919;margin:0;display:grid;place-items:center;min-height:100vh}
+svg{width:min(92vmin,760px);height:auto}path{cursor:pointer}path:hover{filter:brightness(.65)}
+#tip{position:fixed;display:none;background:#2b2b2b;color:#ddd;border:1px solid #555;padding:8px 12px;font:13px/1.6 monospace;border-radius:4px;pointer-events:none;white-space:nowrap}
+</style></head><body>\${svg}
+<div id="tip"></div><script>
+const tip=document.getElementById('tip');
+for(const p of document.querySelectorAll('path[data-path]')){
+ p.addEventListener('mousemove',e=>{tip.innerHTML=p.dataset.path+'<br>'+p.dataset.size+'<br>'+p.dataset.pct+'% of total';tip.style.display='block';tip.style.left=(e.clientX+14)+'px';tip.style.top=(e.clientY+10)+'px'});
+ p.addEventListener('mouseleave',()=>tip.style.display='none')}
+<\/script></body></html>`;
+        dl(
+          new Blob([page.replace("${svg}", $("chart").innerHTML)], {
+            type: "text/html",
+          }),
+          "index.html",
+        );
+      }
+      const tip = $("tip");
+      $("main").addEventListener("mousemove", (e) => {
+        const p = e.target.closest("path[data-path]");
+        if (!p) {
+          tip.style.display = "none";
+          return;
+        }
+        tip.innerHTML = `${p.dataset.path}<br>${p.dataset.size}<br>${p.dataset.pct}% of total`;
+        tip.style.display = "block";
+        tip.style.left = e.clientX + 14 + "px";
+        tip.style.top = e.clientY + 10 + "px";
+      });
+      ["hole", "ring", "angle", "sat", "center"].forEach((id) =>
+        $(id).addEventListener("input", () => renderAll(false)),
+      );
+      $("json").addEventListener("input", () => renderAll(true));
+      $("json").value = JSON.stringify(
+        {
+          name: "me",
+          children: [
+            {
+              name: "dotfiles",
+              children: [
+                { name: "Lua", value: 410000 },
+                { name: "Shell", value: 120000 },
+              ],
+            },
+            {
+              name: "tracker",
+              children: [
+                { name: "Rust", value: 900000 },
+                { name: "SQL", value: 60000 },
+              ],
+            },
+            {
+              name: "site",
+              children: [
+                { name: "TypeScript", value: 300000 },
+                { name: "CSS", value: 80000 },
+              ],
+            },
+            {
+              name: "ml-toys",
+              children: [
+                { name: "Python", value: 700000 },
+                { name: "Jupyter", value: 250000 },
+              ],
+            },
+          ],
+        },
+        null,
+        1,
+      );
+      renderAll();
+    </script>
+  </body>
+</html>
