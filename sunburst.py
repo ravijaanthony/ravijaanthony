@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
-"""Filelight-style sunburst, v4: rings = languages (most-used at core),
-arcs = projects; legend = language leaderboard; deep dive = newest-first."""
+"""Filelight-style radial usage map, v5.
+Rings = languages ranked most->least used (inner->outer). A language starts on a
+fresh ring; its project segments flow around and overflow onto further outer
+rings if needed. Rings never force-complete the circle. Core = project count + total.
+Usage:
+  python3 sunburst.py --user octocat --token PAT
+  python3 sunburst.py --data data.json
+Outputs: sunburst.svg, index.html, lang-swatch-*.svg, README_SNIPPET.md, live.json
+"""
 import argparse, colorsys, json, math, os, re, urllib.request
 
 SIZE = 720; CX = CY = SIZE // 2
 HOLE = 78; MAX_LANGS = 12; BG = "#191919"
-STYLE = ("<style>.ring{transform-box:view-box;transform-origin:50% 50%;"
-         "animation:pop .7s cubic-bezier(.2,.8,.3,1) both}"
-         "@keyframes pop{from{opacity:0;transform:scale(.7) rotate(-60deg)}"
-         "to{opacity:1;transform:scale(1) rotate(0)}}"
-         + "".join(f".d{i}{{animation-delay:{i*.10:.2f}s}}" for i in range(MAX_LANGS + 2))
-         + "path:hover{filter:brightness(.65)}</style>")
 
 TECH = {"react":"React","vue":"Vue","svelte":"Svelte","next":"Next.js","express":"Express",
         "tailwindcss":"Tailwind","vite":"Vite","electron":"Electron","three":"three.js","d3":"d3",
@@ -115,7 +116,6 @@ def compute(n):
     return n["value"]
 
 def rank_languages(kids):
-    """[(lang, {"total", "segs":[(repo, val)]})] most-used first; tail merged into 'other'."""
     acc = {}
     for repo in kids:
         for lg in repo.get("children", []):
@@ -149,29 +149,52 @@ def build_svg(root):
     ranked = rank_languages(kids)
     n = len(ranked) or 1
     total = sum(e["total"] for _, e in ranked) or 1
+    TAU = 2 * math.pi
+    start = -math.pi / 2
+    # ring capacity: the biggest language fills ~90% of one ring, so no ring ever closes
+    C = (max(e["total"] for _, e in ranked) / 0.9) if ranked else 1
+
+    # --- wrap layout: languages in rank order, segments flow & overflow outward ---
+    rings = []
+    for i, (lang, e) in enumerate(ranked):
+        rings.append([])
+        a = start
+        for repo, val in sorted(e["segs"], key=lambda x: -x[1]):
+            span = TAU * val / C
+            while span > 1e-9:
+                take = min(span, (start + TAU) - a)
+                rings[-1].append((i, lang, repo, val, a, a + take))
+                span -= take; a += take
+                if span > 1e-9:
+                    rings.append([]); a = start
+
+    num_rings = len(rings)
     B = SIZE / 2 - HOLE - 6
-    ths = [max(12.0, B * e["total"] / total) for _, e in ranked]
-    s = B / sum(ths)
-    ths = [t * s for t in ths]
+    th = B / num_rings
+    style = ("<style>.ring{transform-box:view-box;transform-origin:50% 50%;"
+             "animation:pop .7s cubic-bezier(.2,.8,.3,1) both}"
+             "@keyframes pop{from{opacity:0;transform:scale(.7) rotate(-60deg)}"
+             "to{opacity:1;transform:scale(1) rotate(0)}}"
+             + "".join(f".d{k}{{animation-delay:{k*.10:.2f}s}}" for k in range(num_rings + 1))
+             + "path:hover{filter:brightness(.65)}</style>")
     out = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {SIZE} {SIZE}" font-family="monospace">',
-           f'<rect width="{SIZE}" height="{SIZE}" fill="{BG}"/>', STYLE]
-    r0 = float(HOLE)
-    for i, ((lang, e), th) in enumerate(zip(ranked, ths)):
-        r1 = r0 + th
-        a = -math.pi / 2
-        for j, (repo, val) in enumerate(sorted(e["segs"], key=lambda x: -x[1])):
-            w = 2 * math.pi * val / e["total"]
+           f'<rect width="{SIZE}" height="{SIZE}" fill="{BG}"/>', style]
+    shade = {}
+    for k, ring in enumerate(rings):
+        r0 = HOLE + k * th; r1 = r0 + th
+        for (i, lang, repo, val, a0, a1) in ring:
+            j = shade.get(i, 0); shade[i] = j + 1
             p = f"/{lang}/{repo}"
             pct = 100.0 * val / total
-            out.append(f'<path d="{sector(r0, r1, a, a + w)}" fill="{color_lang(i, n, j)}" '
-                       f'stroke="#fff" stroke-width="1" class="ring d{i}" data-path="{esc(p)}" '
+            out.append(f'<path d="{sector(r0, r1, a0, a1)}" fill="{color_lang(i, n, j)}" '
+                       f'stroke="#fff" stroke-width="1" class="ring d{k}" data-path="{esc(p)}" '
                        f'data-size="{human(val)}" data-pct="{fmtpct(pct)}">'
                        f'<title>{esc(p)}\n{human(val)} ({fmtpct(pct)}%)</title></path>')
-            a += w
-        r0 = r1
+    # --- core: project count + total ---
     out.append(f'<circle cx="{CX}" cy="{CY}" r="{HOLE-6}" fill="#202020"/>')
-    out.append(f'<text x="{CX}" y="{CY-8}" fill="#eee" font-size="32" font-weight="bold" text-anchor="middle" dominant-baseline="middle">{len(kids)}</text>')
-    out.append(f'<text x="{CX}" y="{CY+18}" fill="#aaa" font-size="12" text-anchor="middle" dominant-baseline="middle" letter-spacing="2">PROJECTS</text></svg>')
+    out.append(f'<text x="{CX}" y="{CY-16}" fill="#eee" font-size="30" font-weight="bold" text-anchor="middle" dominant-baseline="middle">{len(kids)}</text>')
+    out.append(f'<text x="{CX}" y="{CY+6}" fill="#aaa" font-size="11" text-anchor="middle" dominant-baseline="middle" letter-spacing="2">PROJECTS</text>')
+    out.append(f'<text x="{CX}" y="{CY+26}" fill="#888" font-size="12" text-anchor="middle" dominant-baseline="middle">{human(total)}</text></svg>')
     return "\n".join(out)
 
 def export_readme(root, raw_base, out_dir):
@@ -179,18 +202,16 @@ def export_readme(root, raw_base, out_dir):
     ranked = rank_languages(kids)
     n = len(ranked) or 1
     total = sum(e["total"] for _, e in ranked) or 1
-
     L = ['<table width="100%"><tr>', '<td width="50%" align="center" valign="top">',
          f'<a href="{raw_base}/sunburst.svg">', '  <img src="assets/sunburst.svg" width="100%" alt="language disk">',
          '</a><br>', '<sub>✨ click the disk for the hover-interactive version</sub>', '</td>',
-         '<td width="50%" align="left" valign="top">', '<h3>🧑‍💻 Most → Least Used</h3>', '<table>']
+         '<td width="50%" align="left" valign="top">', '<h3>🧑‍ Most → Least Used</h3>', '<table>']
     for i, (lang, e) in enumerate(ranked):
         with open(f"{out_dir}/lang-swatch-{i}.svg", "w") as f:
             f.write(f'<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"><rect width="12" height="12" fill="{color_lang(i, n, 0)}"/></svg>')
         L.append(f'<tr><td><img src="assets/lang-swatch-{i}.svg" width="12" height="12"></td>'
                  f'<td>&nbsp;<b>{esc(lang)}</b></td><td align="right">&nbsp;{fmtpct(100.0 * e["total"] / total)}%</td></tr>')
     L += ['</table>', '</td>', '</tr></table>', '', '<h3>🕘 Latest Projects <sub>(newest → oldest)</sub></h3>']
-
     for c in sorted(kids, key=lambda c: c.get("_pushed", ""), reverse=True):
         when = c.get("_pushed", "")[:10]
         L += ['<details>', f'<summary>📁 <b>{esc(c["name"])}</b> · {when}</summary>', '',
