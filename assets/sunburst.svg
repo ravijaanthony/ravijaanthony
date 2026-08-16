@@ -1,85 +1,66 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 720" font-family="monospace">
 <rect width="720" height="720" fill="#191919"/>
-<style>.ring{transform-box:view-box;transform-origin:50% 50%;animation:pop .7s cubic-bezier(.2,.8,.3,1) both}@keyframes pop{from{opacity:0;transform:scale(.7) rotate(-60deg)}to{opacity:1;transform:scale(1) rotate(0)}}.d0{animation-delay:0.00s}.d1{animation-delay:0.12s}.d2{animation-delay:0.24s}.d3{animation-delay:0.36s}.d4{animation-delay:0.48s}.d5{animation-delay:0.60s}path:hover{filter:brightness(.65)}</style>
-<path d="M360.00,226.00 A134,134 0 0 1 396.29,488.99 L381.12,435.08 A78,78 0 0 0 360.00,282.00 Z" fill="#ed5a5a" stroke="#fff" stroke-width="1" class="ring d0" data-path="/KaprukaAgentChallenge2026" data-size="829.3 KiB" data-pct="46"><title>/KaprukaAgentChallenge2026
-829.3 KiB (46%)</title></path>
-<path d="M360.00,170.00 A190,190 0 0 1 420.49,540.11 L402.66,487.03 A134,134 0 0 0 360.00,226.00 Z" fill="#d14f4f" stroke="#fff" stroke-width="1" class="ring d1" data-path="/KaprukaAgentChallenge2026/TypeScript" data-size="814.9 KiB" data-pct="45"><title>/KaprukaAgentChallenge2026/TypeScript
+<style>.ring{transform-box:view-box;transform-origin:50% 50%;animation:pop .7s cubic-bezier(.2,.8,.3,1) both}@keyframes pop{from{opacity:0;transform:scale(.7) rotate(-60deg)}to{opacity:1;transform:scale(1) rotate(0)}}.d0{animation-delay:0.00s}.d1{animation-delay:0.10s}.d2{animation-delay:0.20s}.d3{animation-delay:0.30s}.d4{animation-delay:0.40s}.d5{animation-delay:0.50s}.d6{animation-delay:0.60s}.d7{animation-delay:0.70s}.d8{animation-delay:0.80s}.d9{animation-delay:0.90s}.d10{animation-delay:1.00s}.d11{animation-delay:1.10s}.d12{animation-delay:1.20s}.d13{animation-delay:1.30s}path:hover{filter:brightness(.65)}</style>
+<path d="M360.00,127.98 A232.01595329388144,232.01595329388144 0 1 1 165.38,486.31 L294.57,402.46 A78.0,78.0 0 1 0 360.00,282.00 Z" fill="#f25c5c" stroke="#fff" stroke-width="1" class="ring d0" data-path="/TypeScript/KaprukaAgentChallenge2026" data-size="814.9 KiB" data-pct="45"><title>/TypeScript/KaprukaAgentChallenge2026
 814.9 KiB (45%)</title></path>
-<path d="M420.49,540.11 A190,190 0 0 1 412.30,542.66 L396.89,488.82 A134,134 0 0 0 402.66,487.03 Z" fill="#c44a4a" stroke="#fff" stroke-width="1" class="ring d1" data-path="/KaprukaAgentChallenge2026/CSS" data-size="13.1 KiB" data-pct="0.7"><title>/KaprukaAgentChallenge2026/CSS
-13.1 KiB (0.7%)</title></path>
-<path d="M412.30,542.66 A190,190 0 0 1 411.80,542.80 L396.53,488.92 A134,134 0 0 0 396.89,488.82 Z" fill="#b74545" stroke="#fff" stroke-width="1" class="ring d1" data-path="/KaprukaAgentChallenge2026/Dockerfile" data-size="806 B" data-pct="0.0"><title>/KaprukaAgentChallenge2026/Dockerfile
-806 B (0.0%)</title></path>
-<path d="M411.80,542.80 A190,190 0 0 1 411.46,542.90 L396.29,488.99 A134,134 0 0 0 396.53,488.92 Z" fill="#aa4040" stroke="#fff" stroke-width="1" class="ring d1" data-path="/KaprukaAgentChallenge2026/JavaScript" data-size="559 B" data-pct="0.0"><title>/KaprukaAgentChallenge2026/JavaScript
-559 B (0.0%)</title></path>
-<path d="M396.29,488.99 A134,134 0 0 1 264.45,453.94 L304.38,414.68 A78,78 0 0 0 381.12,435.08 Z" fill="#edbc5a" stroke="#fff" stroke-width="1" class="ring d0" data-path="/LumiSign" data-size="308.9 KiB" data-pct="17"><title>/LumiSign
-308.9 KiB (17%)</title></path>
-<path d="M411.46,542.90 A190,190 0 0 1 289.21,536.32 L310.07,484.35 A134,134 0 0 0 396.29,488.99 Z" fill="#d1a54f" stroke="#fff" stroke-width="1" class="ring d1" data-path="/LumiSign/TypeScript" data-size="189.7 KiB" data-pct="10"><title>/LumiSign/TypeScript
+<path d="M165.38,486.31 A232.01595329388144,232.01595329388144 0 0 1 145.19,272.32 L287.78,330.52 A78.0,78.0 0 0 0 294.57,402.46 Z" fill="#e05555" stroke="#fff" stroke-width="1" class="ring d0" data-path="/TypeScript/LumiSign" data-size="189.7 KiB" data-pct="10"><title>/TypeScript/LumiSign
 189.7 KiB (10%)</title></path>
-<path d="M289.21,536.32 A190,190 0 0 1 227.43,496.10 L266.50,455.99 A134,134 0 0 0 310.07,484.35 Z" fill="#c49b4a" stroke="#fff" stroke-width="1" class="ring d1" data-path="/LumiSign/Python" data-size="112.9 KiB" data-pct="6.2"><title>/LumiSign/Python
-112.9 KiB (6.2%)</title></path>
-<path d="M227.43,496.10 A190,190 0 0 1 224.87,493.56 L264.70,454.20 A134,134 0 0 0 266.50,455.99 Z" fill="#b79145" stroke="#fff" stroke-width="1" class="ring d1" data-path="/LumiSign/CSS" data-size="5.5 KiB" data-pct="0.3"><title>/LumiSign/CSS
-5.5 KiB (0.3%)</title></path>
-<path d="M224.87,493.56 A190,190 0 0 1 224.66,493.35 L264.55,454.05 A134,134 0 0 0 264.70,454.20 Z" fill="#aa8740" stroke="#fff" stroke-width="1" class="ring d1" data-path="/LumiSign/JavaScript" data-size="460 B" data-pct="0.0"><title>/LumiSign/JavaScript
-460 B (0.0%)</title></path>
-<path d="M224.66,493.35 A190,190 0 0 1 224.51,493.21 L264.45,453.94 A134,134 0 0 0 264.55,454.05 Z" fill="#d1a54f" stroke="#fff" stroke-width="1" class="ring d1" data-path="/LumiSign/HTML" data-size="323 B" data-pct="0.0"><title>/LumiSign/HTML
-323 B (0.0%)</title></path>
-<path d="M264.45,453.94 A134,134 0 0 1 226.72,346.08 L282.42,351.90 A78,78 0 0 0 304.38,414.68 Z" fill="#bced5a" stroke="#fff" stroke-width="1" class="ring d0" data-path="/STSBookingSystem" data-size="254.8 KiB" data-pct="14"><title>/STSBookingSystem
-254.8 KiB (14%)</title></path>
-<path d="M224.51,493.21 A190,190 0 0 1 177.19,411.77 L231.07,396.51 A134,134 0 0 0 264.45,453.94 Z" fill="#a5d14f" stroke="#fff" stroke-width="1" class="ring d1" data-path="/STSBookingSystem/Python" data-size="144.9 KiB" data-pct="8.0"><title>/STSBookingSystem/Python
-144.9 KiB (8.0%)</title></path>
-<path d="M177.19,411.77 A190,190 0 0 1 170.03,356.66 L226.02,357.65 A134,134 0 0 0 231.07,396.51 Z" fill="#9bc44a" stroke="#fff" stroke-width="1" class="ring d1" data-path="/STSBookingSystem/TypeScript" data-size="84.9 KiB" data-pct="4.7"><title>/STSBookingSystem/TypeScript
-84.9 KiB (4.7%)</title></path>
-<path d="M170.03,356.66 A190,190 0 0 1 170.87,341.86 L226.61,347.21 A134,134 0 0 0 226.02,357.65 Z" fill="#91b745" stroke="#fff" stroke-width="1" class="ring d1" data-path="/STSBookingSystem/CSS" data-size="22.6 KiB" data-pct="1.2"><title>/STSBookingSystem/CSS
-22.6 KiB (1.2%)</title></path>
-<path d="M170.87,341.86 A190,190 0 0 1 170.94,341.10 L226.66,346.67 A134,134 0 0 0 226.61,347.21 Z" fill="#87aa40" stroke="#fff" stroke-width="1" class="ring d1" data-path="/STSBookingSystem/Shell" data-size="1.2 KiB" data-pct="0.1"><title>/STSBookingSystem/Shell
-1.2 KiB (0.1%)</title></path>
-<path d="M170.94,341.10 A190,190 0 0 1 170.99,340.67 L226.70,346.37 A134,134 0 0 0 226.66,346.67 Z" fill="#a5d14f" stroke="#fff" stroke-width="1" class="ring d1" data-path="/STSBookingSystem/Dockerfile" data-size="666 B" data-pct="0.0"><title>/STSBookingSystem/Dockerfile
-666 B (0.0%)</title></path>
-<path d="M170.99,340.67 A190,190 0 0 1 171.03,340.27 L226.72,346.08 A134,134 0 0 0 226.70,346.37 Z" fill="#9bc44a" stroke="#fff" stroke-width="1" class="ring d1" data-path="/STSBookingSystem/HTML" data-size="639 B" data-pct="0.0"><title>/STSBookingSystem/HTML
-639 B (0.0%)</title></path>
-<path d="M226.72,346.08 A134,134 0 0 1 273.98,257.26 L309.93,300.19 A78,78 0 0 0 282.42,351.90 Z" fill="#5aed5a" stroke="#fff" stroke-width="1" class="ring d0" data-path="/MedWikiAgentic" data-size="222.6 KiB" data-pct="12"><title>/MedWikiAgentic
-222.6 KiB (12%)</title></path>
-<path d="M171.03,340.27 A190,190 0 0 1 197.01,262.36 L245.05,291.14 A134,134 0 0 0 226.72,346.08 Z" fill="#4fd14f" stroke="#fff" stroke-width="1" class="ring d1" data-path="/MedWikiAgentic/TypeScript" data-size="126.0 KiB" data-pct="6.9"><title>/MedWikiAgentic/TypeScript
+<path d="M145.19,272.32 A232.01595329388144,232.01595329388144 0 0 1 239.98,161.44 L319.65,293.25 A78.0,78.0 0 0 0 287.78,330.52 Z" fill="#ce4e4e" stroke="#fff" stroke-width="1" class="ring d0" data-path="/TypeScript/MedWikiAgentic" data-size="126.0 KiB" data-pct="6.9"><title>/TypeScript/MedWikiAgentic
 126.0 KiB (6.9%)</title></path>
-<path d="M197.01,262.36 A190,190 0 0 1 234.94,216.96 L271.80,259.12 A134,134 0 0 0 245.05,291.14 Z" fill="#4ac44a" stroke="#fff" stroke-width="1" class="ring d1" data-path="/MedWikiAgentic/Python" data-size="90.4 KiB" data-pct="5.0"><title>/MedWikiAgentic/Python
-90.4 KiB (5.0%)</title></path>
-<path d="M234.94,216.96 A190,190 0 0 1 236.18,215.89 L272.67,258.36 A134,134 0 0 0 271.80,259.12 Z" fill="#45b745" stroke="#fff" stroke-width="1" class="ring d1" data-path="/MedWikiAgentic/CSS" data-size="2.5 KiB" data-pct="0.1"><title>/MedWikiAgentic/CSS
-2.5 KiB (0.1%)</title></path>
-<path d="M236.18,215.89 A190,190 0 0 1 236.98,215.20 L273.24,257.88 A134,134 0 0 0 272.67,258.36 Z" fill="#40aa40" stroke="#fff" stroke-width="1" class="ring d1" data-path="/MedWikiAgentic/Dockerfile" data-size="1.6 KiB" data-pct="0.1"><title>/MedWikiAgentic/Dockerfile
-1.6 KiB (0.1%)</title></path>
-<path d="M236.98,215.20 A190,190 0 0 1 237.68,214.61 L273.73,257.46 A134,134 0 0 0 273.24,257.88 Z" fill="#4fd14f" stroke="#fff" stroke-width="1" class="ring d1" data-path="/MedWikiAgentic/JavaScript" data-size="1.4 KiB" data-pct="0.1"><title>/MedWikiAgentic/JavaScript
-1.4 KiB (0.1%)</title></path>
-<path d="M237.68,214.61 A190,190 0 0 1 238.03,214.32 L273.98,257.26 A134,134 0 0 0 273.73,257.46 Z" fill="#4ac44a" stroke="#fff" stroke-width="1" class="ring d1" data-path="/MedWikiAgentic/HTML" data-size="705 B" data-pct="0.0"><title>/MedWikiAgentic/HTML
-705 B (0.0%)</title></path>
-<path d="M273.98,257.26 A134,134 0 0 1 304.72,237.93 L327.82,288.95 A78,78 0 0 0 309.93,300.19 Z" fill="#5aedbc" stroke="#fff" stroke-width="1" class="ring d0" data-path="/cv_pipeline" data-size="78.6 KiB" data-pct="4.3"><title>/cv_pipeline
-78.6 KiB (4.3%)</title></path>
-<path d="M238.03,214.32 A190,190 0 0 1 260.50,198.14 L289.83,245.84 A134,134 0 0 0 273.98,257.26 Z" fill="#4fd1a5" stroke="#fff" stroke-width="1" class="ring d1" data-path="/cv_pipeline/JavaScript" data-size="42.2 KiB" data-pct="2.3"><title>/cv_pipeline/JavaScript
-42.2 KiB (2.3%)</title></path>
-<path d="M260.50,198.14 A190,190 0 0 1 273.21,190.98 L298.79,240.80 A134,134 0 0 0 289.83,245.84 Z" fill="#4ac49b" stroke="#fff" stroke-width="1" class="ring d1" data-path="/cv_pipeline/TypeScript" data-size="22.2 KiB" data-pct="1.2"><title>/cv_pipeline/TypeScript
+<path d="M239.98,161.44 A232.01595329388144,232.01595329388144 0 0 1 333.89,129.46 L351.22,282.50 A78.0,78.0 0 0 0 319.65,293.25 Z" fill="#bc4747" stroke="#fff" stroke-width="1" class="ring d0" data-path="/TypeScript/STSBookingSystem" data-size="84.9 KiB" data-pct="4.7"><title>/TypeScript/STSBookingSystem
+84.9 KiB (4.7%)</title></path>
+<path d="M333.89,129.46 A232.01595329388144,232.01595329388144 0 0 1 360.00,127.98 L360.00,282.00 A78.0,78.0 0 0 0 351.22,282.50 Z" fill="#aa4040" stroke="#fff" stroke-width="1" class="ring d0" data-path="/TypeScript/cv_pipeline" data-size="22.2 KiB" data-pct="1.2"><title>/TypeScript/cv_pipeline
 22.2 KiB (1.2%)</title></path>
-<path d="M273.21,190.98 A190,190 0 0 1 280.88,187.26 L304.20,238.17 A134,134 0 0 0 298.79,240.80 Z" fill="#45b791" stroke="#fff" stroke-width="1" class="ring d1" data-path="/cv_pipeline/CSS" data-size="13.0 KiB" data-pct="0.7"><title>/cv_pipeline/CSS
+<path d="M360.00,84.65 A275.3491285348208,275.3491285348208 0 0 1 498.58,597.93 L476.77,560.49 A232.01595329388144,232.01595329388144 0 0 0 360.00,127.98 Z" fill="#f2b65c" stroke="#fff" stroke-width="1" class="ring d1" data-path="/Python/STSBookingSystem" data-size="144.9 KiB" data-pct="8.0"><title>/Python/STSBookingSystem
+144.9 KiB (8.0%)</title></path>
+<path d="M498.58,597.93 A275.3491285348208,275.3491285348208 0 0 1 85.16,376.70 L128.41,374.07 A232.01595329388144,232.01595329388144 0 0 0 476.77,560.49 Z" fill="#e0a855" stroke="#fff" stroke-width="1" class="ring d1" data-path="/Python/LumiSign" data-size="112.9 KiB" data-pct="6.2"><title>/Python/LumiSign
+112.9 KiB (6.2%)</title></path>
+<path d="M85.16,376.70 A275.3491285348208,275.3491285348208 0 0 1 360.00,84.65 L360.00,127.98 A232.01595329388144,232.01595329388144 0 0 0 128.41,374.07 Z" fill="#ce9b4e" stroke="#fff" stroke-width="1" class="ring d1" data-path="/Python/MedWikiAgentic" data-size="90.4 KiB" data-pct="5.0"><title>/Python/MedWikiAgentic
+90.4 KiB (5.0%)</title></path>
+<path d="M360.00,74.82 A285.1804874679682,285.1804874679682 0 0 1 529.14,589.61 L523.31,581.69 A275.3491285348208,275.3491285348208 0 0 0 360.00,84.65 Z" fill="#d4f25c" stroke="#fff" stroke-width="1" class="ring d2" data-path="/CSS/STSBookingSystem" data-size="22.6 KiB" data-pct="1.2"><title>/CSS/STSBookingSystem
+22.6 KiB (1.2%)</title></path>
+<path d="M529.14,589.61 A285.1804874679682,285.1804874679682 0 0 1 152.57,555.71 L159.72,548.96 A275.3491285348208,275.3491285348208 0 0 0 523.31,581.69 Z" fill="#c4e055" stroke="#fff" stroke-width="1" class="ring d2" data-path="/CSS/KaprukaAgentChallenge2026" data-size="13.1 KiB" data-pct="0.7"><title>/CSS/KaprukaAgentChallenge2026
+13.1 KiB (0.7%)</title></path>
+<path d="M152.57,555.71 A285.1804874679682,285.1804874679682 0 0 1 139.05,179.70 L146.67,185.91 A275.3491285348208,275.3491285348208 0 0 0 159.72,548.96 Z" fill="#b4ce4e" stroke="#fff" stroke-width="1" class="ring d2" data-path="/CSS/cv_pipeline" data-size="13.0 KiB" data-pct="0.7"><title>/CSS/cv_pipeline
 13.0 KiB (0.7%)</title></path>
-<path d="M280.88,187.26 A190,190 0 0 1 281.31,187.06 L304.50,238.03 A134,134 0 0 0 304.20,238.17 Z" fill="#40aa87" stroke="#fff" stroke-width="1" class="ring d1" data-path="/cv_pipeline/HTML" data-size="726 B" data-pct="0.0"><title>/cv_pipeline/HTML
-726 B (0.0%)</title></path>
-<path d="M281.31,187.06 A190,190 0 0 1 281.62,186.92 L304.72,237.93 A134,134 0 0 0 304.50,238.03 Z" fill="#4fd1a5" stroke="#fff" stroke-width="1" class="ring d1" data-path="/cv_pipeline/Dockerfile" data-size="544 B" data-pct="0.0"><title>/cv_pipeline/Dockerfile
+<path d="M139.05,179.70 A285.1804874679682,285.1804874679682 0 0 1 281.97,85.70 L284.66,95.16 A275.3491285348208,275.3491285348208 0 0 0 146.67,185.91 Z" fill="#a5bc47" stroke="#fff" stroke-width="1" class="ring d2" data-path="/CSS/LumiSign" data-size="5.5 KiB" data-pct="0.3"><title>/CSS/LumiSign
+5.5 KiB (0.3%)</title></path>
+<path d="M281.97,85.70 A285.1804874679682,285.1804874679682 0 0 1 360.00,74.82 L360.00,84.65 A275.3491285348208,275.3491285348208 0 0 0 284.66,95.16 Z" fill="#95aa40" stroke="#fff" stroke-width="1" class="ring d2" data-path="/CSS/MedWikiAgentic" data-size="2.5 KiB" data-pct="0.1"><title>/CSS/MedWikiAgentic
+2.5 KiB (0.1%)</title></path>
+<path d="M360.00,64.99 A295.0118464011156,295.0118464011156 0 1 1 359.97,64.99 L359.97,74.82 A285.1804874679682,285.1804874679682 0 1 0 360.00,74.82 Z" fill="#7af25c" stroke="#fff" stroke-width="1" class="ring d3" data-path="/QML/asciiartclock" data-size="53.3 KiB" data-pct="2.9"><title>/QML/asciiartclock
+53.3 KiB (2.9%)</title></path>
+<path d="M360.00,55.16 A304.84320533426296,304.84320533426296 0 1 1 259.34,72.25 L262.59,81.53 A295.0118464011156,295.0118464011156 0 1 0 360.00,64.99 Z" fill="#5cf298" stroke="#fff" stroke-width="1" class="ring d4" data-path="/JavaScript/cv_pipeline" data-size="42.2 KiB" data-pct="2.3"><title>/JavaScript/cv_pipeline
+42.2 KiB (2.3%)</title></path>
+<path d="M259.34,72.25 A304.84320533426296,304.84320533426296 0 0 1 317.39,58.15 L318.76,67.88 A295.0118464011156,295.0118464011156 0 0 0 262.59,81.53 Z" fill="#55e08c" stroke="#fff" stroke-width="1" class="ring d4" data-path="/JavaScript/MedWikiAgentic" data-size="1.4 KiB" data-pct="0.1"><title>/JavaScript/MedWikiAgentic
+1.4 KiB (0.1%)</title></path>
+<path d="M317.39,58.15 A304.84320533426296,304.84320533426296 0 0 1 340.71,55.77 L341.34,65.58 A295.0118464011156,295.0118464011156 0 0 0 318.76,67.88 Z" fill="#4ece81" stroke="#fff" stroke-width="1" class="ring d4" data-path="/JavaScript/KaprukaAgentChallenge2026" data-size="559 B" data-pct="0.0"><title>/JavaScript/KaprukaAgentChallenge2026
+559 B (0.0%)</title></path>
+<path d="M340.71,55.77 A304.84320533426296,304.84320533426296 0 0 1 360.00,55.16 L360.00,64.99 A295.0118464011156,295.0118464011156 0 0 0 341.34,65.58 Z" fill="#47bc76" stroke="#fff" stroke-width="1" class="ring d4" data-path="/JavaScript/LumiSign" data-size="460 B" data-pct="0.0"><title>/JavaScript/LumiSign
+460 B (0.0%)</title></path>
+<path d="M360.00,45.33 A314.67456426741035,314.67456426741035 0 1 1 187.67,623.29 L193.05,615.06 A304.84320533426296,304.84320533426296 0 1 0 360.00,55.16 Z" fill="#5cf2f2" stroke="#fff" stroke-width="1" class="ring d5" data-path="/Java/Java_Concurrency" data-size="21.1 KiB" data-pct="1.2"><title>/Java/Java_Concurrency
+21.1 KiB (1.2%)</title></path>
+<path d="M187.67,623.29 A314.67456426741035,314.67456426741035 0 0 1 360.00,45.33 L360.00,55.16 A304.84320533426296,304.84320533426296 0 0 0 193.05,615.06 Z" fill="#55e0e0" stroke="#fff" stroke-width="1" class="ring d5" data-path="/Java/Maze-Traversal" data-size="14.5 KiB" data-pct="0.8"><title>/Java/Maze-Traversal
+14.5 KiB (0.8%)</title></path>
+<path d="M360.00,35.49 A324.50592320055773,324.50592320055773 0 1 1 359.97,35.49 L359.97,45.33 A314.67456426741035,314.67456426741035 0 1 0 360.00,45.33 Z" fill="#5c98f2" stroke="#fff" stroke-width="1" class="ring d6" data-path="/other/ravijaanthony" data-size="34.0 KiB" data-pct="1.9"><title>/other/ravijaanthony
+34.0 KiB (1.9%)</title></path>
+<path d="M360.00,25.66 A334.3372821337051,334.3372821337051 0 0 1 463.45,677.93 L460.41,668.58 A324.50592320055773,324.50592320055773 0 0 0 360.00,35.49 Z" fill="#7a5cf2" stroke="#fff" stroke-width="1" class="ring d7" data-path="/Dockerfile/MedWikiAgentic" data-size="1.6 KiB" data-pct="0.1"><title>/Dockerfile/MedWikiAgentic
+1.6 KiB (0.1%)</title></path>
+<path d="M463.45,677.93 A334.3372821337051,334.3372821337051 0 0 1 67.17,521.34 L75.78,516.60 A324.50592320055773,324.50592320055773 0 0 0 460.41,668.58 Z" fill="#7155e0" stroke="#fff" stroke-width="1" class="ring d7" data-path="/Dockerfile/KaprukaAgentChallenge2026" data-size="806 B" data-pct="0.0"><title>/Dockerfile/KaprukaAgentChallenge2026
+806 B (0.0%)</title></path>
+<path d="M67.17,521.34 A334.3372821337051,334.3372821337051 0 0 1 91.47,160.82 L99.36,166.68 A324.50592320055773,324.50592320055773 0 0 0 75.78,516.60 Z" fill="#684ece" stroke="#fff" stroke-width="1" class="ring d7" data-path="/Dockerfile/STSBookingSystem" data-size="666 B" data-pct="0.0"><title>/Dockerfile/STSBookingSystem
+666 B (0.0%)</title></path>
+<path d="M91.47,160.82 A334.3372821337051,334.3372821337051 0 0 1 360.00,25.66 L360.00,35.49 A324.50592320055773,324.50592320055773 0 0 0 99.36,166.68 Z" fill="#5f47bc" stroke="#fff" stroke-width="1" class="ring d7" data-path="/Dockerfile/cv_pipeline" data-size="544 B" data-pct="0.0"><title>/Dockerfile/cv_pipeline
 544 B (0.0%)</title></path>
-<path d="M304.72,237.93 A134,134 0 0 1 328.04,229.87 L341.39,284.25 A78,78 0 0 0 327.82,288.95 Z" fill="#5abced" stroke="#fff" stroke-width="1" class="ring d0" data-path="/asciiartclock" data-size="53.3 KiB" data-pct="2.9"><title>/asciiartclock
-53.3 KiB (2.9%)</title></path>
-<path d="M281.62,186.92 A190,190 0 0 1 314.68,175.48 L328.04,229.87 A134,134 0 0 0 304.72,237.93 Z" fill="#4fa5d1" stroke="#fff" stroke-width="1" class="ring d1" data-path="/asciiartclock/QML" data-size="53.3 KiB" data-pct="2.9"><title>/asciiartclock/QML
-53.3 KiB (2.9%)</title></path>
-<path d="M328.04,229.87 A134,134 0 0 1 343.52,227.02 L350.41,282.59 A78,78 0 0 0 341.39,284.25 Z" fill="#5a5aed" stroke="#fff" stroke-width="1" class="ring d0" data-path="/ravijaanthony" data-size="34.0 KiB" data-pct="1.9"><title>/ravijaanthony
-34.0 KiB (1.9%)</title></path>
-<path d="M314.68,175.48 A190,190 0 0 1 336.63,171.44 L343.52,227.02 A134,134 0 0 0 328.04,229.87 Z" fill="#4f4fd1" stroke="#fff" stroke-width="1" class="ring d1" data-path="/ravijaanthony/other" data-size="34.0 KiB" data-pct="1.9"><title>/ravijaanthony/other
-34.0 KiB (1.9%)</title></path>
-<path d="M343.52,227.02 A134,134 0 0 1 353.27,226.17 L356.08,282.10 A78,78 0 0 0 350.41,282.59 Z" fill="#bc5aed" stroke="#fff" stroke-width="1" class="ring d0" data-path="/Java_Concurrency" data-size="21.1 KiB" data-pct="1.2"><title>/Java_Concurrency
-21.1 KiB (1.2%)</title></path>
-<path d="M336.63,171.44 A190,190 0 0 1 350.45,170.24 L353.27,226.17 A134,134 0 0 0 343.52,227.02 Z" fill="#a54fd1" stroke="#fff" stroke-width="1" class="ring d1" data-path="/Java_Concurrency/Java" data-size="21.1 KiB" data-pct="1.2"><title>/Java_Concurrency/Java
-21.1 KiB (1.2%)</title></path>
-<path d="M353.27,226.17 A134,134 0 0 1 360.00,226.00 L360.00,282.00 A78,78 0 0 0 356.08,282.10 Z" fill="#ed5abc" stroke="#fff" stroke-width="1" class="ring d0" data-path="/Maze-Traversal" data-size="14.5 KiB" data-pct="0.8"><title>/Maze-Traversal
-14.5 KiB (0.8%)</title></path>
-<path d="M350.45,170.24 A190,190 0 0 1 360.00,170.00 L360.00,226.00 A134,134 0 0 0 353.27,226.17 Z" fill="#d14fa5" stroke="#fff" stroke-width="1" class="ring d1" data-path="/Maze-Traversal/Java" data-size="14.5 KiB" data-pct="0.8"><title>/Maze-Traversal/Java
-14.5 KiB (0.8%)</title></path>
+<path d="M360.00,15.83 A344.1686410668525,344.1686410668525 0 0 1 684.99,473.29 L675.70,470.05 A334.3372821337051,334.3372821337051 0 0 0 360.00,25.66 Z" fill="#d45cf2" stroke="#fff" stroke-width="1" class="ring d8" data-path="/HTML/cv_pipeline" data-size="726 B" data-pct="0.0"><title>/HTML/cv_pipeline
+726 B (0.0%)</title></path>
+<path d="M684.99,473.29 A344.1686410668525,344.1686410668525 0 0 1 161.23,640.97 L166.91,632.94 A334.3372821337051,334.3372821337051 0 0 0 675.70,470.05 Z" fill="#c455e0" stroke="#fff" stroke-width="1" class="ring d8" data-path="/HTML/MedWikiAgentic" data-size="705 B" data-pct="0.0"><title>/HTML/MedWikiAgentic
+705 B (0.0%)</title></path>
+<path d="M161.23,640.97 A344.1686410668525,344.1686410668525 0 0 1 101.87,132.36 L109.24,138.86 A334.3372821337051,334.3372821337051 0 0 0 166.91,632.94 Z" fill="#b44ece" stroke="#fff" stroke-width="1" class="ring d8" data-path="/HTML/STSBookingSystem" data-size="639 B" data-pct="0.0"><title>/HTML/STSBookingSystem
+639 B (0.0%)</title></path>
+<path d="M101.87,132.36 A344.1686410668525,344.1686410668525 0 0 1 360.00,15.83 L360.00,25.66 A334.3372821337051,334.3372821337051 0 0 0 109.24,138.86 Z" fill="#a547bc" stroke="#fff" stroke-width="1" class="ring d8" data-path="/HTML/LumiSign" data-size="323 B" data-pct="0.0"><title>/HTML/LumiSign
+323 B (0.0%)</title></path>
+<path d="M360.00,6.00 A353.9999999999999,353.9999999999999 0 1 1 359.96,6.00 L359.97,15.83 A344.1686410668525,344.1686410668525 0 1 0 360.00,15.83 Z" fill="#f25cb6" stroke="#fff" stroke-width="1" class="ring d9" data-path="/Shell/STSBookingSystem" data-size="1.2 KiB" data-pct="0.1"><title>/Shell/STSBookingSystem
+1.2 KiB (0.1%)</title></path>
 <circle cx="360" cy="360" r="72" fill="#202020"/>
 <text x="360" y="352" fill="#eee" font-size="32" font-weight="bold" text-anchor="middle" dominant-baseline="middle">9</text>
-<text x="360" y="378" fill="#aaa" font-size="12" text-anchor="middle" dominant-baseline="middle" letter-spacing="2">PROJECTS</text>
-</svg>
+<text x="360" y="378" fill="#aaa" font-size="12" text-anchor="middle" dominant-baseline="middle" letter-spacing="2">PROJECTS</text></svg>

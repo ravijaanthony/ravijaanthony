@@ -1,140 +1,126 @@
 <table width="100%"><tr>
 <td width="50%" align="center" valign="top">
 <a href="https://raw.githubusercontent.com/ravijaanthony/ravijaanthony_test/main/assets/sunburst.svg">
-  <img src="assets/sunburst.svg" width="100%" alt="sunburst of my repos">
+  <img src="assets/sunburst.svg" width="100%" alt="language disk">
 </a><br>
 <sub>✨ click the disk for the hover-interactive version</sub>
 </td>
 <td width="50%" align="left" valign="top">
-<h3>📂 Top Projects</h3>
+<h3>🧑‍💻 Most → Least Used</h3>
 <table>
-<tr><td><img src="assets/swatch-0.svg" width="12" height="12"></td>
-<td>&nbsp;<b>KaprukaAgentChallenge2026</b></td>
-<td align="right">&nbsp;46%</td></tr>
-<tr><td><img src="assets/swatch-1.svg" width="12" height="12"></td>
-<td>&nbsp;<b>LumiSign</b></td>
-<td align="right">&nbsp;17%</td></tr>
-<tr><td><img src="assets/swatch-2.svg" width="12" height="12"></td>
-<td>&nbsp;<b>STSBookingSystem</b></td>
-<td align="right">&nbsp;14%</td></tr>
-<tr><td><img src="assets/swatch-3.svg" width="12" height="12"></td>
-<td>&nbsp;<b>MedWikiAgentic</b></td>
-<td align="right">&nbsp;12%</td></tr>
-<tr><td><img src="assets/swatch-4.svg" width="12" height="12"></td>
-<td>&nbsp;<b>cv_pipeline</b></td>
-<td align="right">&nbsp;4.3%</td></tr>
-<tr><td><img src="assets/swatch-5.svg" width="12" height="12"></td>
-<td>&nbsp;<b>asciiartclock</b></td>
-<td align="right">&nbsp;2.9%</td></tr>
-<tr><td><img src="assets/swatch-6.svg" width="12" height="12"></td>
-<td>&nbsp;<b>ravijaanthony</b></td>
-<td align="right">&nbsp;1.9%</td></tr>
-<tr><td><img src="assets/swatch-7.svg" width="12" height="12"></td>
-<td>&nbsp;<b>Java_Concurrency</b></td>
-<td align="right">&nbsp;1.2%</td></tr>
+<tr><td><img src="assets/lang-swatch-0.svg" width="12" height="12"></td><td>&nbsp;<b>TypeScript</b></td><td align="right">&nbsp;68%</td></tr>
+<tr><td><img src="assets/lang-swatch-1.svg" width="12" height="12"></td><td>&nbsp;<b>Python</b></td><td align="right">&nbsp;19%</td></tr>
+<tr><td><img src="assets/lang-swatch-2.svg" width="12" height="12"></td><td>&nbsp;<b>CSS</b></td><td align="right">&nbsp;3.1%</td></tr>
+<tr><td><img src="assets/lang-swatch-3.svg" width="12" height="12"></td><td>&nbsp;<b>QML</b></td><td align="right">&nbsp;2.9%</td></tr>
+<tr><td><img src="assets/lang-swatch-4.svg" width="12" height="12"></td><td>&nbsp;<b>JavaScript</b></td><td align="right">&nbsp;2.5%</td></tr>
+<tr><td><img src="assets/lang-swatch-5.svg" width="12" height="12"></td><td>&nbsp;<b>Java</b></td><td align="right">&nbsp;2.0%</td></tr>
+<tr><td><img src="assets/lang-swatch-6.svg" width="12" height="12"></td><td>&nbsp;<b>other</b></td><td align="right">&nbsp;1.9%</td></tr>
+<tr><td><img src="assets/lang-swatch-7.svg" width="12" height="12"></td><td>&nbsp;<b>Dockerfile</b></td><td align="right">&nbsp;0.2%</td></tr>
+<tr><td><img src="assets/lang-swatch-8.svg" width="12" height="12"></td><td>&nbsp;<b>HTML</b></td><td align="right">&nbsp;0.1%</td></tr>
+<tr><td><img src="assets/lang-swatch-9.svg" width="12" height="12"></td><td>&nbsp;<b>Shell</b></td><td align="right">&nbsp;0.1%</td></tr>
 </table>
 </td>
 </tr></table>
 
-<h3>🔍 Deep Dive</h3>
+<h3>🕘 Latest Projects <sub>(newest → oldest)</sub></h3>
 <details>
-<summary><img src="assets/swatch-0.svg" width="12"> <b>KaprukaAgentChallenge2026</b> · 46%</summary>
+<summary>📁 <b>ravijaanthony</b> · 2026-08-15</summary>
 
-| language | size | share |
-|---|---|---|
-| TypeScript | 814.9 KiB | 98% |
-| CSS | 13.1 KiB | 1.6% |
-| Dockerfile | 806 B | 0.1% |
-| JavaScript | 559 B | 0.1% |
+| language | size |
+|---|---|
+| other | 34.0 KiB |
 
 </details>
 
 <details>
-<summary><img src="assets/swatch-1.svg" width="12"> <b>LumiSign</b> · 17%</summary>
+<summary>📁 <b>STSBookingSystem</b> · 2026-08-03</summary>
 
-| language | size | share |
-|---|---|---|
-| TypeScript | 189.7 KiB | 61% |
-| Python | 112.9 KiB | 37% |
-| CSS | 5.5 KiB | 1.8% |
-| JavaScript | 460 B | 0.1% |
-| HTML | 323 B | 0.1% |
-
-</details>
-
-<details>
-<summary><img src="assets/swatch-2.svg" width="12"> <b>STSBookingSystem</b> · 14%</summary>
-
-| language | size | share |
-|---|---|---|
-| Python | 144.9 KiB | 57% |
-| TypeScript | 84.9 KiB | 33% |
-| CSS | 22.6 KiB | 8.9% |
-| Shell | 1.2 KiB | 0.5% |
-| Dockerfile | 666 B | 0.3% |
-| HTML | 639 B | 0.2% |
+| language | size |
+|---|---|
+| Python | 144.9 KiB |
+| TypeScript | 84.9 KiB |
+| CSS | 22.6 KiB |
+| Shell | 1.2 KiB |
+| Dockerfile | 666 B |
+| HTML | 639 B |
 
 </details>
 
 <details>
-<summary><img src="assets/swatch-3.svg" width="12"> <b>MedWikiAgentic</b> · 12%</summary>
+<summary>📁 <b>Java_Concurrency</b> · 2026-07-09</summary>
 
-| language | size | share |
-|---|---|---|
-| TypeScript | 126.0 KiB | 57% |
-| Python | 90.4 KiB | 41% |
-| CSS | 2.5 KiB | 1.1% |
-| Dockerfile | 1.6 KiB | 0.7% |
-| JavaScript | 1.4 KiB | 0.6% |
-| HTML | 705 B | 0.3% |
+| language | size |
+|---|---|
+| Java | 21.1 KiB |
 
 </details>
 
 <details>
-<summary><img src="assets/swatch-4.svg" width="12"> <b>cv_pipeline</b> · 4.3%</summary>
+<summary>📁 <b>KaprukaAgentChallenge2026</b> · 2026-07-08</summary>
 
-| language | size | share |
-|---|---|---|
-| JavaScript | 42.2 KiB | 54% |
-| TypeScript | 22.2 KiB | 28% |
-| CSS | 13.0 KiB | 17% |
-| HTML | 726 B | 0.9% |
-| Dockerfile | 544 B | 0.7% |
-
-</details>
-
-<details>
-<summary><img src="assets/swatch-5.svg" width="12"> <b>asciiartclock</b> · 2.9%</summary>
-
-| language | size | share |
-|---|---|---|
-| QML | 53.3 KiB | 100% |
+| language | size |
+|---|---|
+| TypeScript | 814.9 KiB |
+| CSS | 13.1 KiB |
+| Dockerfile | 806 B |
+| JavaScript | 559 B |
 
 </details>
 
 <details>
-<summary><img src="assets/swatch-6.svg" width="12"> <b>ravijaanthony</b> · 1.9%</summary>
+<summary>📁 <b>LumiSign</b> · 2026-07-03</summary>
 
-| language | size | share |
-|---|---|---|
-| other | 34.0 KiB | 100% |
-
-</details>
-
-<details>
-<summary><img src="assets/swatch-7.svg" width="12"> <b>Java_Concurrency</b> · 1.2%</summary>
-
-| language | size | share |
-|---|---|---|
-| Java | 21.1 KiB | 100% |
+| language | size |
+|---|---|
+| TypeScript | 189.7 KiB |
+| Python | 112.9 KiB |
+| CSS | 5.5 KiB |
+| JavaScript | 460 B |
+| HTML | 323 B |
 
 </details>
 
 <details>
-<summary><img src="assets/swatch-8.svg" width="12"> <b>Maze-Traversal</b> · 0.8%</summary>
+<summary>📁 <b>asciiartclock</b> · 2026-06-29</summary>
 
-| language | size | share |
-|---|---|---|
-| Java | 14.5 KiB | 100% |
+| language | size |
+|---|---|
+| QML | 53.3 KiB |
+
+</details>
+
+<details>
+<summary>📁 <b>MedWikiAgentic</b> · 2026-05-16</summary>
+
+| language | size |
+|---|---|
+| TypeScript | 126.0 KiB |
+| Python | 90.4 KiB |
+| CSS | 2.5 KiB |
+| Dockerfile | 1.6 KiB |
+| JavaScript | 1.4 KiB |
+| HTML | 705 B |
+
+</details>
+
+<details>
+<summary>📁 <b>cv_pipeline</b> · 2026-03-21</summary>
+
+| language | size |
+|---|---|
+| JavaScript | 42.2 KiB |
+| TypeScript | 22.2 KiB |
+| CSS | 13.0 KiB |
+| HTML | 726 B |
+| Dockerfile | 544 B |
+
+</details>
+
+<details>
+<summary>📁 <b>Maze-Traversal</b> · 2026-02-28</summary>
+
+| language | size |
+|---|---|
+| Java | 14.5 KiB |
 
 </details>
