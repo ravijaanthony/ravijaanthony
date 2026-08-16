@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Filelight-style radial disk v6 — hierarchical sunburst.
+"""Filelight-style radial disk v7 — hierarchical sunburst + README mining + private repos.
 Core = total project count. Ring 1 = languages (arc ∝ project count, fills 360°).
-Ring 2 = projects subdividing their language's exact arc. Ring 3 = technologies
-staying inside their project's angular bounds. Family hue per language,
-children inherit shades. index.html gets click-to-zoom (overview → language → project).
+Ring 2 = projects subdividing their language's arc. Ring 3 = technologies.
+Techs detected from: dependency manifests + notable files + README keywords.
+Profile repo (username/username) and *.github.io repos are excluded.
 Usage:
-  python3 sunburst.py --user octocat --token PAT
+  python3 sunburst.py --user octocat --token PAT --include-private
   python3 sunburst.py --data data.json
 Outputs: sunburst.svg, index.html, lang-swatch-*.svg, README_SNIPPET.md, live.json
 """
@@ -19,11 +19,23 @@ TECH = {"react":"React","vue":"Vue","svelte":"Svelte","next":"Next.js","express"
         "django":"Django","flask":"Flask","fastapi":"FastAPI","numpy":"NumPy","pandas":"pandas",
         "torch":"PyTorch","tensorflow":"TensorFlow","scikit-learn":"scikit-learn","pytest":"pytest",
         "serde":"serde","tokio":"tokio","tauri":"Tauri","bevy":"bevy","egui":"egui",
-        "gin":"Gin","cobra":"Cobra","rails":"Rails","sinatra":"Sinatra"}
+        "gin":"Gin","cobra":"Cobra","rails":"Rails","sinatra":"Sinatra",
+        "opencv-python":"OpenCV"}
 MANIFESTS = [("package.json","js"),("requirements.txt","python"),("cargo.toml","rust"),
              ("go.mod","go"),("gemfile","ruby")]
 LANG_FOR = {"js":("TypeScript","JavaScript"),"python":("Python",),"rust":("Rust",),
-            "go":("Go",),"ruby":("Ruby",)}
+            "go":("Go",),"ruby":("Ruby",),"java":("Java",)}
+# README keyword mining: keyword -> (display name, language-family or None)
+README_KW = {"react":("React","js"),"vue":("Vue","js"),"svelte":("Svelte","js"),"next.js":("Next.js","js"),
+        "tailwind":("Tailwind","js"),"django":("Django","python"),"flask":("Flask","python"),
+        "fastapi":("FastAPI","python"),"numpy":("NumPy","python"),"pandas":("pandas","python"),
+        "scikit-learn":("scikit-learn","python"),"tensorflow":("TensorFlow","python"),
+        "pytorch":("PyTorch","python"),"opencv":("OpenCV","python"),"yolo":("YOLO","python"),
+        "spring boot":("Spring Boot","java"),"javafx":("JavaFX","java"),"android":("Android","java"),
+        "docker":("Docker",None),"kubernetes":("Kubernetes",None),"firebase":("Firebase",None),
+        "mongodb":("MongoDB",None),"mysql":("MySQL",None),"postgresql":("PostgreSQL",None),
+        "redis":("Redis",None),"arduino":("Arduino",None),"raspberry pi":("Raspberry Pi",None),
+        "flutter":("Flutter",None)}
 
 def _deps(kind, text):
     try:
@@ -62,11 +74,13 @@ def get_text(url, token=None):
     with urllib.request.urlopen(urllib.request.Request(url, headers=h)) as r: return r.read().decode(errors="ignore")
 
 def scan_repo(r, token):
+    """tech groups from manifests + notable files + README keywords."""
     groups = {}
     try:
         tree = get(f"{r['url']}/git/trees/{r['default_branch']}?recursive=1", token)
         paths = [t["path"] for t in tree.get("tree", []) if t["type"] == "blob"]
-    except Exception: return groups
+    except Exception:
+        paths = []
     tools = set()
     for p in paths:
         b = p.split("/")[-1].lower()
@@ -80,6 +94,15 @@ def scan_repo(r, token):
                 if b == fname:
                     text = get_text(f"https://raw.githubusercontent.com/{r['full_name']}/{r['default_branch']}/{p}", token)
                     groups.setdefault(kind, set()).update(TECH[d] for d in _deps(kind, text) if d in TECH)
+    # --- README mining ---
+    try:
+        readme = get_text(f"https://raw.githubusercontent.com/{r['full_name']}/{r['default_branch']}/README.md", token).lower()
+    except Exception:
+        readme = ""
+    for kw, (disp, kind) in README_KW.items():
+        if re.search(rf"\b{re.escape(kw)}\b", readme):
+            if kind: groups.setdefault(kind, set()).add(disp)
+            else: tools.add(disp)
     if tools: groups["Tooling"] = tools
     return groups
 
@@ -89,7 +112,9 @@ def github_tree(user=None, token=None, max_repos=15, include_private=False, scan
         repos = get("https://api.github.com/user/repos?per_page=100&affiliation=owner", token)
     else:
         repos = get(f"https://api.github.com/users/{user}/repos?per_page=100", token)
-    repos = [r for r in repos if not r.get("fork")]
+    repos = [r for r in repos if not r.get("fork")
+             and r["name"].lower() != r["owner"]["login"].lower()      # hide profile repo
+             and not r["name"].lower().endswith(".github.io")]         # hide pages repo
     repos.sort(key=lambda r: r["size"], reverse=True)
     kids = []
     for r in repos[:max_repos]:
@@ -102,13 +127,12 @@ def github_tree(user=None, token=None, max_repos=15, include_private=False, scan
                 if grp == "Tooling": tool = sorted(techs); continue
                 target = next((L for L in LANG_FOR[grp] if L in langs), None) or (max(langs, key=langs.get) if langs else None)
                 if target and techs: tech_by.setdefault(target, []).extend(sorted(techs))
-        kids.append({"name": r["name"], "_pushed": r.get("pushed_at", ""),
+        kids.append({"name": r["name"], "_pushed": r.get("pushed_at", ""), "_desc": r.get("description") or "",
                      "_tech": tech_by, "_tool": tool, "children": children})
     name = user or (get("https://api.github.com/user", token)["login"] if token else "me")
     return {"name": name, "children": kids}
 
 def invert(root):
-    """repo-first data -> language-first tree: lang(value=#projects) -> repo(value=1) -> techs(sum=1)."""
     langs = {}
     for repo in root["children"]:
         for lg in repo.get("children", []):
@@ -164,7 +188,7 @@ def build_svg(tree, nproj):
         if nd.get("children"):
             a = a0
             for j, c in enumerate(nd["children"]):
-                w = (a1 - a0) * c["value"] / nd["value"]   # childAngle = parentAngle × child/parent
+                w = (a1 - a0) * c["value"] / nd["value"]
                 draw(c, d + 1, a, a + w, i, j, cp)
                 a += w
 
@@ -194,12 +218,14 @@ def export_readme(root, tree, raw_base, out_dir):
     L += ['</table>', '</td>', '</tr></table>', '', '<h3>🕘 Latest Projects <sub>(newest → oldest)</sub></h3>']
     for c in sorted(root["children"], key=lambda c: c.get("_pushed", ""), reverse=True):
         when = c.get("_pushed", "")[:10]
-        L += ['<details>', f'<summary>📁 <b>{esc(c["name"])}</b> · {when}</summary>', '', '| language | size |', '|---|---|']
+        L += ['<details>', f'<summary>📁 <b>{esc(c["name"])}</b> · {when}</summary>', '']
+        if c.get("_desc"): L += [f'_{esc(c["_desc"])}_', '']
+        L += ['| language | size |', '|---|---|']
         for g in sorted(c.get("children", []), key=lambda x: -x["value"]):
             techs = ", ".join(c.get("_tech", {}).get(g["name"], []))
             L.append(f'| {esc(g["name"])} | {human(g["value"])}' + (f" — {techs}" if techs else "") + ' |')
         if c.get("_tool"):
-            L.append(f'| 🛠 tooling | {", ".join(c["_tool"])} |')
+            L.append(f'| 🛠 stack/tooling | {", ".join(c["_tool"])} |')
         L += ['', '</details>', '']
     with open(f"{out_dir}/README_SNIPPET.md", "w") as f: f.write("\n".join(L))
 
