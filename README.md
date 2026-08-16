@@ -11,29 +11,105 @@
 <a href="https://raw.githubusercontent.com/ravijaanthony/ravijaanthony_test/main/assets/sunburst.svg">
   <img src="assets/sunburst.svg" width="100%" alt="language disk">
 </a><br>
-<sub>✨ click the disk for the hover + zoom interactive version</sub>
+<sub>✨ click the disk — languages fan out into their projects</sub>
 </td>
 <td width="50%" align="left" valign="top">
-<h3>🧑‍ Languages (by projects)</h3>
-<table>
-<tr><td><img src="assets/lang-swatch-0.svg" width="12" height="12"></td><td>&nbsp;<b>TypeScript</b></td><td align="right">&nbsp;5 · 17%</td></tr>
-<tr><td><img src="assets/lang-swatch-1.svg" width="12" height="12"></td><td>&nbsp;<b>CSS</b></td><td align="right">&nbsp;5 · 17%</td></tr>
-<tr><td><img src="assets/lang-swatch-2.svg" width="12" height="12"></td><td>&nbsp;<b>Dockerfile</b></td><td align="right">&nbsp;4 · 14%</td></tr>
-<tr><td><img src="assets/lang-swatch-3.svg" width="12" height="12"></td><td>&nbsp;<b>JavaScript</b></td><td align="right">&nbsp;4 · 14%</td></tr>
-<tr><td><img src="assets/lang-swatch-4.svg" width="12" height="12"></td><td>&nbsp;<b>HTML</b></td><td align="right">&nbsp;4 · 14%</td></tr>
-<tr><td><img src="assets/lang-swatch-5.svg" width="12" height="12"></td><td>&nbsp;<b>Python</b></td><td align="right">&nbsp;3 · 10%</td></tr>
-<tr><td><img src="assets/lang-swatch-6.svg" width="12" height="12"></td><td>&nbsp;<b>Java</b></td><td align="right">&nbsp;2 · 6.9%</td></tr>
-<tr><td><img src="assets/lang-swatch-7.svg" width="12" height="12"></td><td>&nbsp;<b>QML</b></td><td align="right">&nbsp;1 · 3.4%</td></tr>
-<tr><td><img src="assets/lang-swatch-8.svg" width="12" height="12"></td><td>&nbsp;<b>Shell</b></td><td align="right">&nbsp;1 · 3.4%</td></tr>
-</table>
+<h3>🧑‍💻 Languages <sub>(click for projects)</sub></h3>
+<details>
+<summary><img src="assets/lang-swatch-0.svg" width="12" height="12"> <b>TypeScript</b></summary>
+
+- KaprukaAgentChallenge2026
+- cv_pipeline
+- LumiSign
+- MedWikiAgentic
+- STSBookingSystem
+
+</details>
+<details>
+<summary><img src="assets/lang-swatch-1.svg" width="12" height="12"> <b>CSS</b></summary>
+
+- KaprukaAgentChallenge2026
+- cv_pipeline
+- LumiSign
+- MedWikiAgentic
+- STSBookingSystem
+
+</details>
+<details>
+<summary><img src="assets/lang-swatch-2.svg" width="12" height="12"> <b>Dockerfile</b></summary>
+
+- KaprukaAgentChallenge2026
+- cv_pipeline
+- MedWikiAgentic
+- STSBookingSystem
+
+</details>
+<details>
+<summary><img src="assets/lang-swatch-3.svg" width="12" height="12"> <b>JavaScript</b></summary>
+
+- KaprukaAgentChallenge2026
+- cv_pipeline
+- LumiSign
+- MedWikiAgentic
+
+</details>
+<details>
+<summary><img src="assets/lang-swatch-4.svg" width="12" height="12"> <b>HTML</b></summary>
+
+- cv_pipeline
+- LumiSign
+- MedWikiAgentic
+- STSBookingSystem
+
+</details>
+<details>
+<summary><img src="assets/lang-swatch-5.svg" width="12" height="12"> <b>Python</b></summary>
+
+- LumiSign
+- MedWikiAgentic
+- STSBookingSystem
+
+</details>
+<details>
+<summary><img src="assets/lang-swatch-6.svg" width="12" height="12"> <b>Java</b></summary>
+
+- Maze-Traversal
+- Java_Concurrency
+
+</details>
+<details>
+<summary><img src="assets/lang-swatch-7.svg" width="12" height="12"> <b>QML</b></summary>
+
+- asciiartclock
+
+</details>
+<details>
+<summary><img src="assets/lang-swatch-8.svg" width="12" height="12"> <b>Shell</b></summary>
+
+- STSBookingSystem
+
+</details>
+<details>
+<summary><img src="assets/lang-swatch-9.svg" width="12" height="12"> <b>other</b></summary>
+
+- ravijaanthony
+
+</details>
 </td>
 </tr></table>
 
 <h3>🕘 Latest Projects <sub>(newest → oldest)</sub></h3>
 <details>
-<summary>📁 <b>STSBookingSystem</b> · 2026-08-03</summary>
+<summary>📁 <b>ravijaanthony</b> · 2026-08-15</summary>
 
-_Segment-Based Train Seat Booking System made in favor of Lanka Software Foundation_
+| language | size |
+|---|---|
+| other | 34.0 KiB |
+
+</details>
+
+<details>
+<summary>📁 <b>STSBookingSystem</b> · 2026-08-03</summary>
 
 | language | size |
 |---|---|

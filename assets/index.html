@@ -2,17 +2,15 @@
 <style>body{background:#191919;margin:0;display:grid;place-items:center;min-height:100vh}
 #wrap{position:relative}svg{width:min(92vmin,760px);height:auto}
 path{cursor:pointer}path:hover{filter:brightness(.65)}
-#crumb{position:absolute;top:8px;left:12px;font:13px monospace;color:#999;cursor:pointer;display:none}
-#crumb:hover{color:#fff}
+#hint{position:absolute;bottom:6px;width:100%;text-align:center;font:12px monospace;color:#777}
 #tip{position:fixed;display:none;background:#2b2b2b;color:#ddd;border:1px solid #555;padding:8px 12px;font:13px/1.6 monospace;border-radius:4px;pointer-events:none;white-space:nowrap}</style></head><body>
-<div id="wrap"><div id="crumb">← back</div><div id="chart"></div></div>
+<div id="wrap"><div id="chart"></div><div id="hint">click a language to fan out its projects · click the core to reset</div></div>
 <div id="tip"></div>
 <script>
-const DATA={"name": "ravijaanthony", "value": 29, "children": [{"name": "TypeScript", "_kind": "lang", "value": 5, "children": [{"name": "KaprukaAgentChallenge2026", "_kind": "repo", "value": 1}, {"name": "cv_pipeline", "_kind": "repo", "value": 1}, {"name": "LumiSign", "_kind": "repo", "value": 1}, {"name": "MedWikiAgentic", "_kind": "repo", "value": 1}, {"name": "STSBookingSystem", "_kind": "repo", "value": 1}]}, {"name": "CSS", "_kind": "lang", "value": 5, "children": [{"name": "KaprukaAgentChallenge2026", "_kind": "repo", "value": 1}, {"name": "cv_pipeline", "_kind": "repo", "value": 1}, {"name": "LumiSign", "_kind": "repo", "value": 1}, {"name": "MedWikiAgentic", "_kind": "repo", "value": 1}, {"name": "STSBookingSystem", "_kind": "repo", "value": 1}]}, {"name": "Dockerfile", "_kind": "lang", "value": 4, "children": [{"name": "KaprukaAgentChallenge2026", "_kind": "repo", "value": 1}, {"name": "cv_pipeline", "_kind": "repo", "value": 1}, {"name": "MedWikiAgentic", "_kind": "repo", "value": 1}, {"name": "STSBookingSystem", "_kind": "repo", "value": 1}]}, {"name": "JavaScript", "_kind": "lang", "value": 4, "children": [{"name": "KaprukaAgentChallenge2026", "_kind": "repo", "value": 1}, {"name": "cv_pipeline", "_kind": "repo", "value": 1}, {"name": "LumiSign", "_kind": "repo", "value": 1}, {"name": "MedWikiAgentic", "_kind": "repo", "value": 1}]}, {"name": "HTML", "_kind": "lang", "value": 4, "children": [{"name": "cv_pipeline", "_kind": "repo", "value": 1}, {"name": "LumiSign", "_kind": "repo", "value": 1}, {"name": "MedWikiAgentic", "_kind": "repo", "value": 1}, {"name": "STSBookingSystem", "_kind": "repo", "value": 1}]}, {"name": "Python", "_kind": "lang", "value": 3, "children": [{"name": "LumiSign", "_kind": "repo", "value": 1}, {"name": "MedWikiAgentic", "_kind": "repo", "value": 1}, {"name": "STSBookingSystem", "_kind": "repo", "value": 1}]}, {"name": "Java", "_kind": "lang", "value": 2, "children": [{"name": "Maze-Traversal", "_kind": "repo", "value": 1}, {"name": "Java_Concurrency", "_kind": "repo", "value": 1}]}, {"name": "QML", "_kind": "lang", "value": 1, "children": [{"name": "asciiartclock", "_kind": "repo", "value": 1}]}, {"name": "Shell", "_kind": "lang", "value": 1, "children": [{"name": "STSBookingSystem", "_kind": "repo", "value": 1}]}], "_projects": 8};
+const DATA={"name": "ravijaanthony", "value": 30, "children": [{"name": "TypeScript", "_kind": "lang", "value": 5, "children": [{"name": "KaprukaAgentChallenge2026", "_kind": "repo", "value": 1}, {"name": "cv_pipeline", "_kind": "repo", "value": 1}, {"name": "LumiSign", "_kind": "repo", "value": 1}, {"name": "MedWikiAgentic", "_kind": "repo", "value": 1}, {"name": "STSBookingSystem", "_kind": "repo", "value": 1}]}, {"name": "CSS", "_kind": "lang", "value": 5, "children": [{"name": "KaprukaAgentChallenge2026", "_kind": "repo", "value": 1}, {"name": "cv_pipeline", "_kind": "repo", "value": 1}, {"name": "LumiSign", "_kind": "repo", "value": 1}, {"name": "MedWikiAgentic", "_kind": "repo", "value": 1}, {"name": "STSBookingSystem", "_kind": "repo", "value": 1}]}, {"name": "Dockerfile", "_kind": "lang", "value": 4, "children": [{"name": "KaprukaAgentChallenge2026", "_kind": "repo", "value": 1}, {"name": "cv_pipeline", "_kind": "repo", "value": 1}, {"name": "MedWikiAgentic", "_kind": "repo", "value": 1}, {"name": "STSBookingSystem", "_kind": "repo", "value": 1}]}, {"name": "JavaScript", "_kind": "lang", "value": 4, "children": [{"name": "KaprukaAgentChallenge2026", "_kind": "repo", "value": 1}, {"name": "cv_pipeline", "_kind": "repo", "value": 1}, {"name": "LumiSign", "_kind": "repo", "value": 1}, {"name": "MedWikiAgentic", "_kind": "repo", "value": 1}]}, {"name": "HTML", "_kind": "lang", "value": 4, "children": [{"name": "cv_pipeline", "_kind": "repo", "value": 1}, {"name": "LumiSign", "_kind": "repo", "value": 1}, {"name": "MedWikiAgentic", "_kind": "repo", "value": 1}, {"name": "STSBookingSystem", "_kind": "repo", "value": 1}]}, {"name": "Python", "_kind": "lang", "value": 3, "children": [{"name": "LumiSign", "_kind": "repo", "value": 1}, {"name": "MedWikiAgentic", "_kind": "repo", "value": 1}, {"name": "STSBookingSystem", "_kind": "repo", "value": 1}]}, {"name": "Java", "_kind": "lang", "value": 2, "children": [{"name": "Maze-Traversal", "_kind": "repo", "value": 1}, {"name": "Java_Concurrency", "_kind": "repo", "value": 1}]}, {"name": "QML", "_kind": "lang", "value": 1, "children": [{"name": "asciiartclock", "_kind": "repo", "value": 1}]}, {"name": "Shell", "_kind": "lang", "value": 1, "children": [{"name": "STSBookingSystem", "_kind": "repo", "value": 1}]}, {"name": "other", "_kind": "lang", "value": 1, "children": [{"name": "ravijaanthony", "_kind": "repo", "value": 1}]}], "_projects": 9};
 const S=720,C=360,HOLE=78,TAU=2*Math.PI;
-let view=DATA,stack=[],idmap=[];
+let sel=null,idmap=[];
 const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
-const dep=n=>n.children&&n.children.length?1+Math.max(...n.children.map(dep)):1;
 function hsv(h,s,v){const f=h*6,i=Math.floor(f),t=f-i,p=v*(1-s),q=v*(1-s*t),w=v*(1-s*(1-t));
 const m=[[v,w,p],[q,v,p],[p,v,w],[p,q,v],[w,p,v],[v,p,q]][i%6];
 return"#"+m.map(x=>Math.round(x*255).toString(16).padStart(2,"0")).join("")}
@@ -21,32 +19,34 @@ function P(r,a){return[C+r*Math.cos(a),C+r*Math.sin(a)]}
 function sec(r0,r1,a0,a1){a1=Math.min(a1,a0+TAU-1e-4);const L=a1-a0>Math.PI?1:0,f=x=>x.toFixed(2);
 const[x0,y0]=P(r1,a0),[x1,y1]=P(r1,a1),[x2,y2]=P(r0,a1),[x3,y3]=P(r0,a0);
 return`M${f(x0)},${f(y0)} A${r1},${r1} 0 ${L} 1 ${f(x1)},${f(y1)} L${f(x2)},${f(y2)} A${r0},${r0} 0 ${L} 0 ${f(x3)},${f(y3)} Z`}
-function node(nd,d,a0,a1,i,n,th,p,out){
- const id=idmap.push(nd)-1,cp=p+"/"+nd.name;
- const t2=nd._kind=="lang"?nd.value+" projects":nd._kind=="repo"?"1 project":"technology";
- out.push(`<path d="${sec(HOLE+d*th,HOLE+(d+1)*th,a0,a1)}" fill="${col(i,n,d+1,0)}" stroke="#fff" data-id="${id}" data-path="${esc(cp)}" data-info="${esc(t2)}"><title>${esc(cp)}
-${esc(t2)}</title></path>`);
- if(nd.children){let a=a0;nd.children.slice().sort((x,y)=>y.value-x.value).forEach((c,j)=>{
-   const w=(a1-a0)*c.value/nd.value;node(c,d+1,a,a+w,i,n,th,cp,out);a+=w})}}
 function render(){
  idmap=[];
- const rings=dep(view)-1,th=(S/2-HOLE-6)/rings,n=view.children.length||1;
+ const B=S/2-HOLE-6, inner=sel?B*0.62:B, n=DATA.children.length||1;
  const out=[`<svg viewBox="0 0 ${S} ${S}" font-family="monospace"><rect width="${S}" height="${S}" fill="#191919"/>`];
  let a=-Math.PI/2;
- view.children.forEach((c,i)=>{const w=TAU*c.value/view.value;node(c,0,a,a+w,i,n,th,"",out);a+=w});
- const num=stack.length?Math.round(view.value):DATA._projects;
- const lab=stack.length?view.name.toUpperCase().slice(0,12):"PROJECTS";
+ DATA.children.forEach((c,i)=>{
+  const w=TAU*c.value/DATA.value, id=idmap.push(c)-1;
+  out.push(`<path d="${sec(HOLE,HOLE+inner,a,a+w)}" fill="${col(i,n,1,0)}" stroke="#fff" data-id="${id}" data-kind="lang" data-path="/${esc(c.name)}" data-info="${c.value} projects"><title>/${esc(c.name)}
+${c.value} projects</title></path>`);
+  if(sel===c&&c.children){
+   const o0=HOLE+inner+3,o1=HOLE+B;let b=a;
+   c.children.forEach((p,j)=>{
+    const pw=w*p.value/c.value, pid=idmap.push(p)-1;
+    out.push(`<path d="${sec(o0,o1,b,b+pw)}" fill="${col(i,n,2,j)}" stroke="#fff" data-id="${pid}" data-kind="repo" data-path="/${esc(c.name)}/${esc(p.name)}" data-info="1 project"><title>/${esc(c.name)}/${esc(p.name)}
+1 project</title></path>`);
+    b+=pw;});}
+  a+=w;});
+ const num=sel?sel.value:DATA._projects;
+ const lab=sel?sel.name.toUpperCase().slice(0,12):"PROJECTS";
  out.push(`<circle id="core" cx="${C}" cy="${C}" r="${HOLE-6}" fill="#202020" style="cursor:pointer"/>`);
  out.push(`<text x="${C}" y="${C-8}" fill="#eee" font-size="30" font-weight="bold" text-anchor="middle" dominant-baseline="middle" style="pointer-events:none">${num}</text>`);
  out.push(`<text x="${C}" y="${C+18}" fill="#aaa" font-size="11" letter-spacing="2" text-anchor="middle" dominant-baseline="middle" style="pointer-events:none">${lab}</text></svg>`);
- document.getElementById("chart").innerHTML=out.join("");
- document.getElementById("crumb").style.display=stack.length?"block":"none"}
-function back(){if(stack.length){view=stack.pop();render()}}
+ document.getElementById("chart").innerHTML=out.join("")}
 document.getElementById("chart").addEventListener("click",e=>{
- if(e.target.id=="core"){back();return}
+ if(e.target.id=="core"){sel=null;render();return}
  const nd=idmap[e.target.dataset.id];
- if(nd&&nd.children){stack.push(view);view=nd;render()}});
-document.getElementById("crumb").onclick=back;
+ if(!nd||e.target.dataset.kind!="lang")return;
+ sel=(sel===nd)?null:nd;render()});
 const tip=document.getElementById("tip");
 document.getElementById("chart").addEventListener("mousemove",e=>{
  const t=e.target.closest("path[data-path]");
