@@ -14,7 +14,7 @@
 <sub>✨ click the disk for the hover-interactive version</sub>
 </td>
 <td width="50%" align="left" valign="top">
-<h3>🧑‍💻 Most → Least Used</h3>
+<h3>🧑‍ Most → Least Used</h3>
 <table>
 <tr><td><img src="assets/lang-swatch-0.svg" width="12" height="12"></td><td>&nbsp;<b>TypeScript</b></td><td align="right">&nbsp;68%</td></tr>
 <tr><td><img src="assets/lang-swatch-1.svg" width="12" height="12"></td><td>&nbsp;<b>Python</b></td><td align="right">&nbsp;19%</td></tr>
