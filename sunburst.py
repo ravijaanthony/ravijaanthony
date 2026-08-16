@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
-"""Filelight-style sunburst: repos -> languages -> technologies."""
+"""Filelight-style sunburst, v4: rings = languages (most-used at core),
+arcs = projects; legend = language leaderboard; deep dive = newest-first."""
 import argparse, colorsys, json, math, os, re, urllib.request
 
 SIZE = 720; CX = CY = SIZE // 2
-HOLE = 78; RING = 56; MAX_DEPTH = 4; BG = "#191919"
+HOLE = 78; MAX_LANGS = 12; BG = "#191919"
 STYLE = ("<style>.ring{transform-box:view-box;transform-origin:50% 50%;"
          "animation:pop .7s cubic-bezier(.2,.8,.3,1) both}"
          "@keyframes pop{from{opacity:0;transform:scale(.7) rotate(-60deg)}"
          "to{opacity:1;transform:scale(1) rotate(0)}}"
-         + "".join(f".d{i}{{animation-delay:{i*.12:.2f}s}}" for i in range(MAX_DEPTH + 2))
+         + "".join(f".d{i}{{animation-delay:{i*.10:.2f}s}}" for i in range(MAX_LANGS + 2))
          + "path:hover{filter:brightness(.65)}</style>")
 
 TECH = {"react":"React","vue":"Vue","svelte":"Svelte","next":"Next.js","express":"Express",
@@ -49,7 +50,6 @@ def human(b):
     return f"{b:.1f} PiB"
 def fmtpct(p): return f"{p:.0f}" if p >= 10 else f"{p:.1f}"
 def esc(s): return s.replace("&","&amp;").replace("<","&lt;").replace(">","&gt;").replace('"',"&quot;")
-
 def get(url, token=None):
     h = {"User-Agent": "readme-sunburst"}
     if token: h["Authorization"] = f"token {token}"
@@ -105,7 +105,7 @@ def github_tree(user=None, token=None, max_repos=15, include_private=False, scan
                     if target and techs:
                         v = by[target]["value"] / len(techs)
                         by[target].setdefault("children", []).extend({"name": t, "value": v} for t in sorted(techs))
-        kids.append({"name": r["name"], "children": children})
+        kids.append({"name": r["name"], "_pushed": r.get("pushed_at", ""), "children": children})
     name = user or (get("https://api.github.com/user", token)["login"] if token else "me")
     return {"name": name, "children": kids}
 
@@ -113,108 +113,137 @@ def compute(n):
     if n.get("children"): n["value"] = sum(compute(c) for c in n["children"])
     if "value" not in n: n["value"] = 0
     return n["value"]
+
+def rank_languages(kids):
+    """[(lang, {"total", "segs":[(repo, val)]})] most-used first; tail merged into 'other'."""
+    acc = {}
+    for repo in kids:
+        for lg in repo.get("children", []):
+            if lg["name"] == "Tooling" or lg["value"] <= 0: continue
+            e = acc.setdefault(lg["name"], {"total": 0, "segs": []})
+            e["total"] += lg["value"]; e["segs"].append((repo["name"], lg["value"]))
+    ranked = sorted(acc.items(), key=lambda kv: -kv[1]["total"])
+    if len(ranked) > MAX_LANGS:
+        head, tail = ranked[:MAX_LANGS - 1], ranked[MAX_LANGS - 1:]
+        other = {"total": 0, "segs": []}
+        for _, e in tail:
+            other["total"] += e["total"]; other["segs"].extend(e["segs"])
+        ranked = head + [("other", other)]
+    return ranked
+
 def pt(r, a): return CX + r * math.cos(a), CY + r * math.sin(a)
 def sector(r0, r1, a0, a1):
     a1 = min(a1, a0 + 2 * math.pi - 1e-4)
     large = 1 if a1 - a0 > math.pi else 0
     x0, y0 = pt(r1, a0); x1, y1 = pt(r1, a1); x2, y2 = pt(r0, a1); x3, y3 = pt(r0, a0)
-    return (f"M{x0:.2f},{y0:.2f} A{r1},{r1} 0 {large} 1 {x1:.2f},{y1:.2f} L{x2:.2f},{y2:.2f} A{r0},{r0} 0 {large} 0 {x3:.2f},{y3:.2f} Z")
-def color(hue, d, sib):
-    v = max(0.30, 0.93 - 0.11 * d - 0.05 * (sib % 4))
-    r, g, b = colorsys.hsv_to_rgb(hue % 1.0, 0.62, v)
+    return (f"M{x0:.2f},{y0:.2f} A{r1},{r1} 0 {large} 1 {x1:.2f},{y1:.2f} "
+            f"L{x2:.2f},{y2:.2f} A{r0},{r0} 0 {large} 0 {x3:.2f},{y3:.2f} Z")
+def color_lang(i, n, j):
+    v = max(0.45, 0.95 - 0.07 * (j % 5))
+    r, g, b = colorsys.hsv_to_rgb((i / n) % 1.0, 0.62, v)
     return f"#{int(r*255):02x}{int(g*255):02x}{int(b*255):02x}"
-
-def render_node(n, d, a0, a1, hue, sib, path, root_val, out):
-    p = f"{path}/{n['name']}" if path else f"/{n['name']}"
-    pct = 100.0 * n["value"] / root_val
-    out.append(f'<path d="{sector(HOLE + d*RING, HOLE + (d+1)*RING, a0, a1)}" fill="{color(hue, d, sib)}" stroke="#fff" stroke-width="1" class="ring d{d}" data-path="{esc(p)}" data-size="{human(n["value"])}" data-pct="{fmtpct(pct)}"><title>{esc(p)}\n{human(n["value"])} ({fmtpct(pct)}%)</title></path>')
-    if n.get("children") and d < MAX_DEPTH:
-        a = a0
-        for i, c in enumerate(sorted(n["children"], key=lambda c: -c["value"])):
-            w = (a1 - a0) * c["value"] / n["value"]
-            render_node(c, d + 1, a, a + w, hue, i, p, root_val, out); a += w
 
 def build_svg(root):
     compute(root)
+    kids = root["children"]
+    ranked = rank_languages(kids)
+    n = len(ranked) or 1
+    total = sum(e["total"] for _, e in ranked) or 1
+    B = SIZE / 2 - HOLE - 6
+    ths = [max(12.0, B * e["total"] / total) for _, e in ranked]
+    s = B / sum(ths)
+    ths = [t * s for t in ths]
     out = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {SIZE} {SIZE}" font-family="monospace">',
            f'<rect width="{SIZE}" height="{SIZE}" fill="{BG}"/>', STYLE]
-    n = len(root["children"]) or 1
-    a = -math.pi / 2
-    for i, c in enumerate(sorted(root["children"], key=lambda c: -c["value"])):
-        w = 2 * math.pi * c["value"] / root["value"]
-        render_node(c, 0, a, a + w, i / n, 0, "", root["value"], out); a += w
-    
-    # --- NEW CENTER TEXT (TOTAL PROJECTS) ---
-    num_projects = len(root.get("children", []))
+    r0 = float(HOLE)
+    for i, ((lang, e), th) in enumerate(zip(ranked, ths)):
+        r1 = r0 + th
+        a = -math.pi / 2
+        for j, (repo, val) in enumerate(sorted(e["segs"], key=lambda x: -x[1])):
+            w = 2 * math.pi * val / e["total"]
+            p = f"/{lang}/{repo}"
+            pct = 100.0 * val / total
+            out.append(f'<path d="{sector(r0, r1, a, a + w)}" fill="{color_lang(i, n, j)}" '
+                       f'stroke="#fff" stroke-width="1" class="ring d{i}" data-path="{esc(p)}" '
+                       f'data-size="{human(val)}" data-pct="{fmtpct(pct)}">'
+                       f'<title>{esc(p)}\n{human(val)} ({fmtpct(pct)}%)</title></path>')
+            a += w
+        r0 = r1
     out.append(f'<circle cx="{CX}" cy="{CY}" r="{HOLE-6}" fill="#202020"/>')
-    out.append(f'<text x="{CX}" y="{CY-8}" fill="#eee" font-size="32" font-weight="bold" text-anchor="middle" dominant-baseline="middle">{num_projects}</text>')
-    out.append(f'<text x="{CX}" y="{CY+18}" fill="#aaa" font-size="12" text-anchor="middle" dominant-baseline="middle" letter-spacing="2">PROJECTS</text>')
-    out.append('</svg>')
+    out.append(f'<text x="{CX}" y="{CY-8}" fill="#eee" font-size="32" font-weight="bold" text-anchor="middle" dominant-baseline="middle">{len(kids)}</text>')
+    out.append(f'<text x="{CX}" y="{CY+18}" fill="#aaa" font-size="12" text-anchor="middle" dominant-baseline="middle" letter-spacing="2">PROJECTS</text></svg>')
     return "\n".join(out)
 
 def export_readme(root, raw_base, out_dir):
     kids = sorted(root["children"], key=lambda c: -c["value"])
-    n = len(kids) or 1
-    
-    # --- NEW SIDE-BY-SIDE LAYOUT ---
-    L = ['<table width="100%"><tr>', '<td width="50%" align="center" valign="top">']
-    L += [f'<a href="{raw_base}/sunburst.svg">', '  <img src="assets/sunburst.svg" width="100%" alt="sunburst of my repos">',
-          '</a><br>', '<sub>✨ click the disk for the hover-interactive version</sub>', '</td>']
-          
-    L += ['<td width="50%" align="left" valign="top">', '<h3>📂 Top Projects</h3>', '<table>']
-    
-    # Generate Legend (Top 8)
-    for i, c in enumerate(kids[:8]): 
-        pct = 100.0 * c["value"] / root["value"]
-        c_color = color(i / n, 0, 0)
-        with open(f"{out_dir}/swatch-{i}.svg", "w") as f:
-            f.write(f'<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"><rect width="12" height="12" fill="{c_color}"/></svg>')
-        L.append(f'<tr><td><img src="assets/swatch-{i}.svg" width="12" height="12"></td>')
-        L.append(f'<td>&nbsp;<b>{esc(c["name"])}</b></td>')
-        L.append(f'<td align="right">&nbsp;{fmtpct(pct)}%</td></tr>')
-        
-    L += ['</table>', '</td>', '</tr></table>', '']
-    
-    # Deep dive details blocks
-    L.append('<h3>🔍 Deep Dive</h3>')
-    for i, c in enumerate(kids):
-        pct = 100.0 * c["value"] / root["value"]
-        if i >= 8: # Ensure swatches exist for repos beyond the top 8
-            c_color = color(i / n, 0, 0)
-            with open(f"{out_dir}/swatch-{i}.svg", "w") as f:
-                f.write(f'<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"><rect width="12" height="12" fill="{c_color}"/></svg>')
-        L += ['<details>', f'<summary><img src="assets/swatch-{i}.svg" width="12"> <b>{esc(c["name"])}</b> · {fmtpct(pct)}%</summary>', '',
-              '| language | size | share |', '|---|---|---|']
+    ranked = rank_languages(kids)
+    n = len(ranked) or 1
+    total = sum(e["total"] for _, e in ranked) or 1
+
+    L = ['<table width="100%"><tr>', '<td width="50%" align="center" valign="top">',
+         f'<a href="{raw_base}/sunburst.svg">', '  <img src="assets/sunburst.svg" width="100%" alt="language disk">',
+         '</a><br>', '<sub>✨ click the disk for the hover-interactive version</sub>', '</td>',
+         '<td width="50%" align="left" valign="top">', '<h3>🧑‍💻 Most → Least Used</h3>', '<table>']
+    for i, (lang, e) in enumerate(ranked):
+        with open(f"{out_dir}/lang-swatch-{i}.svg", "w") as f:
+            f.write(f'<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"><rect width="12" height="12" fill="{color_lang(i, n, 0)}"/></svg>')
+        L.append(f'<tr><td><img src="assets/lang-swatch-{i}.svg" width="12" height="12"></td>'
+                 f'<td>&nbsp;<b>{esc(lang)}</b></td><td align="right">&nbsp;{fmtpct(100.0 * e["total"] / total)}%</td></tr>')
+    L += ['</table>', '</td>', '</tr></table>', '', '<h3>🕘 Latest Projects <sub>(newest → oldest)</sub></h3>']
+
+    for c in sorted(kids, key=lambda c: c.get("_pushed", ""), reverse=True):
+        when = c.get("_pushed", "")[:10]
+        L += ['<details>', f'<summary>📁 <b>{esc(c["name"])}</b> · {when}</summary>', '',
+              '| language | size |', '|---|---|']
         for g in sorted(c.get("children", []), key=lambda x: -x["value"]):
-            L.append(f'| {esc(g["name"])} | {human(g["value"])} | {fmtpct(100.0*g["value"]/c["value"])}% |')
+            if g["name"] == "Tooling":
+                L.append(f'| 🛠 tooling | {", ".join(t["name"] for t in g.get("children", []))} |')
+            else:
+                techs = ", ".join(t["name"] for t in g.get("children", []))
+                L.append(f'| {esc(g["name"])} | {human(g["value"])}' + (f" — {techs}" if techs else "") + ' |')
         L += ['', '</details>', '']
-        
     with open(f"{out_dir}/README_SNIPPET.md", "w") as f: f.write("\n".join(L))
+
+PAGE = """<!doctype html><html><head><meta charset="utf-8"><title>__TITLE__</title>
+<style>body{background:#191919;margin:0;display:grid;place-items:center;min-height:100vh}
+svg{width:min(92vmin,760px);height:auto}path{cursor:pointer}path:hover{filter:brightness(.65)}
+#tip{position:fixed;display:none;background:#2b2b2b;color:#ddd;border:1px solid #555;padding:8px 12px;font:13px/1.6 monospace;border-radius:4px;pointer-events:none;white-space:nowrap}</style></head><body>
+__SVG__
+<div id="tip"></div>
+<script>
+const tip=document.getElementById('tip');
+for(const p of document.querySelectorAll('path[data-path]')){
+p.addEventListener('mousemove',e=>{tip.innerHTML=p.dataset.path+'<br>'+p.dataset.size+'<br>'+p.dataset.pct+'% of total';tip.style.display='block';tip.style.left=(e.clientX+14)+'px';tip.style.top=(e.clientY+10)+'px'});
+p.addEventListener('mouseleave',()=>tip.style.display='none')}
+</script></body></html>"""
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--user"); ap.add_argument("--token"); ap.add_argument("--data")
-    ap.add_argument("--max-repos", type=int, default=15) # Increased default to 15
+    ap.add_argument("--max-repos", type=int, default=15)
     ap.add_argument("--include-private", action="store_true")
-    ap.add_argument("--no-scan", action="store_true", help="skip tech detection")
-    ap.add_argument("--repo", help="user/repo")
-    ap.add_argument("--out-dir", default=".")
-    ap.add_argument("--readme", help="README.md to auto-update")
+    ap.add_argument("--no-scan", action="store_true")
+    ap.add_argument("--repo"); ap.add_argument("--out-dir", default="."); ap.add_argument("--readme")
     a = ap.parse_args()
     os.makedirs(a.out_dir, exist_ok=True)
     root = (github_tree(a.user, a.token, a.max_repos, a.include_private, scan=not a.no_scan)
             if (a.user or a.include_private) else json.load(open(a.data)))
     svg = build_svg(root)
     open(f"{a.out_dir}/sunburst.svg", "w").write(svg)
+    open(f"{a.out_dir}/index.html", "w").write(PAGE.replace("__SVG__", svg).replace("__TITLE__", root["name"]))
     json.dump(root, open(f"{a.out_dir}/live.json", "w"))
-    raw_base = (f"https://raw.githubusercontent.com/{a.repo}/main/assets" if a.repo else "https://raw.githubusercontent.com/USER/REPO/main/assets")
+    raw_base = (f"https://raw.githubusercontent.com/{a.repo}/main/assets" if a.repo
+                else "https://raw.githubusercontent.com/USER/REPO/main/assets")
     export_readme(root, raw_base, a.out_dir)
     if a.readme and os.path.exists(a.readme):
         txt = open(a.readme).read()
         snip = open(f"{a.out_dir}/README_SNIPPET.md").read()
-        new = re.sub(r"<!-- SUNBURST:START -->.*?<!-- SUNBURST:END -->", lambda m: f"<!-- SUNBURST:START -->\n{snip}\n<!-- SUNBURST:END -->", txt, flags=re.S)
-        if new != txt: open(a.readme, "w").write(new)
-    print("wrote sunburst.svg, swatches, and updated README snippet")
+        new = re.sub(r"<!-- SUNBURST:START -->.*?<!-- SUNBURST:END -->",
+                     lambda m: f"<!-- SUNBURST:START -->\n{snip}\n<!-- SUNBURST:END -->", txt, flags=re.S)
+        if new != txt:
+            open(a.readme, "w").write(new)
+            print("updated README.md")
+    print("wrote sunburst.svg, index.html, live.json, swatches, README_SNIPPET.md")
 
 if __name__ == "__main__":
     main()
