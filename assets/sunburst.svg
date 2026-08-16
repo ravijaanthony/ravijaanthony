@@ -1,86 +1,82 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 720" font-family="monospace">
 <rect width="720" height="720" fill="#191919"/>
 <style>.ring{transform-box:view-box;transform-origin:50% 50%;animation:pop .7s cubic-bezier(.2,.8,.3,1) both}@keyframes pop{from{opacity:0;transform:scale(.7) rotate(-60deg)}to{opacity:1;transform:scale(1) rotate(0)}}.d0{animation-delay:0.00s}.d1{animation-delay:0.12s}.d2{animation-delay:0.24s}path:hover{filter:brightness(.65)}</style>
-<path d="M360.00,144.00 A216.0,216.0 0 0 1 547.06,252.00 L427.55,321.00 A78.0,78.0 0 0 0 360.00,282.00 Z" fill="#dd5454" stroke="#fff" stroke-width="1" class="ring d0" data-path="/TypeScript" data-size="5 projects (17%)" data-pct="17"><title>/TypeScript
+<path d="M360.00,144.00 A216.0,216.0 0 0 1 550.84,258.82 L428.91,323.46 A78.0,78.0 0 0 0 360.00,282.00 Z" fill="#dd5454" stroke="#fff" stroke-width="1" class="ring d0" data-path="/TypeScript" data-size="5 projects (17%)" data-pct="17"><title>/TypeScript
 5 projects (17%)</title></path>
-<path d="M360.00,6.00 A354.0,354.0 0 0 1 433.60,13.74 L404.91,148.72 A216.0,216.0 0 0 0 360.00,144.00 Z" fill="#c44a4a" stroke="#fff" stroke-width="1" class="ring d1" data-path="/TypeScript/KaprukaAgentChallenge2026" data-size="1 project" data-pct="3.3"><title>/TypeScript/KaprukaAgentChallenge2026
+<path d="M360.00,6.00 A354.0,354.0 0 0 1 436.10,14.28 L406.43,149.05 A216.0,216.0 0 0 0 360.00,144.00 Z" fill="#c44a4a" stroke="#fff" stroke-width="1" class="ring d1" data-path="/TypeScript/KaprukaAgentChallenge2026" data-size="1 project" data-pct="3.4"><title>/TypeScript/KaprukaAgentChallenge2026
 1 project</title></path>
-<path d="M433.60,13.74 A354.0,354.0 0 0 1 503.98,36.60 L447.86,162.67 A216.0,216.0 0 0 0 404.91,148.72 Z" fill="#b74545" stroke="#fff" stroke-width="1" class="ring d1" data-path="/TypeScript/cv_pipeline" data-size="1 project" data-pct="3.3"><title>/TypeScript/cv_pipeline
+<path d="M436.10,14.28 A354.0,354.0 0 0 1 508.64,38.72 L450.70,163.96 A216.0,216.0 0 0 0 406.43,149.05 Z" fill="#b74545" stroke="#fff" stroke-width="1" class="ring d1" data-path="/TypeScript/cv_pipeline" data-size="1 project" data-pct="3.4"><title>/TypeScript/cv_pipeline
 1 project</title></path>
-<path d="M503.98,36.60 A354.0,354.0 0 0 1 568.08,73.61 L486.96,185.25 A216.0,216.0 0 0 0 447.86,162.67 Z" fill="#aa4040" stroke="#fff" stroke-width="1" class="ring d1" data-path="/TypeScript/LumiSign" data-size="1 project" data-pct="3.3"><title>/TypeScript/LumiSign
+<path d="M508.64,38.72 A354.0,354.0 0 0 1 574.23,78.18 L490.72,188.04 A216.0,216.0 0 0 0 450.70,163.96 Z" fill="#aa4040" stroke="#fff" stroke-width="1" class="ring d1" data-path="/TypeScript/LumiSign" data-size="1 project" data-pct="3.4"><title>/TypeScript/LumiSign
 1 project</title></path>
-<path d="M568.08,73.61 A354.0,354.0 0 0 1 623.07,123.13 L520.52,215.47 A216.0,216.0 0 0 0 486.96,185.25 Z" fill="#9e3c3c" stroke="#fff" stroke-width="1" class="ring d1" data-path="/TypeScript/MedWikiAgentic" data-size="1 project" data-pct="3.3"><title>/TypeScript/MedWikiAgentic
+<path d="M574.23,78.18 A354.0,354.0 0 0 1 629.81,130.83 L524.63,220.16 A216.0,216.0 0 0 0 490.72,188.04 Z" fill="#9e3c3c" stroke="#fff" stroke-width="1" class="ring d1" data-path="/TypeScript/MedWikiAgentic" data-size="1 project" data-pct="3.4"><title>/TypeScript/MedWikiAgentic
 1 project</title></path>
-<path d="M623.07,123.13 A354.0,354.0 0 0 1 666.57,183.00 L547.06,252.00 A216.0,216.0 0 0 0 520.52,215.47 Z" fill="#c44a4a" stroke="#fff" stroke-width="1" class="ring d1" data-path="/TypeScript/STSBookingSystem" data-size="1 project" data-pct="3.3"><title>/TypeScript/STSBookingSystem
+<path d="M629.81,130.83 A354.0,354.0 0 0 1 672.76,194.18 L550.84,258.82 A216.0,216.0 0 0 0 524.63,220.16 Z" fill="#c44a4a" stroke="#fff" stroke-width="1" class="ring d1" data-path="/TypeScript/STSBookingSystem" data-size="1 project" data-pct="3.4"><title>/TypeScript/STSBookingSystem
 1 project</title></path>
-<path d="M547.06,252.00 A216.0,216.0 0 0 1 547.06,468.00 L427.55,399.00 A78.0,78.0 0 0 0 427.55,321.00 Z" fill="#dda654" stroke="#fff" stroke-width="1" class="ring d0" data-path="/CSS" data-size="5 projects (17%)" data-pct="17"><title>/CSS
+<path d="M550.84,258.82 A216.0,216.0 0 0 1 538.78,481.22 L424.56,403.77 A78.0,78.0 0 0 0 428.91,323.46 Z" fill="#ddb054" stroke="#fff" stroke-width="1" class="ring d0" data-path="/CSS" data-size="5 projects (17%)" data-pct="17"><title>/CSS
 5 projects (17%)</title></path>
-<path d="M666.57,183.00 A354.0,354.0 0 0 1 696.67,250.61 L565.43,293.25 A216.0,216.0 0 0 0 547.06,252.00 Z" fill="#c4934a" stroke="#fff" stroke-width="1" class="ring d1" data-path="/CSS/KaprukaAgentChallenge2026" data-size="1 project" data-pct="3.3"><title>/CSS/KaprukaAgentChallenge2026
+<path d="M672.76,194.18 A354.0,354.0 0 0 1 701.10,265.29 L568.13,302.21 A216.0,216.0 0 0 0 550.84,258.82 Z" fill="#c49b4a" stroke="#fff" stroke-width="1" class="ring d1" data-path="/CSS/KaprukaAgentChallenge2026" data-size="1 project" data-pct="3.4"><title>/CSS/KaprukaAgentChallenge2026
 1 project</title></path>
-<path d="M696.67,250.61 A354.0,354.0 0 0 1 712.06,323.00 L574.82,337.42 A216.0,216.0 0 0 0 565.43,293.25 Z" fill="#b78a45" stroke="#fff" stroke-width="1" class="ring d1" data-path="/CSS/cv_pipeline" data-size="1 project" data-pct="3.3"><title>/CSS/cv_pipeline
+<path d="M701.10,265.29 A354.0,354.0 0 0 1 713.48,340.83 L575.68,348.31 A216.0,216.0 0 0 0 568.13,302.21 Z" fill="#b79145" stroke="#fff" stroke-width="1" class="ring d1" data-path="/CSS/cv_pipeline" data-size="1 project" data-pct="3.4"><title>/CSS/cv_pipeline
 1 project</title></path>
-<path d="M712.06,323.00 A354.0,354.0 0 0 1 712.06,397.00 L574.82,382.58 A216.0,216.0 0 0 0 574.82,337.42 Z" fill="#aa8040" stroke="#fff" stroke-width="1" class="ring d1" data-path="/CSS/LumiSign" data-size="1 project" data-pct="3.3"><title>/CSS/LumiSign
+<path d="M713.48,340.83 A354.0,354.0 0 0 1 709.34,417.27 L573.15,394.94 A216.0,216.0 0 0 0 575.68,348.31 Z" fill="#aa8740" stroke="#fff" stroke-width="1" class="ring d1" data-path="/CSS/LumiSign" data-size="1 project" data-pct="3.4"><title>/CSS/LumiSign
 1 project</title></path>
-<path d="M712.06,397.00 A354.0,354.0 0 0 1 696.67,469.39 L565.43,426.75 A216.0,216.0 0 0 0 574.82,382.58 Z" fill="#9e763c" stroke="#fff" stroke-width="1" class="ring d1" data-path="/CSS/MedWikiAgentic" data-size="1 project" data-pct="3.3"><title>/CSS/MedWikiAgentic
+<path d="M709.34,417.27 A354.0,354.0 0 0 1 688.86,491.03 L560.66,439.95 A216.0,216.0 0 0 0 573.15,394.94 Z" fill="#9e7d3c" stroke="#fff" stroke-width="1" class="ring d1" data-path="/CSS/MedWikiAgentic" data-size="1 project" data-pct="3.4"><title>/CSS/MedWikiAgentic
 1 project</title></path>
-<path d="M696.67,469.39 A354.0,354.0 0 0 1 666.57,537.00 L547.06,468.00 A216.0,216.0 0 0 0 565.43,426.75 Z" fill="#c4934a" stroke="#fff" stroke-width="1" class="ring d1" data-path="/CSS/STSBookingSystem" data-size="1 project" data-pct="3.3"><title>/CSS/STSBookingSystem
+<path d="M688.86,491.03 A354.0,354.0 0 0 1 653.00,558.66 L538.78,481.22 A216.0,216.0 0 0 0 560.66,439.95 Z" fill="#c49b4a" stroke="#fff" stroke-width="1" class="ring d1" data-path="/CSS/STSBookingSystem" data-size="1 project" data-pct="3.4"><title>/CSS/STSBookingSystem
 1 project</title></path>
-<path d="M547.06,468.00 A216.0,216.0 0 0 1 404.91,571.28 L376.22,436.30 A78.0,78.0 0 0 0 427.55,399.00 Z" fill="#c2dd54" stroke="#fff" stroke-width="1" class="ring d0" data-path="/Dockerfile" data-size="4 projects (13%)" data-pct="13"><title>/Dockerfile
-4 projects (13%)</title></path>
-<path d="M666.57,537.00 A354.0,354.0 0 0 1 623.07,596.87 L520.52,504.53 A216.0,216.0 0 0 0 547.06,468.00 Z" fill="#acc44a" stroke="#fff" stroke-width="1" class="ring d1" data-path="/Dockerfile/KaprukaAgentChallenge2026" data-size="1 project" data-pct="3.3"><title>/Dockerfile/KaprukaAgentChallenge2026
+<path d="M538.78,481.22 A216.0,216.0 0 0 1 383.35,574.73 L368.43,437.54 A78.0,78.0 0 0 0 424.56,403.77 Z" fill="#b0dd54" stroke="#fff" stroke-width="1" class="ring d0" data-path="/Dockerfile" data-size="4 projects (14%)" data-pct="14"><title>/Dockerfile
+4 projects (14%)</title></path>
+<path d="M653.00,558.66 A354.0,354.0 0 0 1 603.45,617.00 L508.54,516.82 A216.0,216.0 0 0 0 538.78,481.22 Z" fill="#9bc44a" stroke="#fff" stroke-width="1" class="ring d1" data-path="/Dockerfile/KaprukaAgentChallenge2026" data-size="1 project" data-pct="3.4"><title>/Dockerfile/KaprukaAgentChallenge2026
 1 project</title></path>
-<path d="M623.07,596.87 A354.0,354.0 0 0 1 568.08,646.39 L486.96,534.75 A216.0,216.0 0 0 0 520.52,504.53 Z" fill="#a0b745" stroke="#fff" stroke-width="1" class="ring d1" data-path="/Dockerfile/cv_pipeline" data-size="1 project" data-pct="3.3"><title>/Dockerfile/cv_pipeline
+<path d="M603.45,617.00 A354.0,354.0 0 0 1 542.51,663.33 L471.36,545.08 A216.0,216.0 0 0 0 508.54,516.82 Z" fill="#91b745" stroke="#fff" stroke-width="1" class="ring d1" data-path="/Dockerfile/cv_pipeline" data-size="1 project" data-pct="3.4"><title>/Dockerfile/cv_pipeline
 1 project</title></path>
-<path d="M568.08,646.39 A354.0,354.0 0 0 1 503.98,683.40 L447.86,557.33 A216.0,216.0 0 0 0 486.96,534.75 Z" fill="#95aa40" stroke="#fff" stroke-width="1" class="ring d1" data-path="/Dockerfile/MedWikiAgentic" data-size="1 project" data-pct="3.3"><title>/Dockerfile/MedWikiAgentic
+<path d="M542.51,663.33 A354.0,354.0 0 0 1 473.03,695.47 L428.97,564.69 A216.0,216.0 0 0 0 471.36,545.08 Z" fill="#87aa40" stroke="#fff" stroke-width="1" class="ring d1" data-path="/Dockerfile/MedWikiAgentic" data-size="1 project" data-pct="3.4"><title>/Dockerfile/MedWikiAgentic
 1 project</title></path>
-<path d="M503.98,683.40 A354.0,354.0 0 0 1 433.60,706.26 L404.91,571.28 A216.0,216.0 0 0 0 447.86,557.33 Z" fill="#8a9e3c" stroke="#fff" stroke-width="1" class="ring d1" data-path="/Dockerfile/STSBookingSystem" data-size="1 project" data-pct="3.3"><title>/Dockerfile/STSBookingSystem
+<path d="M473.03,695.47 A354.0,354.0 0 0 1 398.27,711.92 L383.35,574.73 A216.0,216.0 0 0 0 428.97,564.69 Z" fill="#7d9e3c" stroke="#fff" stroke-width="1" class="ring d1" data-path="/Dockerfile/STSBookingSystem" data-size="1 project" data-pct="3.4"><title>/Dockerfile/STSBookingSystem
 1 project</title></path>
-<path d="M404.91,571.28 A216.0,216.0 0 0 1 233.04,534.75 L314.15,423.10 A78.0,78.0 0 0 0 376.22,436.30 Z" fill="#6fdd54" stroke="#fff" stroke-width="1" class="ring d0" data-path="/JavaScript" data-size="4 projects (13%)" data-pct="13"><title>/JavaScript
-4 projects (13%)</title></path>
-<path d="M433.60,706.26 A354.0,354.0 0 0 1 360.00,714.00 L360.00,576.00 A216.0,216.0 0 0 0 404.91,571.28 Z" fill="#62c44a" stroke="#fff" stroke-width="1" class="ring d1" data-path="/JavaScript/KaprukaAgentChallenge2026" data-size="1 project" data-pct="3.3"><title>/JavaScript/KaprukaAgentChallenge2026
+<path d="M383.35,574.73 A216.0,216.0 0 0 1 211.46,516.82 L306.36,416.63 A78.0,78.0 0 0 0 368.43,437.54 Z" fill="#54dd54" stroke="#fff" stroke-width="1" class="ring d0" data-path="/JavaScript" data-size="4 projects (14%)" data-pct="14"><title>/JavaScript
+4 projects (14%)</title></path>
+<path d="M398.27,711.92 A354.0,354.0 0 0 1 321.73,711.92 L336.65,574.73 A216.0,216.0 0 0 0 383.35,574.73 Z" fill="#4ac44a" stroke="#fff" stroke-width="1" class="ring d1" data-path="/JavaScript/KaprukaAgentChallenge2026" data-size="1 project" data-pct="3.4"><title>/JavaScript/KaprukaAgentChallenge2026
 1 project</title></path>
-<path d="M360.00,714.00 A354.0,354.0 0 0 1 286.40,706.26 L315.09,571.28 A216.0,216.0 0 0 0 360.00,576.00 Z" fill="#5cb745" stroke="#fff" stroke-width="1" class="ring d1" data-path="/JavaScript/cv_pipeline" data-size="1 project" data-pct="3.3"><title>/JavaScript/cv_pipeline
+<path d="M321.73,711.92 A354.0,354.0 0 0 1 246.97,695.47 L291.03,564.69 A216.0,216.0 0 0 0 336.65,574.73 Z" fill="#45b745" stroke="#fff" stroke-width="1" class="ring d1" data-path="/JavaScript/cv_pipeline" data-size="1 project" data-pct="3.4"><title>/JavaScript/cv_pipeline
 1 project</title></path>
-<path d="M286.40,706.26 A354.0,354.0 0 0 1 216.02,683.40 L272.14,557.33 A216.0,216.0 0 0 0 315.09,571.28 Z" fill="#56aa40" stroke="#fff" stroke-width="1" class="ring d1" data-path="/JavaScript/LumiSign" data-size="1 project" data-pct="3.3"><title>/JavaScript/LumiSign
+<path d="M246.97,695.47 A354.0,354.0 0 0 1 177.49,663.33 L248.64,545.08 A216.0,216.0 0 0 0 291.03,564.69 Z" fill="#40aa40" stroke="#fff" stroke-width="1" class="ring d1" data-path="/JavaScript/LumiSign" data-size="1 project" data-pct="3.4"><title>/JavaScript/LumiSign
 1 project</title></path>
-<path d="M216.02,683.40 A354.0,354.0 0 0 1 151.92,646.39 L233.04,534.75 A216.0,216.0 0 0 0 272.14,557.33 Z" fill="#4f9e3c" stroke="#fff" stroke-width="1" class="ring d1" data-path="/JavaScript/MedWikiAgentic" data-size="1 project" data-pct="3.3"><title>/JavaScript/MedWikiAgentic
+<path d="M177.49,663.33 A354.0,354.0 0 0 1 116.55,617.00 L211.46,516.82 A216.0,216.0 0 0 0 248.64,545.08 Z" fill="#3c9e3c" stroke="#fff" stroke-width="1" class="ring d1" data-path="/JavaScript/MedWikiAgentic" data-size="1 project" data-pct="3.4"><title>/JavaScript/MedWikiAgentic
 1 project</title></path>
-<path d="M233.04,534.75 A216.0,216.0 0 0 1 145.18,382.58 L282.43,368.15 A78.0,78.0 0 0 0 314.15,423.10 Z" fill="#54dd8b" stroke="#fff" stroke-width="1" class="ring d0" data-path="/HTML" data-size="4 projects (13%)" data-pct="13"><title>/HTML
-4 projects (13%)</title></path>
-<path d="M151.92,646.39 A354.0,354.0 0 0 1 96.93,596.87 L199.48,504.53 A216.0,216.0 0 0 0 233.04,534.75 Z" fill="#4ac47b" stroke="#fff" stroke-width="1" class="ring d1" data-path="/HTML/cv_pipeline" data-size="1 project" data-pct="3.3"><title>/HTML/cv_pipeline
+<path d="M211.46,516.82 A216.0,216.0 0 0 1 144.32,348.31 L282.11,355.78 A78.0,78.0 0 0 0 306.36,416.63 Z" fill="#54ddb0" stroke="#fff" stroke-width="1" class="ring d0" data-path="/HTML" data-size="4 projects (14%)" data-pct="14"><title>/HTML
+4 projects (14%)</title></path>
+<path d="M116.55,617.00 A354.0,354.0 0 0 1 67.00,558.66 L181.22,481.22 A216.0,216.0 0 0 0 211.46,516.82 Z" fill="#4ac49b" stroke="#fff" stroke-width="1" class="ring d1" data-path="/HTML/cv_pipeline" data-size="1 project" data-pct="3.4"><title>/HTML/cv_pipeline
 1 project</title></path>
-<path d="M96.93,596.87 A354.0,354.0 0 0 1 53.43,537.00 L172.94,468.00 A216.0,216.0 0 0 0 199.48,504.53 Z" fill="#45b773" stroke="#fff" stroke-width="1" class="ring d1" data-path="/HTML/LumiSign" data-size="1 project" data-pct="3.3"><title>/HTML/LumiSign
+<path d="M67.00,558.66 A354.0,354.0 0 0 1 31.14,491.03 L159.34,439.95 A216.0,216.0 0 0 0 181.22,481.22 Z" fill="#45b791" stroke="#fff" stroke-width="1" class="ring d1" data-path="/HTML/LumiSign" data-size="1 project" data-pct="3.4"><title>/HTML/LumiSign
 1 project</title></path>
-<path d="M53.43,537.00 A354.0,354.0 0 0 1 23.33,469.39 L154.57,426.75 A216.0,216.0 0 0 0 172.94,468.00 Z" fill="#40aa6b" stroke="#fff" stroke-width="1" class="ring d1" data-path="/HTML/MedWikiAgentic" data-size="1 project" data-pct="3.3"><title>/HTML/MedWikiAgentic
+<path d="M31.14,491.03 A354.0,354.0 0 0 1 10.66,417.27 L146.85,394.94 A216.0,216.0 0 0 0 159.34,439.95 Z" fill="#40aa87" stroke="#fff" stroke-width="1" class="ring d1" data-path="/HTML/MedWikiAgentic" data-size="1 project" data-pct="3.4"><title>/HTML/MedWikiAgentic
 1 project</title></path>
-<path d="M23.33,469.39 A354.0,354.0 0 0 1 7.94,397.00 L145.18,382.58 A216.0,216.0 0 0 0 154.57,426.75 Z" fill="#3c9e63" stroke="#fff" stroke-width="1" class="ring d1" data-path="/HTML/STSBookingSystem" data-size="1 project" data-pct="3.3"><title>/HTML/STSBookingSystem
+<path d="M10.66,417.27 A354.0,354.0 0 0 1 6.52,340.83 L144.32,348.31 A216.0,216.0 0 0 0 146.85,394.94 Z" fill="#3c9e7d" stroke="#fff" stroke-width="1" class="ring d1" data-path="/HTML/STSBookingSystem" data-size="1 project" data-pct="3.4"><title>/HTML/STSBookingSystem
 1 project</title></path>
-<path d="M145.18,382.58 A216.0,216.0 0 0 1 172.94,252.00 L292.45,321.00 A78.0,78.0 0 0 0 282.43,368.15 Z" fill="#54dddd" stroke="#fff" stroke-width="1" class="ring d0" data-path="/Python" data-size="3 projects (10%)" data-pct="10"><title>/Python
+<path d="M144.32,348.31 A216.0,216.0 0 0 1 195.37,220.16 L300.55,309.50 A78.0,78.0 0 0 0 282.11,355.78 Z" fill="#54b0dd" stroke="#fff" stroke-width="1" class="ring d0" data-path="/Python" data-size="3 projects (10%)" data-pct="10"><title>/Python
 3 projects (10%)</title></path>
-<path d="M7.94,397.00 A354.0,354.0 0 0 1 7.94,323.00 L145.18,337.42 A216.0,216.0 0 0 0 145.18,382.58 Z" fill="#4ac4c4" stroke="#fff" stroke-width="1" class="ring d1" data-path="/Python/LumiSign" data-size="1 project" data-pct="3.3"><title>/Python/LumiSign
+<path d="M6.52,340.83 A354.0,354.0 0 0 1 18.90,265.29 L151.87,302.21 A216.0,216.0 0 0 0 144.32,348.31 Z" fill="#4a9bc4" stroke="#fff" stroke-width="1" class="ring d1" data-path="/Python/LumiSign" data-size="1 project" data-pct="3.4"><title>/Python/LumiSign
 1 project</title></path>
-<path d="M7.94,323.00 A354.0,354.0 0 0 1 23.33,250.61 L154.57,293.25 A216.0,216.0 0 0 0 145.18,337.42 Z" fill="#45b7b7" stroke="#fff" stroke-width="1" class="ring d1" data-path="/Python/MedWikiAgentic" data-size="1 project" data-pct="3.3"><title>/Python/MedWikiAgentic
+<path d="M18.90,265.29 A354.0,354.0 0 0 1 47.24,194.18 L169.16,258.82 A216.0,216.0 0 0 0 151.87,302.21 Z" fill="#4591b7" stroke="#fff" stroke-width="1" class="ring d1" data-path="/Python/MedWikiAgentic" data-size="1 project" data-pct="3.4"><title>/Python/MedWikiAgentic
 1 project</title></path>
-<path d="M23.33,250.61 A354.0,354.0 0 0 1 53.43,183.00 L172.94,252.00 A216.0,216.0 0 0 0 154.57,293.25 Z" fill="#40aaaa" stroke="#fff" stroke-width="1" class="ring d1" data-path="/Python/STSBookingSystem" data-size="1 project" data-pct="3.3"><title>/Python/STSBookingSystem
+<path d="M47.24,194.18 A354.0,354.0 0 0 1 90.19,130.83 L195.37,220.16 A216.0,216.0 0 0 0 169.16,258.82 Z" fill="#4087aa" stroke="#fff" stroke-width="1" class="ring d1" data-path="/Python/STSBookingSystem" data-size="1 project" data-pct="3.4"><title>/Python/STSBookingSystem
 1 project</title></path>
-<path d="M172.94,252.00 A216.0,216.0 0 0 1 233.04,185.25 L314.15,296.90 A78.0,78.0 0 0 0 292.45,321.00 Z" fill="#548bdd" stroke="#fff" stroke-width="1" class="ring d0" data-path="/Java" data-size="2 projects (6.7%)" data-pct="6.7"><title>/Java
-2 projects (6.7%)</title></path>
-<path d="M53.43,183.00 A354.0,354.0 0 0 1 96.93,123.13 L199.48,215.47 A216.0,216.0 0 0 0 172.94,252.00 Z" fill="#4a7bc4" stroke="#fff" stroke-width="1" class="ring d1" data-path="/Java/Maze-Traversal" data-size="1 project" data-pct="3.3"><title>/Java/Maze-Traversal
+<path d="M195.37,220.16 A216.0,216.0 0 0 1 269.30,163.96 L327.25,289.21 A78.0,78.0 0 0 0 300.55,309.50 Z" fill="#5454dd" stroke="#fff" stroke-width="1" class="ring d0" data-path="/Java" data-size="2 projects (6.9%)" data-pct="6.9"><title>/Java
+2 projects (6.9%)</title></path>
+<path d="M90.19,130.83 A354.0,354.0 0 0 1 145.77,78.18 L229.28,188.04 A216.0,216.0 0 0 0 195.37,220.16 Z" fill="#4a4ac4" stroke="#fff" stroke-width="1" class="ring d1" data-path="/Java/Maze-Traversal" data-size="1 project" data-pct="3.4"><title>/Java/Maze-Traversal
 1 project</title></path>
-<path d="M96.93,123.13 A354.0,354.0 0 0 1 151.92,73.61 L233.04,185.25 A216.0,216.0 0 0 0 199.48,215.47 Z" fill="#4573b7" stroke="#fff" stroke-width="1" class="ring d1" data-path="/Java/Java_Concurrency" data-size="1 project" data-pct="3.3"><title>/Java/Java_Concurrency
+<path d="M145.77,78.18 A354.0,354.0 0 0 1 211.36,38.72 L269.30,163.96 A216.0,216.0 0 0 0 229.28,188.04 Z" fill="#4545b7" stroke="#fff" stroke-width="1" class="ring d1" data-path="/Java/Java_Concurrency" data-size="1 project" data-pct="3.4"><title>/Java/Java_Concurrency
 1 project</title></path>
-<path d="M233.04,185.25 A216.0,216.0 0 0 1 272.14,162.67 L328.27,288.74 A78.0,78.0 0 0 0 314.15,296.90 Z" fill="#6f54dd" stroke="#fff" stroke-width="1" class="ring d0" data-path="/QML" data-size="1 projects (3.3%)" data-pct="3.3"><title>/QML
-1 projects (3.3%)</title></path>
-<path d="M151.92,73.61 A354.0,354.0 0 0 1 216.02,36.60 L272.14,162.67 A216.0,216.0 0 0 0 233.04,185.25 Z" fill="#624ac4" stroke="#fff" stroke-width="1" class="ring d1" data-path="/QML/asciiartclock" data-size="1 project" data-pct="3.3"><title>/QML/asciiartclock
+<path d="M269.30,163.96 A216.0,216.0 0 0 1 313.57,149.05 L343.23,283.82 A78.0,78.0 0 0 0 327.25,289.21 Z" fill="#b054dd" stroke="#fff" stroke-width="1" class="ring d0" data-path="/QML" data-size="1 projects (3.4%)" data-pct="3.4"><title>/QML
+1 projects (3.4%)</title></path>
+<path d="M211.36,38.72 A354.0,354.0 0 0 1 283.90,14.28 L313.57,149.05 A216.0,216.0 0 0 0 269.30,163.96 Z" fill="#9b4ac4" stroke="#fff" stroke-width="1" class="ring d1" data-path="/QML/asciiartclock" data-size="1 project" data-pct="3.4"><title>/QML/asciiartclock
 1 project</title></path>
-<path d="M272.14,162.67 A216.0,216.0 0 0 1 315.09,148.72 L343.78,283.70 A78.0,78.0 0 0 0 328.27,288.74 Z" fill="#c254dd" stroke="#fff" stroke-width="1" class="ring d0" data-path="/Shell" data-size="1 projects (3.3%)" data-pct="3.3"><title>/Shell
-1 projects (3.3%)</title></path>
-<path d="M216.02,36.60 A354.0,354.0 0 0 1 286.40,13.74 L315.09,148.72 A216.0,216.0 0 0 0 272.14,162.67 Z" fill="#ac4ac4" stroke="#fff" stroke-width="1" class="ring d1" data-path="/Shell/STSBookingSystem" data-size="1 project" data-pct="3.3"><title>/Shell/STSBookingSystem
-1 project</title></path>
-<path d="M315.09,148.72 A216.0,216.0 0 0 1 360.00,144.00 L360.00,282.00 A78.0,78.0 0 0 0 343.78,283.70 Z" fill="#dd54a6" stroke="#fff" stroke-width="1" class="ring d0" data-path="/other" data-size="1 projects (3.3%)" data-pct="3.3"><title>/other
-1 projects (3.3%)</title></path>
-<path d="M286.40,13.74 A354.0,354.0 0 0 1 360.00,6.00 L360.00,144.00 A216.0,216.0 0 0 0 315.09,148.72 Z" fill="#c44a93" stroke="#fff" stroke-width="1" class="ring d1" data-path="/other/ravijaanthony" data-size="1 project" data-pct="3.3"><title>/other/ravijaanthony
+<path d="M313.57,149.05 A216.0,216.0 0 0 1 360.00,144.00 L360.00,282.00 A78.0,78.0 0 0 0 343.23,283.82 Z" fill="#dd54b0" stroke="#fff" stroke-width="1" class="ring d0" data-path="/Shell" data-size="1 projects (3.4%)" data-pct="3.4"><title>/Shell
+1 projects (3.4%)</title></path>
+<path d="M283.90,14.28 A354.0,354.0 0 0 1 360.00,6.00 L360.00,144.00 A216.0,216.0 0 0 0 313.57,149.05 Z" fill="#c44a9b" stroke="#fff" stroke-width="1" class="ring d1" data-path="/Shell/STSBookingSystem" data-size="1 project" data-pct="3.4"><title>/Shell/STSBookingSystem
 1 project</title></path>
 <circle cx="360" cy="360" r="72" fill="#202020"/>
-<text x="360" y="352" fill="#eee" font-size="30" font-weight="bold" text-anchor="middle" dominant-baseline="middle">9</text>
+<text x="360" y="352" fill="#eee" font-size="30" font-weight="bold" text-anchor="middle" dominant-baseline="middle">8</text>
 <text x="360" y="378" fill="#aaa" font-size="11" text-anchor="middle" dominant-baseline="middle" letter-spacing="2">PROJECTS</text></svg>
