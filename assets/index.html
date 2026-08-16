@@ -1,78 +1,57 @@
 <!doctype html><html><head><meta charset="utf-8"><title>ravijaanthony</title>
 <style>body{background:#191919;margin:0;display:grid;place-items:center;min-height:100vh}
-svg{width:min(92vmin,760px);height:auto}path{cursor:pointer}path:hover{filter:brightness(.65)}
+#wrap{position:relative}svg{width:min(92vmin,760px);height:auto}
+path{cursor:pointer}path:hover{filter:brightness(.65)}
+#crumb{position:absolute;top:8px;left:12px;font:13px monospace;color:#999;cursor:pointer;display:none}
+#crumb:hover{color:#fff}
 #tip{position:fixed;display:none;background:#2b2b2b;color:#ddd;border:1px solid #555;padding:8px 12px;font:13px/1.6 monospace;border-radius:4px;pointer-events:none;white-space:nowrap}</style></head><body>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 720" font-family="monospace">
-<rect width="720" height="720" fill="#191919"/>
-<style>.ring{transform-box:view-box;transform-origin:50% 50%;animation:pop .7s cubic-bezier(.2,.8,.3,1) both}@keyframes pop{from{opacity:0;transform:scale(.7) rotate(-60deg)}to{opacity:1;transform:scale(1) rotate(0)}}.d0{animation-delay:0.00s}.d1{animation-delay:0.10s}.d2{animation-delay:0.20s}.d3{animation-delay:0.30s}.d4{animation-delay:0.40s}.d5{animation-delay:0.50s}.d6{animation-delay:0.60s}.d7{animation-delay:0.70s}.d8{animation-delay:0.80s}.d9{animation-delay:0.90s}.d10{animation-delay:1.00s}path:hover{filter:brightness(.65)}</style>
-<path d="M360.00,254.40 A105.6,105.6 0 1 1 302.00,448.25 L317.16,425.18 A78.0,78.0 0 1 0 360.00,282.00 Z" fill="#f25c5c" stroke="#fff" stroke-width="1" class="ring d0" data-path="/TypeScript/KaprukaAgentChallenge2026" data-size="814.9 KiB" data-pct="45"><title>/TypeScript/KaprukaAgentChallenge2026
-814.9 KiB (45%)</title></path>
-<path d="M302.00,448.25 A105.6,105.6 0 0 1 255.19,372.90 L282.58,369.53 A78.0,78.0 0 0 0 317.16,425.18 Z" fill="#e05555" stroke="#fff" stroke-width="1" class="ring d0" data-path="/TypeScript/LumiSign" data-size="189.7 KiB" data-pct="10"><title>/TypeScript/LumiSign
-189.7 KiB (10%)</title></path>
-<path d="M255.19,372.90 A105.6,105.6 0 0 1 265.06,313.77 L289.87,325.85 A78.0,78.0 0 0 0 282.58,369.53 Z" fill="#ce4e4e" stroke="#fff" stroke-width="1" class="ring d0" data-path="/TypeScript/MedWikiAgentic" data-size="126.0 KiB" data-pct="6.9"><title>/TypeScript/MedWikiAgentic
-126.0 KiB (6.9%)</title></path>
-<path d="M265.06,313.77 A105.6,105.6 0 0 1 289.59,281.30 L308.00,301.87 A78.0,78.0 0 0 0 289.87,325.85 Z" fill="#bc4747" stroke="#fff" stroke-width="1" class="ring d0" data-path="/TypeScript/STSBookingSystem" data-size="84.9 KiB" data-pct="4.7"><title>/TypeScript/STSBookingSystem
-84.9 KiB (4.7%)</title></path>
-<path d="M289.59,281.30 A105.6,105.6 0 0 1 297.93,274.57 L314.15,296.90 A78.0,78.0 0 0 0 308.00,301.87 Z" fill="#aa4040" stroke="#fff" stroke-width="1" class="ring d0" data-path="/TypeScript/cv_pipeline" data-size="22.2 KiB" data-pct="1.2"><title>/TypeScript/cv_pipeline
-22.2 KiB (1.2%)</title></path>
-<path d="M360.00,226.80 A133.2,133.2 0 0 1 441.87,254.93 L424.91,276.70 A105.6,105.6 0 0 0 360.00,254.40 Z" fill="#f2b65c" stroke="#fff" stroke-width="1" class="ring d1" data-path="/Python/STSBookingSystem" data-size="144.9 KiB" data-pct="8.0"><title>/Python/STSBookingSystem
-144.9 KiB (8.0%)</title></path>
-<path d="M441.87,254.93 A133.2,133.2 0 0 1 483.05,309.00 L457.55,319.57 A105.6,105.6 0 0 0 424.91,276.70 Z" fill="#e0a855" stroke="#fff" stroke-width="1" class="ring d1" data-path="/Python/LumiSign" data-size="112.9 KiB" data-pct="6.2"><title>/Python/LumiSign
-112.9 KiB (6.2%)</title></path>
-<path d="M483.05,309.00 A133.2,133.2 0 0 1 493.17,362.69 L465.58,362.14 A105.6,105.6 0 0 0 457.55,319.57 Z" fill="#ce9b4e" stroke="#fff" stroke-width="1" class="ring d1" data-path="/Python/MedWikiAgentic" data-size="90.4 KiB" data-pct="5.0"><title>/Python/MedWikiAgentic
-90.4 KiB (5.0%)</title></path>
-<path d="M360.00,199.20 A160.79999999999998,160.79999999999998 0 0 1 376.56,200.05 L373.71,227.51 A133.2,133.2 0 0 0 360.00,226.80 Z" fill="#d4f25c" stroke="#fff" stroke-width="1" class="ring d2" data-path="/CSS/STSBookingSystem" data-size="22.6 KiB" data-pct="1.2"><title>/CSS/STSBookingSystem
-22.6 KiB (1.2%)</title></path>
-<path d="M376.56,200.05 A160.79999999999998,160.79999999999998 0 0 1 386.06,201.33 L381.59,228.56 A133.2,133.2 0 0 0 373.71,227.51 Z" fill="#c4e055" stroke="#fff" stroke-width="1" class="ring d2" data-path="/CSS/KaprukaAgentChallenge2026" data-size="13.1 KiB" data-pct="0.7"><title>/CSS/KaprukaAgentChallenge2026
-13.1 KiB (0.7%)</title></path>
-<path d="M386.06,201.33 A160.79999999999998,160.79999999999998 0 0 1 395.41,203.15 L389.34,230.07 A133.2,133.2 0 0 0 381.59,228.56 Z" fill="#b4ce4e" stroke="#fff" stroke-width="1" class="ring d2" data-path="/CSS/cv_pipeline" data-size="13.0 KiB" data-pct="0.7"><title>/CSS/cv_pipeline
-13.0 KiB (0.7%)</title></path>
-<path d="M395.41,203.15 A160.79999999999998,160.79999999999998 0 0 1 399.33,204.09 L392.58,230.85 A133.2,133.2 0 0 0 389.34,230.07 Z" fill="#a5bc47" stroke="#fff" stroke-width="1" class="ring d2" data-path="/CSS/LumiSign" data-size="5.5 KiB" data-pct="0.3"><title>/CSS/LumiSign
-5.5 KiB (0.3%)</title></path>
-<path d="M399.33,204.09 A160.79999999999998,160.79999999999998 0 0 1 401.11,204.54 L394.05,231.23 A133.2,133.2 0 0 0 392.58,230.85 Z" fill="#95aa40" stroke="#fff" stroke-width="1" class="ring d2" data-path="/CSS/MedWikiAgentic" data-size="2.5 KiB" data-pct="0.1"><title>/CSS/MedWikiAgentic
-2.5 KiB (0.1%)</title></path>
-<path d="M360.00,171.60 A188.4,188.4 0 0 1 405.44,177.16 L398.78,203.95 A160.8,160.8 0 0 0 360.00,199.20 Z" fill="#7af25c" stroke="#fff" stroke-width="1" class="ring d3" data-path="/QML/asciiartclock" data-size="53.3 KiB" data-pct="2.9"><title>/QML/asciiartclock
-53.3 KiB (2.9%)</title></path>
-<path d="M360.00,144.00 A216.0,216.0 0 0 1 401.38,148.00 L396.09,175.09 A188.4,188.4 0 0 0 360.00,171.60 Z" fill="#5cf298" stroke="#fff" stroke-width="1" class="ring d4" data-path="/JavaScript/cv_pipeline" data-size="42.2 KiB" data-pct="2.3"><title>/JavaScript/cv_pipeline
-42.2 KiB (2.3%)</title></path>
-<path d="M401.38,148.00 A216.0,216.0 0 0 1 402.73,148.27 L397.27,175.32 A188.4,188.4 0 0 0 396.09,175.09 Z" fill="#55e08c" stroke="#fff" stroke-width="1" class="ring d4" data-path="/JavaScript/MedWikiAgentic" data-size="1.4 KiB" data-pct="0.1"><title>/JavaScript/MedWikiAgentic
-1.4 KiB (0.1%)</title></path>
-<path d="M402.73,148.27 A216.0,216.0 0 0 1 403.26,148.38 L397.73,175.42 A188.4,188.4 0 0 0 397.27,175.32 Z" fill="#4ece81" stroke="#fff" stroke-width="1" class="ring d4" data-path="/JavaScript/KaprukaAgentChallenge2026" data-size="559 B" data-pct="0.0"><title>/JavaScript/KaprukaAgentChallenge2026
-559 B (0.0%)</title></path>
-<path d="M403.26,148.38 A216.0,216.0 0 0 1 403.69,148.47 L398.11,175.49 A188.4,188.4 0 0 0 397.73,175.42 Z" fill="#47bc76" stroke="#fff" stroke-width="1" class="ring d4" data-path="/JavaScript/LumiSign" data-size="460 B" data-pct="0.0"><title>/JavaScript/LumiSign
-460 B (0.0%)</title></path>
-<path d="M360.00,116.40 A243.6,243.6 0 0 1 383.47,117.53 L380.81,145.00 A216.0,216.0 0 0 0 360.00,144.00 Z" fill="#5cf2f2" stroke="#fff" stroke-width="1" class="ring d5" data-path="/Java/Java_Concurrency" data-size="21.1 KiB" data-pct="1.2"><title>/Java/Java_Concurrency
-21.1 KiB (1.2%)</title></path>
-<path d="M383.47,117.53 A243.6,243.6 0 0 1 399.51,119.63 L395.03,146.86 A216.0,216.0 0 0 0 380.81,145.00 Z" fill="#55e0e0" stroke="#fff" stroke-width="1" class="ring d5" data-path="/Java/Maze-Traversal" data-size="14.5 KiB" data-pct="0.8"><title>/Java/Maze-Traversal
-14.5 KiB (0.8%)</title></path>
-<path d="M360.00,88.80 A271.20000000000005,271.20000000000005 0 0 1 401.96,92.07 L397.69,119.33 A243.60000000000002,243.60000000000002 0 0 0 360.00,116.40 Z" fill="#5c98f2" stroke="#fff" stroke-width="1" class="ring d6" data-path="/other/ravijaanthony" data-size="34.0 KiB" data-pct="1.9"><title>/other/ravijaanthony
-34.0 KiB (1.9%)</title></path>
-<path d="M360.00,61.20 A298.80000000000007,298.80000000000007 0 0 1 362.20,61.21 L362.00,88.81 A271.20000000000005,271.20000000000005 0 0 0 360.00,88.80 Z" fill="#7a5cf2" stroke="#fff" stroke-width="1" class="ring d7" data-path="/Dockerfile/MedWikiAgentic" data-size="1.6 KiB" data-pct="0.1"><title>/Dockerfile/MedWikiAgentic
-1.6 KiB (0.1%)</title></path>
-<path d="M362.20,61.21 A298.80000000000007,298.80000000000007 0 0 1 363.27,61.22 L362.97,88.82 A271.20000000000005,271.20000000000005 0 0 0 362.00,88.81 Z" fill="#7155e0" stroke="#fff" stroke-width="1" class="ring d7" data-path="/Dockerfile/KaprukaAgentChallenge2026" data-size="806 B" data-pct="0.0"><title>/Dockerfile/KaprukaAgentChallenge2026
-806 B (0.0%)</title></path>
-<path d="M363.27,61.22 A298.80000000000007,298.80000000000007 0 0 1 364.16,61.23 L363.78,88.83 A271.20000000000005,271.20000000000005 0 0 0 362.97,88.82 Z" fill="#684ece" stroke="#fff" stroke-width="1" class="ring d7" data-path="/Dockerfile/STSBookingSystem" data-size="666 B" data-pct="0.0"><title>/Dockerfile/STSBookingSystem
-666 B (0.0%)</title></path>
-<path d="M364.16,61.23 A298.80000000000007,298.80000000000007 0 0 1 364.89,61.24 L364.43,88.84 A271.20000000000005,271.20000000000005 0 0 0 363.78,88.83 Z" fill="#5f47bc" stroke="#fff" stroke-width="1" class="ring d7" data-path="/Dockerfile/cv_pipeline" data-size="544 B" data-pct="0.0"><title>/Dockerfile/cv_pipeline
-544 B (0.0%)</title></path>
-<path d="M360.00,33.60 A326.40000000000003,326.40000000000003 0 0 1 361.06,33.60 L360.97,61.20 A298.8,298.8 0 0 0 360.00,61.20 Z" fill="#d45cf2" stroke="#fff" stroke-width="1" class="ring d8" data-path="/HTML/cv_pipeline" data-size="726 B" data-pct="0.0"><title>/HTML/cv_pipeline
-726 B (0.0%)</title></path>
-<path d="M361.06,33.60 A326.40000000000003,326.40000000000003 0 0 1 362.08,33.61 L361.91,61.21 A298.8,298.8 0 0 0 360.97,61.20 Z" fill="#c455e0" stroke="#fff" stroke-width="1" class="ring d8" data-path="/HTML/MedWikiAgentic" data-size="705 B" data-pct="0.0"><title>/HTML/MedWikiAgentic
-705 B (0.0%)</title></path>
-<path d="M362.08,33.61 A326.40000000000003,326.40000000000003 0 0 1 363.01,33.61 L362.76,61.21 A298.8,298.8 0 0 0 361.91,61.21 Z" fill="#b44ece" stroke="#fff" stroke-width="1" class="ring d8" data-path="/HTML/STSBookingSystem" data-size="639 B" data-pct="0.0"><title>/HTML/STSBookingSystem
-639 B (0.0%)</title></path>
-<path d="M363.01,33.61 A326.40000000000003,326.40000000000003 0 0 1 363.48,33.62 L363.19,61.22 A298.8,298.8 0 0 0 362.76,61.21 Z" fill="#a547bc" stroke="#fff" stroke-width="1" class="ring d8" data-path="/HTML/LumiSign" data-size="323 B" data-pct="0.0"><title>/HTML/LumiSign
-323 B (0.0%)</title></path>
-<path d="M360.00,6.00 A354.0,354.0 0 0 1 361.88,6.00 L361.73,33.60 A326.4,326.4 0 0 0 360.00,33.60 Z" fill="#f25cb6" stroke="#fff" stroke-width="1" class="ring d9" data-path="/Shell/STSBookingSystem" data-size="1.2 KiB" data-pct="0.1"><title>/Shell/STSBookingSystem
-1.2 KiB (0.1%)</title></path>
-<circle cx="360" cy="360" r="72" fill="#202020"/>
-<text x="360" y="344" fill="#eee" font-size="30" font-weight="bold" text-anchor="middle" dominant-baseline="middle">9</text>
-<text x="360" y="366" fill="#aaa" font-size="11" text-anchor="middle" dominant-baseline="middle" letter-spacing="2">PROJECTS</text>
-<text x="360" y="386" fill="#888" font-size="12" text-anchor="middle" dominant-baseline="middle">1.8 MiB</text></svg>
+<div id="wrap"><div id="crumb">← back</div><div id="chart"></div></div>
 <div id="tip"></div>
 <script>
-const tip=document.getElementById('tip');
-for(const p of document.querySelectorAll('path[data-path]')){
-p.addEventListener('mousemove',e=>{tip.innerHTML=p.dataset.path+'<br>'+p.dataset.size+'<br>'+p.dataset.pct+'% of total';tip.style.display='block';tip.style.left=(e.clientX+14)+'px';tip.style.top=(e.clientY+10)+'px'});
-p.addEventListener('mouseleave',()=>tip.style.display='none')}
+const DATA={"name": "ravijaanthony", "value": 30, "children": [{"name": "TypeScript", "_kind": "lang", "value": 5, "children": [{"name": "KaprukaAgentChallenge2026", "_kind": "repo", "value": 1}, {"name": "cv_pipeline", "_kind": "repo", "value": 1}, {"name": "LumiSign", "_kind": "repo", "value": 1}, {"name": "MedWikiAgentic", "_kind": "repo", "value": 1}, {"name": "STSBookingSystem", "_kind": "repo", "value": 1}]}, {"name": "CSS", "_kind": "lang", "value": 5, "children": [{"name": "KaprukaAgentChallenge2026", "_kind": "repo", "value": 1}, {"name": "cv_pipeline", "_kind": "repo", "value": 1}, {"name": "LumiSign", "_kind": "repo", "value": 1}, {"name": "MedWikiAgentic", "_kind": "repo", "value": 1}, {"name": "STSBookingSystem", "_kind": "repo", "value": 1}]}, {"name": "Dockerfile", "_kind": "lang", "value": 4, "children": [{"name": "KaprukaAgentChallenge2026", "_kind": "repo", "value": 1}, {"name": "cv_pipeline", "_kind": "repo", "value": 1}, {"name": "MedWikiAgentic", "_kind": "repo", "value": 1}, {"name": "STSBookingSystem", "_kind": "repo", "value": 1}]}, {"name": "JavaScript", "_kind": "lang", "value": 4, "children": [{"name": "KaprukaAgentChallenge2026", "_kind": "repo", "value": 1}, {"name": "cv_pipeline", "_kind": "repo", "value": 1}, {"name": "LumiSign", "_kind": "repo", "value": 1}, {"name": "MedWikiAgentic", "_kind": "repo", "value": 1}]}, {"name": "HTML", "_kind": "lang", "value": 4, "children": [{"name": "cv_pipeline", "_kind": "repo", "value": 1}, {"name": "LumiSign", "_kind": "repo", "value": 1}, {"name": "MedWikiAgentic", "_kind": "repo", "value": 1}, {"name": "STSBookingSystem", "_kind": "repo", "value": 1}]}, {"name": "Python", "_kind": "lang", "value": 3, "children": [{"name": "LumiSign", "_kind": "repo", "value": 1}, {"name": "MedWikiAgentic", "_kind": "repo", "value": 1}, {"name": "STSBookingSystem", "_kind": "repo", "value": 1}]}, {"name": "Java", "_kind": "lang", "value": 2, "children": [{"name": "Maze-Traversal", "_kind": "repo", "value": 1}, {"name": "Java_Concurrency", "_kind": "repo", "value": 1}]}, {"name": "QML", "_kind": "lang", "value": 1, "children": [{"name": "asciiartclock", "_kind": "repo", "value": 1}]}, {"name": "Shell", "_kind": "lang", "value": 1, "children": [{"name": "STSBookingSystem", "_kind": "repo", "value": 1}]}, {"name": "other", "_kind": "lang", "value": 1, "children": [{"name": "ravijaanthony", "_kind": "repo", "value": 1}]}], "_projects": 9};
+const S=720,C=360,HOLE=78,TAU=2*Math.PI;
+let view=DATA,stack=[],idmap=[];
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+const dep=n=>n.children&&n.children.length?1+Math.max(...n.children.map(dep)):1;
+function hsv(h,s,v){const f=h*6,i=Math.floor(f),t=f-i,p=v*(1-s),q=v*(1-s*t),w=v*(1-s*(1-t));
+const m=[[v,w,p],[q,v,p],[p,v,w],[p,q,v],[w,p,v],[v,p,q]][i%6];
+return"#"+m.map(x=>Math.round(x*255).toString(16).padStart(2,"0")).join("")}
+const col=(i,n,d,j)=>hsv((i/n)%1,.62,Math.max(.4,.97-.10*d-.05*(j%4)));
+function P(r,a){return[C+r*Math.cos(a),C+r*Math.sin(a)]}
+function sec(r0,r1,a0,a1){a1=Math.min(a1,a0+TAU-1e-4);const L=a1-a0>Math.PI?1:0,f=x=>x.toFixed(2);
+const[x0,y0]=P(r1,a0),[x1,y1]=P(r1,a1),[x2,y2]=P(r0,a1),[x3,y3]=P(r0,a0);
+return`M${f(x0)},${f(y0)} A${r1},${r1} 0 ${L} 1 ${f(x1)},${f(y1)} L${f(x2)},${f(y2)} A${r0},${r0} 0 ${L} 0 ${f(x3)},${f(y3)} Z`}
+function node(nd,d,a0,a1,i,n,th,p,out){
+ const id=idmap.push(nd)-1,cp=p+"/"+nd.name;
+ const t2=nd._kind=="lang"?nd.value+" projects":nd._kind=="repo"?"1 project":"technology";
+ out.push(`<path d="${sec(HOLE+d*th,HOLE+(d+1)*th,a0,a1)}" fill="${col(i,n,d+1,0)}" stroke="#fff" data-id="${id}" data-path="${esc(cp)}" data-info="${esc(t2)}"><title>${esc(cp)}
+${esc(t2)}</title></path>`);
+ if(nd.children){let a=a0;nd.children.slice().sort((x,y)=>y.value-x.value).forEach((c,j)=>{
+   const w=(a1-a0)*c.value/nd.value;node(c,d+1,a,a+w,i,n,th,cp,out);a+=w})}}
+function render(){
+ idmap=[];
+ const rings=dep(view)-1,th=(S/2-HOLE-6)/rings,n=view.children.length||1;
+ const out=[`<svg viewBox="0 0 ${S} ${S}" font-family="monospace"><rect width="${S}" height="${S}" fill="#191919"/>`];
+ let a=-Math.PI/2;
+ view.children.forEach((c,i)=>{const w=TAU*c.value/view.value;node(c,0,a,a+w,i,n,th,"",out);a+=w});
+ const num=stack.length?Math.round(view.value):DATA._projects;
+ const lab=stack.length?view.name.toUpperCase().slice(0,12):"PROJECTS";
+ out.push(`<circle id="core" cx="${C}" cy="${C}" r="${HOLE-6}" fill="#202020" style="cursor:pointer"/>`);
+ out.push(`<text x="${C}" y="${C-8}" fill="#eee" font-size="30" font-weight="bold" text-anchor="middle" dominant-baseline="middle" style="pointer-events:none">${num}</text>`);
+ out.push(`<text x="${C}" y="${C+18}" fill="#aaa" font-size="11" letter-spacing="2" text-anchor="middle" dominant-baseline="middle" style="pointer-events:none">${lab}</text></svg>`);
+ document.getElementById("chart").innerHTML=out.join("");
+ document.getElementById("crumb").style.display=stack.length?"block":"none"}
+function back(){if(stack.length){view=stack.pop();render()}}
+document.getElementById("chart").addEventListener("click",e=>{
+ if(e.target.id=="core"){back();return}
+ const nd=idmap[e.target.dataset.id];
+ if(nd&&nd.children){stack.push(view);view=nd;render()}});
+document.getElementById("crumb").onclick=back;
+const tip=document.getElementById("tip");
+document.getElementById("chart").addEventListener("mousemove",e=>{
+ const t=e.target.closest("path[data-path]");
+ if(!t){tip.style.display="none";return}
+ tip.innerHTML=t.dataset.path+"<br>"+t.dataset.info;
+ tip.style.display="block";tip.style.left=e.clientX+14+"px";tip.style.top=e.clientY+10+"px"});
+render();
 </script></body></html>

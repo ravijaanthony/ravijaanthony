@@ -11,21 +11,21 @@
 <a href="https://raw.githubusercontent.com/ravijaanthony/ravijaanthony_test/main/assets/sunburst.svg">
   <img src="assets/sunburst.svg" width="100%" alt="language disk">
 </a><br>
-<sub>✨ click the disk for the hover-interactive version</sub>
+<sub>✨ click the disk for the hover + zoom interactive version</sub>
 </td>
 <td width="50%" align="left" valign="top">
-<h3>🧑‍ Most → Least Used</h3>
+<h3>🧑‍ Languages (by projects)</h3>
 <table>
-<tr><td><img src="assets/lang-swatch-0.svg" width="12" height="12"></td><td>&nbsp;<b>TypeScript</b></td><td align="right">&nbsp;68%</td></tr>
-<tr><td><img src="assets/lang-swatch-1.svg" width="12" height="12"></td><td>&nbsp;<b>Python</b></td><td align="right">&nbsp;19%</td></tr>
-<tr><td><img src="assets/lang-swatch-2.svg" width="12" height="12"></td><td>&nbsp;<b>CSS</b></td><td align="right">&nbsp;3.1%</td></tr>
-<tr><td><img src="assets/lang-swatch-3.svg" width="12" height="12"></td><td>&nbsp;<b>QML</b></td><td align="right">&nbsp;2.9%</td></tr>
-<tr><td><img src="assets/lang-swatch-4.svg" width="12" height="12"></td><td>&nbsp;<b>JavaScript</b></td><td align="right">&nbsp;2.5%</td></tr>
-<tr><td><img src="assets/lang-swatch-5.svg" width="12" height="12"></td><td>&nbsp;<b>Java</b></td><td align="right">&nbsp;2.0%</td></tr>
-<tr><td><img src="assets/lang-swatch-6.svg" width="12" height="12"></td><td>&nbsp;<b>other</b></td><td align="right">&nbsp;1.9%</td></tr>
-<tr><td><img src="assets/lang-swatch-7.svg" width="12" height="12"></td><td>&nbsp;<b>Dockerfile</b></td><td align="right">&nbsp;0.2%</td></tr>
-<tr><td><img src="assets/lang-swatch-8.svg" width="12" height="12"></td><td>&nbsp;<b>HTML</b></td><td align="right">&nbsp;0.1%</td></tr>
-<tr><td><img src="assets/lang-swatch-9.svg" width="12" height="12"></td><td>&nbsp;<b>Shell</b></td><td align="right">&nbsp;0.1%</td></tr>
+<tr><td><img src="assets/lang-swatch-0.svg" width="12" height="12"></td><td>&nbsp;<b>TypeScript</b></td><td align="right">&nbsp;5 · 17%</td></tr>
+<tr><td><img src="assets/lang-swatch-1.svg" width="12" height="12"></td><td>&nbsp;<b>CSS</b></td><td align="right">&nbsp;5 · 17%</td></tr>
+<tr><td><img src="assets/lang-swatch-2.svg" width="12" height="12"></td><td>&nbsp;<b>Dockerfile</b></td><td align="right">&nbsp;4 · 13%</td></tr>
+<tr><td><img src="assets/lang-swatch-3.svg" width="12" height="12"></td><td>&nbsp;<b>JavaScript</b></td><td align="right">&nbsp;4 · 13%</td></tr>
+<tr><td><img src="assets/lang-swatch-4.svg" width="12" height="12"></td><td>&nbsp;<b>HTML</b></td><td align="right">&nbsp;4 · 13%</td></tr>
+<tr><td><img src="assets/lang-swatch-5.svg" width="12" height="12"></td><td>&nbsp;<b>Python</b></td><td align="right">&nbsp;3 · 10%</td></tr>
+<tr><td><img src="assets/lang-swatch-6.svg" width="12" height="12"></td><td>&nbsp;<b>Java</b></td><td align="right">&nbsp;2 · 6.7%</td></tr>
+<tr><td><img src="assets/lang-swatch-7.svg" width="12" height="12"></td><td>&nbsp;<b>QML</b></td><td align="right">&nbsp;1 · 3.3%</td></tr>
+<tr><td><img src="assets/lang-swatch-8.svg" width="12" height="12"></td><td>&nbsp;<b>Shell</b></td><td align="right">&nbsp;1 · 3.3%</td></tr>
+<tr><td><img src="assets/lang-swatch-9.svg" width="12" height="12"></td><td>&nbsp;<b>other</b></td><td align="right">&nbsp;1 · 3.3%</td></tr>
 </table>
 </td>
 </tr></table>
