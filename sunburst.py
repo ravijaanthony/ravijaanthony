@@ -161,7 +161,7 @@ def build_svg(tree, nproj):
     out.append(f'<text x="{CX}" y="{CY+18}" fill="#aaa" font-size="11" text-anchor="middle" dominant-baseline="middle" letter-spacing="2">PROJECTS</text></svg>')
     return "\n".join(out)
 
-def export_readme(root, tree, raw_base, out_dir):
+def export_readme(root, tree, raw_base, out_dir, token=None):
     """Generate elegant, compact README content with Orgs and Timestamp."""
     langs = tree["children"]
     n = len(langs) or 1
