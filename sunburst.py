@@ -192,7 +192,7 @@ def export_readme(root, tree, raw_base, out_dir):
     def repo_size(c): 
         return sum(child.get("value", 0) for child in c.get("children", []))
 
-    for c in sorted(root["children"], key=lambda c: -c["value"])[:8]:  # Top 8 projects
+    for c in sorted(root["children"], key=lambda c: -repo_size(c))[:8]:  # Top 8 projects
         when = c.get("_pushed", "")[:10]
         langs_list = [g["name"] for g in c.get("children", []) if g["name"] != "Tooling"]
         tech_list = []
