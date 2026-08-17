@@ -162,7 +162,7 @@ def build_svg(tree, nproj):
     return "\n".join(out)
 
 def export_readme(root, tree, raw_base, out_dir):
-    """Generate elegant, compact README content."""
+     """Generate elegant, compact README content (Disk + Legend only)."""
     langs = tree["children"]
     n = len(langs) or 1
     
@@ -177,15 +177,13 @@ def export_readme(root, tree, raw_base, out_dir):
         legend_items.append(f'<img src="assets/lang-swatch-{i}.svg" width="10" height="10" align="center"> **{esc(e["name"])}**')
     legend_text = " · ".join(legend_items)
     
-    # Build the main disk section
+    # Build the main disk section (links to the interactive HTML page)
     L = [
-        f'<a href="{raw_base}/sunburst.svg">',
-        '  <img src="assets/sunburst.svg" width="600" alt="My code, visualized as a disk">',
+        f'<a href="{raw_base}/index.html">', 
+        '  <img src="assets/sunburst.svg" width="500" alt="My code, visualized as a disk">',
         '</a>',
         '',
-        f'<p align="center"><sub>{legend_text}</sub></p>',
-        '',
-        '<p align="center"><sub><i>Languages → Projects → Code · <a href="assets/index.html">Click to explore interactively</a></i></sub></p>',
+        f'<sub>{legend_text}</sub>',
     ]
     
     with open(f"{out_dir}/README_SNIPPET.md", "w") as f:
@@ -297,14 +295,7 @@ def main():
         txt = re.sub(r"<!-- SUNBURST:START -->.*?<!-- SUNBURST:END -->",
                     lambda m: f"<!-- SUNBURST:START -->\n{snip}\n<!-- SUNBURST:END -->", 
                     txt, flags=re.S)
-        
-        # Update PROJECTS section
-        if os.path.exists(f"{a.out_dir}/PROJECTS_SNIPPET.md"):
-            proj_snip = open(f"{a.out_dir}/PROJECTS_SNIPPET.md").read()
-            txt = re.sub(r"<!-- PROJECTS:START -->.*?<!-- PROJECTS:END -->",
-                        lambda m: f"<!-- PROJECTS:START -->\n{proj_snip}\n<!-- PROJECTS:END -->", 
-                        txt, flags=re.S)
-        
+
         open(a.readme, "w").write(txt)
         print("updated README.md")
     print("wrote sunburst.svg, index.html, live.json, swatches, README_SNIPPET.md")
