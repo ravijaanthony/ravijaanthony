@@ -303,7 +303,7 @@ def main():
     json.dump(tree, open(f"{a.out_dir}/live.json", "w"))
     raw_base = (f"https://raw.githubusercontent.com/{a.repo}/main/assets" if a.repo
                 else "https://raw.githubusercontent.com/USER/REPO/main/assets")
-    export_readme(root, tree, raw_base, a.out_dir)
+    export_readme(root, tree, raw_base, a.out_dir, a.token)
     if a.readme and os.path.exists(a.readme):
         txt = open(a.readme).read()
         
