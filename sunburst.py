@@ -88,8 +88,12 @@ def github_tree(user=None, token=None, max_repos=15, include_private=False, scan
         repos = get("https://api.github.com/user/repos?per_page=100&affiliation=owner", token)
     else:
         repos = get(f"https://api.github.com/users/{user}/repos?per_page=100", token)
-    repos = [r for r in repos if not r.get("fork")]
+    
+    # Add any repo names you want to hide to this list (lowercase)
+    ignore = {(user or "").lower(), "ravijaanthony_test", "hello-world"}
+    repos = [r for r in repos if not r.get("fork") and r["name"].lower() not in ignore]
     repos.sort(key=lambda r: r["size"], reverse=True)
+  
     kids = []
     for r in repos[:max_repos]:
         langs = get(r["languages_url"], token)
