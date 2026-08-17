@@ -230,59 +230,48 @@ def export_readme(root, tree, raw_base, out_dir, token=None):
         f.write("\n".join(projects_L))
 
 PAGE = """<!doctype html><html><head><meta charset="utf-8"><title>__TITLE__</title>
-<style>body{background:#191919;margin:0;display:grid;place-items:center;min-height:100vh}
-#wrap{position:relative}svg{width:min(92vmin,760px);height:auto}
+<style>
+body{background:#191919;margin:0;font-family:monospace;color:#ddd;display:flex;flex-wrap:wrap;justify-content:center;gap:30px;padding:30px;min-height:100vh;box-sizing:border-box}
+.disk-wrap{flex:1;min-width:320px;max-width:600px;display:flex;flex-direction:column;align-items:center;position:relative}
+svg{width:100%;height:auto}
 path{cursor:pointer}path:hover{filter:brightness(.65)}
-#hint{position:absolute;bottom:6px;width:100%;text-align:center;font:12px monospace;color:#777}
-#tip{position:fixed;display:none;background:#2b2b2b;color:#ddd;border:1px solid #555;padding:8px 12px;font:13px/1.6 monospace;border-radius:4px;pointer-events:none;white-space:nowrap}</style></head><body>
-<div id="wrap"><div id="chart"></div><div id="hint">click a language to fan out its projects · click the core to reset</div></div>
+#tip{position:fixed;display:none;background:#2b2b2b;color:#ddd;border:1px solid #555;padding:8px 12px;font:13px/1.6 monospace;border-radius:4px;pointer-events:none;white-space:nowrap;z-index:10}
+#hint{margin-top:12px;font-size:12px;color:#777;text-align:center}
+.projects-list{flex:1;min-width:320px;max-width:500px;max-height:85vh;overflow-y:auto;padding:24px;background:#202020;border-radius:8px;border:1px solid #333}
+.projects-list h2{margin-top:0;color:#eee;border-bottom:1px solid #444;padding-bottom:12px;font-size:18px}
+.project-item{margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid #333}
+.project-item:last-child{border-bottom:none}
+.project-title{font-size:16px;font-weight:bold;color:#fff}
+.project-year{color:#888;font-size:14px;margin-left:8px}
+.project-meta{margin:8px 0 0 16px;color:#aaa;font-size:13px;line-height:1.6}
+.project-techs{color:#8ab4f8}
+</style></head><body>
+<div class="disk-wrap">
+__SVG__
+<div id="hint">hover over the disk for details</div>
+</div>
+<div class="projects-list" id="projects-list">
+<h2>Projects (Latest → Oldest)</h2>
+</div>
 <div id="tip"></div>
 <script>
-const DATA=__DATA__;
-const S=720,C=360,HOLE=78,TAU=2*Math.PI;
-let sel=null,idmap=[];
-const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
-function hsv(h,s,v){const f=h*6,i=Math.floor(f),t=f-i,p=v*(1-s),q=v*(1-s*t),w=v*(1-s*(1-t));
-const m=[[v,w,p],[q,v,p],[p,v,w],[p,q,v],[w,p,v],[v,p,q]][i%6];
-return"#"+m.map(x=>Math.round(x*255).toString(16).padStart(2,"0")).join("")}
-const col=(i,n,d,j)=>hsv((i/n)%1,.62,Math.max(.4,.97-.10*d-.05*(j%4)));
-function P(r,a){return[C+r*Math.cos(a),C+r*Math.sin(a)]}
-function sec(r0,r1,a0,a1){a1=Math.min(a1,a0+TAU-1e-4);const L=a1-a0>Math.PI?1:0,f=x=>x.toFixed(2);
-const[x0,y0]=P(r1,a0),[x1,y1]=P(r1,a1),[x2,y2]=P(r0,a1),[x3,y3]=P(r0,a0);
-return`M${f(x0)},${f(y0)} A${r1},${r1} 0 ${L} 1 ${f(x1)},${f(y1)} L${f(x2)},${f(y2)} A${r0},${r0} 0 ${L} 0 ${f(x3)},${f(y3)} Z`}
-function render(){
- idmap=[];
- const B=S/2-HOLE-6, inner=sel?B*0.62:B, n=DATA.children.length||1;
- const out=[`<svg viewBox="0 0 ${S} ${S}" font-family="monospace"><rect width="${S}" height="${S}" fill="#191919"/>`];
- let a=-Math.PI/2;
- DATA.children.forEach((c,i)=>{
-  const w=TAU*c.value/DATA.value, id=idmap.push(c)-1;
-  out.push(`<path d="${sec(HOLE,HOLE+inner,a,a+w)}" fill="${col(i,n,1,0)}" stroke="#fff" data-id="${id}" data-kind="lang" data-path="/${esc(c.name)}" data-info="${c.value} projects"><title>/${esc(c.name)}\n${c.value} projects</title></path>`);
-  if(sel===c&&c.children){
-   const o0=HOLE+inner+3,o1=HOLE+B;let b=a;
-   c.children.forEach((p,j)=>{
-    const pw=w*p.value/c.value, pid=idmap.push(p)-1;
-    out.push(`<path d="${sec(o0,o1,b,b+pw)}" fill="${col(i,n,2,j)}" stroke="#fff" data-id="${pid}" data-kind="repo" data-path="/${esc(c.name)}/${esc(p.name)}" data-info="1 project"><title>/${esc(c.name)}/${esc(p.name)}\n1 project</title></path>`);
-    b+=pw;});}
-  a+=w;});
- const num=sel?sel.value:DATA._projects;
- const lab=sel?sel.name.toUpperCase().slice(0,12):"PROJECTS";
- out.push(`<circle id="core" cx="${C}" cy="${C}" r="${HOLE-6}" fill="#202020" style="cursor:pointer"/>`);
- out.push(`<text x="${C}" y="${C-8}" fill="#eee" font-size="30" font-weight="bold" text-anchor="middle" dominant-baseline="middle" style="pointer-events:none">${num}</text>`);
- out.push(`<text x="${C}" y="${C+18}" fill="#aaa" font-size="11" letter-spacing="2" text-anchor="middle" dominant-baseline="middle" style="pointer-events:none">${lab}</text></svg>`);
- document.getElementById("chart").innerHTML=out.join("")}
-document.getElementById("chart").addEventListener("click",e=>{
- if(e.target.id=="core"){sel=null;render();return}
- const nd=idmap[e.target.dataset.id];
- if(!nd||e.target.dataset.kind!="lang")return;
- sel=(sel===nd)?null:nd;render()});
-const tip=document.getElementById("tip");
-document.getElementById("chart").addEventListener("mousemove",e=>{
- const t=e.target.closest("path[data-path]");
- if(!t){tip.style.display="none";return}
- tip.innerHTML=t.dataset.path+"<br>"+t.dataset.info;
- tip.style.display="block";tip.style.left=e.clientX+14+"px";tip.style.top=e.clientY+10+"px"});
-render();
+const PROJECTS=__PROJECTS__;
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const listContainer=document.getElementById('projects-list');
+PROJECTS.forEach(p=>{
+ const item=document.createElement('div');item.className='project-item';
+ let html=`<div class="project-title">${esc(p.name)}<span class="project-year">(${p.year})</span></div>`;
+ if(p.langs&&p.langs.length) html+=`<div class="project-meta">- ${p.langs.join(' · ')}</div>`;
+ if(p.techs&&p.techs.length) html+=`<div class="project-meta project-techs">- ${p.techs.join(' · ')}</div>`;
+ item.innerHTML=html;listContainer.appendChild(item)});
+
+const tip=document.getElementById('tip');
+document.querySelector('.disk-wrap').addEventListener('mousemove',e=>{
+ const t=e.target.closest('path[data-path]');
+ if(!t){tip.style.display='none';return}
+ tip.innerHTML=t.dataset.path+'<br>'+t.dataset.size+'<br>'+t.dataset.pct+'% of total';
+ tip.style.display='block';tip.style.left=e.clientX+14+'px';tip.style.top=e.clientY+10+'px'});
+document.querySelector('.disk-wrap').addEventListener('mouseleave',()=>tip.style.display='none');
 </script></body></html>"""
 
 def main():
@@ -297,9 +286,32 @@ def main():
     root = (github_tree(a.user, a.token, a.max_repos, a.include_private, scan=not a.no_scan)
             if (a.user or a.include_private) else json.load(open(a.data)))
     tree = invert(root)
-    svg = build_svg(tree, len(root["children"]))
+        # Build the projects list for the interactive page
+    projects_data = []
+    for repo in sorted(root["children"], key=lambda r: r.get("_pushed", ""), reverse=True):
+        year = repo.get("_pushed", "")[:4] or "N/A"
+        langs = [c["name"] for c in repo.get("children", []) if c["name"] != "Tooling"]
+        techs = []
+        for lang_techs in repo.get("_tech", {}).values():
+            techs.extend(lang_techs)
+        tools = repo.get("_tool", [])
+        
+        projects_data.append({
+            "name": repo["name"],
+            "year": year,
+            "langs": langs,
+            "techs": list(set(techs + tools))
+        })
+
+    svg = build_svg(root) # Keep whatever your current build_svg line looks like!
     open(f"{a.out_dir}/sunburst.svg", "w").write(svg)
-    open(f"{a.out_dir}/index.html", "w").write(PAGE.replace("__DATA__", json.dumps(tree)).replace("__TITLE__", root["name"]))
+    
+    # Inject both SVG and Projects data into the HTML
+    open(f"{a.out_dir}/index.html", "w").write(
+        PAGE.replace("__SVG__", svg)
+            .replace("__PROJECTS__", json.dumps(projects_data))
+            .replace("__TITLE__", root["name"])
+    )
     json.dump(tree, open(f"{a.out_dir}/live.json", "w"))
     raw_base = (f"https://raw.githubusercontent.com/{a.repo}/main/assets" if a.repo
                 else "https://raw.githubusercontent.com/USER/REPO/main/assets")
