@@ -158,31 +158,54 @@ def build_svg(tree, nproj):
     return "\n".join(out)
 
 def export_readme(root, tree, raw_base, out_dir):
+    """Generate elegant, compact README content."""
     langs = tree["children"]
     n = len(langs) or 1
-    L = ['<table width="100%"><tr>', '<td width="50%" align="center" valign="top">',
-         f'<a href="{raw_base}/sunburst.svg">', '  <img src="assets/sunburst.svg" width="100%" alt="language disk">',
-         '</a><br>', '<sub>✨ click the disk — languages fan out into their projects</sub>', '</td>',
-         '<td width="50%" align="left" valign="top">', '<h3>🧑‍💻 Languages <sub>(click for projects)</sub></h3>']
+    
+    # Generate swatches
     for i, e in enumerate(langs):
         with open(f"{out_dir}/lang-swatch-{i}.svg", "w") as f:
             f.write(f'<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"><rect width="12" height="12" fill="{color_fam(i, n, 1, 0)}"/></svg>')
-        L += ['<details>', f'<summary><img src="assets/lang-swatch-{i}.svg" width="12" height="12"> '
-              f'<b>{esc(e["name"])}</b></summary>', '']
-        for c in e["children"]:
-            L.append(f'- {esc(c["name"])}')
-        L += ['', '</details>']
-    L += ['</td>', '</tr></table>', '', '<h3>🕘 Latest Projects <sub>(newest → oldest)</sub></h3>']
-    for c in sorted(root["children"], key=lambda c: c.get("_pushed", ""), reverse=True):
+    
+    # Build compact legend
+    legend_items = []
+    for i, e in enumerate(langs):
+        legend_items.append(f'<img src="assets/lang-swatch-{i}.svg" width="10" height="10" align="center"> **{esc(e["name"])}**')
+    legend_text = " · ".join(legend_items)
+    
+    # Build the main disk section
+    L = [
+        f'<a href="{raw_base}/sunburst.svg">',
+        '  <img src="assets/sunburst.svg" width="600" alt="My code, visualized as a disk">',
+        '</a>',
+        '',
+        f'<p align="center"><sub>{legend_text}</sub></p>',
+        '',
+        '<p align="center"><sub><i>Languages → Projects → Code · <a href="assets/index.html">Click to explore interactively</a></i></sub></p>',
+    ]
+    
+    with open(f"{out_dir}/README_SNIPPET.md", "w") as f:
+        f.write("\n".join(L))
+    
+    # Generate projects section (separate file for second marker)
+    projects_L = []
+    for c in sorted(root["children"], key=lambda c: -c["value"])[:8]:  # Top 8 projects
         when = c.get("_pushed", "")[:10]
-        L += ['<details>', f'<summary>📁 <b>{esc(c["name"])}</b> · {when}</summary>', '', '| language | size |', '|---|---|']
-        for g in sorted(c.get("children", []), key=lambda x: -x["value"]):
-            techs = ", ".join(c.get("_tech", {}).get(g["name"], []))
-            L.append(f'| {esc(g["name"])} | {human(g["value"])}' + (f" — {techs}" if techs else "") + ' |')
-        if c.get("_tool"):
-            L.append(f'| 🛠 tooling | {", ".join(c["_tool"])} |')
-        L += ['', '</details>', '']
-    with open(f"{out_dir}/README_SNIPPET.md", "w") as f: f.write("\n".join(L))
+        langs_list = [g["name"] for g in c.get("children", []) if g["name"] != "Tooling"]
+        tech_list = []
+        for g in c.get("children", []):
+            tech_list.extend(c.get("_tech", {}).get(g["name"], []))
+        
+        tech_str = " · ".join(langs_list[:3])  # Show max 3 languages
+        if tech_list:
+            tech_str += " · " + " · ".join(tech_list[:2])  # Show max 2 techs
+        
+        projects_L.append(f'#### {esc(c["name"])}')
+        projects_L.append(f'<sub>{tech_str} · {when}</sub>')
+        projects_L.append('')
+    
+    with open(f"{out_dir}/PROJECTS_SNIPPET.md", "w") as f:
+        f.write("\n".join(projects_L))
 
 PAGE = """<!doctype html><html><head><meta charset="utf-8"><title>__TITLE__</title>
 <style>body{background:#191919;margin:0;display:grid;place-items:center;min-height:100vh}
