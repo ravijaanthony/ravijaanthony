@@ -162,7 +162,7 @@ def build_svg(tree, nproj):
     return "\n".join(out)
 
 def export_readme(root, tree, raw_base, out_dir):
-     """Generate elegant, compact README content (Disk + Legend only)."""
+    """Generate elegant, compact README content (Disk + Legend only)."""
     langs = tree["children"]
     n = len(langs) or 1
     
