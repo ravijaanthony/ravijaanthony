@@ -286,7 +286,8 @@ def main():
     root = (github_tree(a.user, a.token, a.max_repos, a.include_private, scan=not a.no_scan)
             if (a.user or a.include_private) else json.load(open(a.data)))
     tree = invert(root)
-        # Build the projects list for the interactive page
+    
+    # Build the projects list for the interactive page
     projects_data = []
     for repo in sorted(root["children"], key=lambda r: r.get("_pushed", ""), reverse=True):
         year = repo.get("_pushed", "")[:4] or "N/A"
@@ -303,7 +304,7 @@ def main():
             "techs": list(set(techs + tools))
         })
 
-    svg = build_svg(root) # Keep whatever your current build_svg line looks like!
+    svg = build_svg(tree, len(root["children"]))
     open(f"{a.out_dir}/sunburst.svg", "w").write(svg)
     
     # Inject both SVG and Projects data into the HTML
