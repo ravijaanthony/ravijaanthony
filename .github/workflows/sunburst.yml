@@ -1,20 +1,37 @@
 name: sunburst
+
 on:
-  workflow_dispatch:
+  workflow_dispatch: # Allows manual triggering from the Actions tab
   schedule:
-    - cron: "0 */6 * * *"
+    - cron: "0 0 * * *"   # Runs automatically every day at 00:00 UTC
+
 permissions:
   contents: write
+
 jobs:
-  build:
+  test-and-build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with: { python-version: "3.12" }
-      - run: python3 sunburst.py --user ${{ github.repository_owner }} --repo ${{ github.repository }} --out-dir assets --readme README.md
-      - run: |
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with: 
+          python-version: "3.12"
+          
+      # AUTOMATED TESTING: Checks Python syntax before running
+      - name: Test Script Syntax
+        run: python3 -m py_compile sunburst.py
+        
+      # BUILD: Runs the script to generate the disk and update README
+      - name: Build & Generate Assets
+        run: python3 sunburst.py --user ${{ github.repository_owner }} --repo ${{ github.repository }} --out-dir assets --readme README.md
+        
+      # AUTOMATED DEPLOYMENT: Commits and pushes the changes back to the repo
+      - name: Deploy (Commit & Push)
+        run: |
           git config user.name "sunburst-bot"
           git config user.email "bot@users.noreply.github.com"
           git add assets README.md
-          git diff --cached --quiet || (git commit -m "chore: refresh sunburst" && git push)
+          git diff --cached --quiet || (git commit -m "chore: daily automated refresh [skip ci]" && git push)
