@@ -8,7 +8,7 @@ Usage:
   python3 sunburst.py --data data.json
 Outputs: sunburst.svg, index.html, lang-swatch-*.svg, README_SNIPPET.md, live.json
 """
-import argparse, colorsys, json, math, os, re, urllib.request
+import argparse, colorsys, json, math, os, re, urllib.request, datetime
 
 SIZE = 720; CX = CY = SIZE // 2
 HOLE = 78; BG = "#191919"; TAU = 2 * math.pi
@@ -162,7 +162,7 @@ def build_svg(tree, nproj):
     return "\n".join(out)
 
 def export_readme(root, tree, raw_base, out_dir):
-    """Generate elegant, compact README content (Disk + Legend only)."""
+    """Generate elegant, compact README content with Orgs and Timestamp."""
     langs = tree["children"]
     n = len(langs) or 1
     
@@ -177,14 +177,31 @@ def export_readme(root, tree, raw_base, out_dir):
         legend_items.append(f'<img src="assets/lang-swatch-{i}.svg" width="10" height="10" align="center"> **{esc(e["name"])}**')
     legend_text = " · ".join(legend_items)
     
-    # Build the main disk section (links to the interactive HTML page)
+    # Fetch Organizations you contribute to
+    orgs = []
+    try:
+        org_data = get(f"https://api.github.com/users/{root['name']}/orgs", token)
+        orgs = [o["login"] for o in org_data]
+    except Exception:
+        pass
+        
+    # Get current UTC time
+    now = datetime.datetime.utcnow().strftime("%b %d, %Y at %H:%M UTC")
+    
+    # Build the main disk section
     L = [
         f'<a href="{raw_base}/index.html">', 
         '  <img src="assets/sunburst.svg" width="500" alt="My code, visualized as a disk">',
         '</a>',
         '',
         f'<sub>{legend_text}</sub>',
+        '',
+        f'<sub><i>Languages → Projects → Codebase · Updated {now}</i></sub>',
     ]
+    
+    if orgs:
+        L.append('')
+        L.append(f'<sub><b>Contributing to:</b> {" · ".join(orgs)}</sub>')
     
     with open(f"{out_dir}/README_SNIPPET.md", "w") as f:
         f.write("\n".join(L))
