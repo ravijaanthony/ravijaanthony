@@ -16,8 +16,8 @@
 #### asciiartclock
 <sub>QML · 2026-06-29</sub>
 
+#### ravijaanthony_
+<sub>other · 2026-08-15</sub>
+
 #### Java_Concurrency
 <sub>Java · 2026-07-09</sub>
-
-#### Maze-Traversal
-<sub>Java · 2026-02-28</sub>
