@@ -36,7 +36,17 @@
 
 </details>
 <details>
-<summary><img src="assets/lang-swatch-2.svg" width="12" height="12"> <b>Dockerfile</b></summary>
+<summary><img src="assets/lang-swatch-2.svg" width="12" height="12"> <b>HTML</b></summary>
+
+- cv_pipeline
+- LumiSign
+- MedWikiAgentic
+- STSBookingSystem
+- ravijaanthony_test
+
+</details>
+<details>
+<summary><img src="assets/lang-swatch-3.svg" width="12" height="12"> <b>Dockerfile</b></summary>
 
 - KaprukaAgentChallenge2026
 - cv_pipeline
@@ -45,21 +55,12 @@
 
 </details>
 <details>
-<summary><img src="assets/lang-swatch-3.svg" width="12" height="12"> <b>JavaScript</b></summary>
+<summary><img src="assets/lang-swatch-4.svg" width="12" height="12"> <b>JavaScript</b></summary>
 
 - KaprukaAgentChallenge2026
 - cv_pipeline
 - LumiSign
 - MedWikiAgentic
-
-</details>
-<details>
-<summary><img src="assets/lang-swatch-4.svg" width="12" height="12"> <b>HTML</b></summary>
-
-- cv_pipeline
-- LumiSign
-- MedWikiAgentic
-- STSBookingSystem
 
 </details>
 <details>
@@ -68,6 +69,7 @@
 - LumiSign
 - MedWikiAgentic
 - STSBookingSystem
+- ravijaanthony_test
 
 </details>
 <details>
@@ -99,6 +101,16 @@
 </tr></table>
 
 <h3>🕘 Latest Projects <sub>(newest → oldest)</sub></h3>
+<details>
+<summary>📁 <b>ravijaanthony_test</b> · 2026-08-16</summary>
+
+| language | size |
+|---|---|
+| HTML | 24.9 KiB |
+| Python | 15.7 KiB |
+
+</details>
+
 <details>
 <summary>📁 <b>ravijaanthony</b> · 2026-08-15</summary>
 
