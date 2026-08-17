@@ -14,16 +14,11 @@
 ## MY CODE, VISUALIZED.
 
 <!-- SUNBURST:START -->
-<a href="https://raw.githubusercontent.com/ravijaanthony/ravijaanthony/main/assets/index.html">
-  <img src="assets/sunburst.svg" width="500" alt="My code, visualized as a disk">
-</a>
-
-<sub><img src="assets/lang-swatch-0.svg" width="10" height="10" align="center"> **TypeScript** · <img src="assets/lang-swatch-1.svg" width="10" height="10" align="center"> **CSS** · <img src="assets/lang-swatch-2.svg" width="10" height="10" align="center"> **Dockerfile** · <img src="assets/lang-swatch-3.svg" width="10" height="10" align="center"> **JavaScript** · <img src="assets/lang-swatch-4.svg" width="10" height="10" align="center"> **HTML** · <img src="assets/lang-swatch-5.svg" width="10" height="10" align="center"> **Python** · <img src="assets/lang-swatch-6.svg" width="10" height="10" align="center"> **Java** · <img src="assets/lang-swatch-7.svg" width="10" height="10" align="center"> **QML** · <img src="assets/lang-swatch-8.svg" width="10" height="10" align="center"> **Shell** · <img src="assets/lang-swatch-9.svg" width="10" height="10" align="center"> **other**</sub>
 <!-- SUNBURST:END -->
 
 *Languages → Projects → Codebase*
 <br/>
-<sub>Generated from my public repositories and updated automatically. Click the disk to explore interactively.</sub>
+<sub>Automatically generated from my public repositories. Click the disk to explore interactively.</sub>
 
 </div>
 
@@ -33,8 +28,7 @@
 
 ### /focus
 
-**Backend systems · Concurrency · Databases**
-**AI / Computer Vision · Full-stack development**
+**Backend systems · Concurrency · Databases · AI / Computer Vision**
 
 ---
 
@@ -45,9 +39,9 @@
 
 `FastAPI` · `React` · `Transformer` · `MediaPipe`
 
-[View project →](https://github.com/ravijaanthony/LumiSign)
+> **Engineering:** Real-time video processing and model inference pipeline designed for edge performance.
 
-> **Proof of work:** *[Insert a real metric here, e.g., "Achieved 92% accuracy on low-light dataset" or "Processed 30fps in real-time on edge devices"]*
+[View project →](https://github.com/ravijaanthony/LumiSign)
 
 ---
 
@@ -55,11 +49,11 @@
 
 **STSBookingSystem**
 *Segment-based train seat booking system for Sri Lanka with concurrent reservation handling.*
-`Python` · `TypeScript` · `PostgreSQL` · `Docker`
+`Python` · `TypeScript` · `PostgreSQL` (GiST constraints, `SELECT FOR UPDATE`) · `FastAPI` · `Docker`
 [Repository →](https://github.com/ravijaanthony/STSBookingSystem)
 
 **KaprukaAgentChallenge2026**
-*AI-driven application development and agent orchestration.*
+*AI-driven application development and multi-agent orchestration.*
 `TypeScript` · `AI Agents`
 [Repository →](https://github.com/ravijaanthony/KaprukaAgentChallenge2026)
 
@@ -67,6 +61,11 @@
 *Agentic workflows for medical knowledge retrieval and synthesis.*
 `Python` · `LangChain`
 [Repository →](https://github.com/ravijaanthony/MedWikiAgentic)
+
+**cv_pipeline**
+*Modular computer vision pipeline for image processing and analysis.*
+`Python` · `OpenCV`
+[Repository →](https://github.com/ravijaanthony/cv_pipeline)
 
 ---
 
@@ -76,7 +75,7 @@
 `Java` · `Python` · `TypeScript`
 
 **Also used**
-`JavaScript` · `HTML` · `CSS` · `Docker` · `QML` · `Shell`
+`JavaScript` · `HTML/CSS` · `Docker` · `PostgreSQL` · `QML` · `Shell`
 
 ---
 
