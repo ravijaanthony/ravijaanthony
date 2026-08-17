@@ -284,12 +284,22 @@ def main():
     export_readme(root, tree, raw_base, a.out_dir)
     if a.readme and os.path.exists(a.readme):
         txt = open(a.readme).read()
+        
+        # Update SUNBURST section
         snip = open(f"{a.out_dir}/README_SNIPPET.md").read()
-        new = re.sub(r"<!-- SUNBURST:START -->.*?<!-- SUNBURST:END -->",
-                     lambda m: f"<!-- SUNBURST:START -->\n{snip}\n<!-- SUNBURST:END -->", txt, flags=re.S)
-        if new != txt:
-            open(a.readme, "w").write(new)
-            print("updated README.md")
+        txt = re.sub(r"<!-- SUNBURST:START -->.*?<!-- SUNBURST:END -->",
+                    lambda m: f"<!-- SUNBURST:START -->\n{snip}\n<!-- SUNBURST:END -->", 
+                    txt, flags=re.S)
+        
+        # Update PROJECTS section
+        if os.path.exists(f"{a.out_dir}/PROJECTS_SNIPPET.md"):
+            proj_snip = open(f"{a.out_dir}/PROJECTS_SNIPPET.md").read()
+            txt = re.sub(r"<!-- PROJECTS:START -->.*?<!-- PROJECTS:END -->",
+                        lambda m: f"<!-- PROJECTS:START -->\n{proj_snip}\n<!-- PROJECTS:END -->", 
+                        txt, flags=re.S)
+        
+        open(a.readme, "w").write(txt)
+        print("updated README.md")
     print("wrote sunburst.svg, index.html, live.json, swatches, README_SNIPPET.md")
 
 if __name__ == "__main__":
