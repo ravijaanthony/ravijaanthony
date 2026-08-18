@@ -2,7 +2,7 @@
 <sub>TypeScript · CSS · Dockerfile · 2026-07-08</sub>
 
 #### LumiSign
-<sub>TypeScript · Python · CSS · 2026-07-03</sub>
+<sub>TypeScript · Python · CSS · 2026-08-17</sub>
 
 #### STSBookingSystem
 <sub>Python · TypeScript · CSS · 2026-08-03</sub>
