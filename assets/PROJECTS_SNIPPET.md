@@ -1,4 +1,4 @@
-#### KaprukaAgentChallenge2026
+#### kaprukamalli
 <sub>TypeScript · CSS · Dockerfile · 2026-07-08</sub>
 
 #### LumiSign
